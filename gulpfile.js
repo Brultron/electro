@@ -22,7 +22,7 @@ gulp.task('sass', function() {
 gulp.task('babel', function() {
 	return gulp.src(['source/**/*.jsx', 'source/**/*.js'])
 		.pipe(babel({
-			presets: ['react']
+			presets: ['react', 'es2015']
 		}))
     .pipe(gulp.dest('./build/'));
 });
