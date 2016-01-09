@@ -9,14 +9,14 @@ var gulp = require('gulp'),
 
 gulp.task('index', function() {
 	return gulp.src('source/index.html')
-		.pipe(gulp.dest('./build'));
+		.pipe(gulp.dest('build/'));
 });
 
 gulp.task('sass', function() {
-	gulp.src('./source/**/*.scss')
+	gulp.src('source/**/*.scss')
 		.pipe(sass())
 		.pipe(concat('app.css'))
-		.pipe(gulp.dest('./build/css'))
+		.pipe(gulp.dest('build/css'))
 });
 
 gulp.task('babel', function() {
@@ -24,20 +24,20 @@ gulp.task('babel', function() {
 		.pipe(babel({
 			presets: ['react', 'es2015']
 		}))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', function() {
 	gulp.watch(['source/**/*.jsx', 'source/**/*.js'], ['babel']);
 	gulp.watch(['source/**/*.scss'], ['sass']);
-	gulp.watch(['source/index/html'], ['index']);
+	gulp.watch(['source/index.html'], ['index']);
 });
 
 
-gulp.task('electron', function() {
-	childProcess.spawn(electron, ['./build/'], {
+gulp.task('electron', ['watch', 'index', 'sass', 'babel'], function() {
+	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
 });
 
-gulp.task('run', ['watch', 'index', 'sass', 'babel', 'electron']);
+gulp.task('run', ['electron']);
