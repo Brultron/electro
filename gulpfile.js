@@ -12,6 +12,17 @@ gulp.task('index', function() {
 		.pipe(gulp.dest('build/'));
 });
 
+//TODO probably a better way to insert these dependencies
+gulp.task('foundation', function() {
+	return gulp.src('node_modules/foundation-sites/dist/*.min.*')
+		.pipe(gulp.dest('build/vendor'));
+});
+
+gulp.task('jquery', function() {
+	return gulp.src('node_modules/jquery/dist/jquery.min.js')
+		.pipe(gulp.dest('build/vendor'));
+});
+
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -24,7 +35,7 @@ gulp.task('babel', function() {
 		.pipe(babel({
 			presets: ['react', 'es2015']
 		}))
-    .pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', function() {
@@ -34,7 +45,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'index', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'index', 'foundation', 'jquery', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});

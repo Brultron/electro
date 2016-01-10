@@ -1,14 +1,23 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Electro</title>
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<h1>Farts</h1>
-			</header>
-		</div>
-	</body>
+<head>
+	<meta charset="utf-8">
+	<title>Electro</title>
+	<link rel="stylesheet" href="vendor/foundation.min.css">
+	<link rel="stylesheet" href="vendor/foundation-flex.min.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+	<div id="electro-app"></div>
+	<script src="vendor/jquery.min.js" charset="utf-8"></script>
+	<script>
+     //TODO there's a better solution for this
+     try {
+       $ = jQuery = module.exports;
+       // If you want module.exports to be empty, uncomment:
+       // module.exports = {};
+     } catch (e) {}
+   </script>
+	<script src="vendor/foundation.min.js" charset="utf-8"></script>
+</body>
 </html>
