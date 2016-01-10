@@ -30,6 +30,7 @@
   "dependencies": {
     "array-buffer-concat": "^1.0.1",
     "browserify": "^12.0.2",
+    "electron": "^0.4.1",
     "electron-debug": "^0.3.0",
     "flux": "^2.1.1",
     "foundation-sites": "^6.1.1",

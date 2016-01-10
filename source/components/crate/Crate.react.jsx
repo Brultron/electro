@@ -1,20 +1,35 @@
 'use strict';
 
 import React from 'react';
-import BrowserWindow from 'browser-window';
+import Store from '../../stores/Tracks.js';
+import Actions from '../../actions/Tracks.js';
+
+let remote = window.require('remote');
 
 class Crate extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('hello wrrrld');
+    console.log(remote.require('./test.js').test());
+  }
+
+  onEnter(e){
+    if(e.key === 'Enter'){
+      Actions.addTrack(e.target.value);
+    }
   }
 
   render(){
     return (
-      <h1>Hello Wrrld</h1>
+      <div className={'row'}>
+        <div className={'medium-12 columns'}>
+          <label>URL
+            <input type={'text'} onKeyDown={this.onEnter}/>
+          </label>
+        </div>
+      </div>
     );
   }
 }
 
-export default Crate; 
+export default Crate;

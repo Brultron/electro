@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(29, 29, 29);
+  color: rgb(195, 195, 195);
+}
+
+div.row input {
+  background-color: rgb(29, 29, 29);
+  color: rgb(195, 195, 195);
+}
+
+div.row input:focus {
+  background-color: rgb(29, 29, 29) !important;
+  color: rgb(195, 195, 195)!important;
+}

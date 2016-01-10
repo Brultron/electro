@@ -2,13 +2,20 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	babel = require('gulp-babel'),
+	browserify = require('browserify'),
+	babelify = require('babelify'),
+	source = require('vinyl-source-stream'),
 	sass = require('gulp-sass'),
 	electron = require('electron-prebuilt'),
 	childProcess = require('child_process');
 
-gulp.task('index', function() {
-	return gulp.src('source/index.html')
+gulp.task('app', function() {
+	gulp.src('source/index.html')
+		.pipe(gulp.dest('build/'));
+	gulp.src('source/index.js')
+		.pipe(gulp.dest('build/'));
+	//TODO test
+	gulp.src('source/components/crate/test.js')
 		.pipe(gulp.dest('build/'));
 });
 
@@ -23,6 +30,14 @@ gulp.task('jquery', function() {
 		.pipe(gulp.dest('build/vendor'));
 });
 
+gulp.task('browserify', function() {
+	return browserify('source/electro.js')
+		.transform('babelify', {presets: ['react','es2015']})
+		.bundle()
+		.pipe(source('electro.js'))
+		.pipe(gulp.dest('build/'));
+})
+
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -30,22 +45,14 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest('build/css'))
 });
 
-gulp.task('babel', function() {
-	return gulp.src(['source/**/*.jsx', 'source/**/*.js'])
-		.pipe(babel({
-			presets: ['react', 'es2015']
-		}))
-		.pipe(gulp.dest('build/'));
-});
-
 gulp.task('watch', function() {
-	gulp.watch(['source/**/*.jsx', 'source/**/*.js'], ['babel']);
+	gulp.watch(['source/**/*.jsx', 'source/**/*.js'], ['browserify']);
 	gulp.watch(['source/**/*.scss'], ['sass']);
-	gulp.watch(['source/index.html'], ['index']);
+	gulp.watch(['source/index.html'], ['app']);
 });
 
 
-gulp.task('electron', ['watch', 'index', 'foundation', 'jquery', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'sass', 'browserify'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
