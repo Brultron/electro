@@ -2,10 +2,8 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	browserify = require('browserify'),
-	babelify = require('babelify'),
-	source = require('vinyl-source-stream'),
 	sass = require('gulp-sass'),
+	babel = require('gulp-babel'),
 	electron = require('electron-prebuilt'),
 	childProcess = require('child_process');
 
@@ -14,9 +12,14 @@ gulp.task('app', function() {
 		.pipe(gulp.dest('build/'));
 	gulp.src('source/index.js')
 		.pipe(gulp.dest('build/'));
-	//TODO test
-	gulp.src('source/components/crate/test.js')
-		.pipe(gulp.dest('build/'));
+});
+
+gulp.task('babel', function() {
+	return gulp.src(['source/**/*.js', 'source/**/*.jsx'])
+		.pipe(babel({
+			presets: ['es2015', 'react']
+		}))
+		.pipe(gulp.dest('build'));
 });
 
 //TODO probably a better way to insert these dependencies
@@ -30,14 +33,6 @@ gulp.task('jquery', function() {
 		.pipe(gulp.dest('build/vendor'));
 });
 
-gulp.task('browserify', function() {
-	return browserify('source/electro.js')
-		.transform('babelify', {presets: ['react','es2015']})
-		.bundle()
-		.pipe(source('electro.js'))
-		.pipe(gulp.dest('build/'));
-})
-
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -46,13 +41,13 @@ gulp.task('sass', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(['source/**/*.jsx', 'source/**/*.js'], ['browserify']);
+	gulp.watch(['source/**/*.jsx', 'source/**/*.js'], ['babel']);
 	gulp.watch(['source/**/*.scss'], ['sass']);
 	gulp.watch(['source/index.html'], ['app']);
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'sass', 'browserify'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
