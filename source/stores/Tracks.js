@@ -1,7 +1,7 @@
 import BaseStore from './BaseStore.js';
 import Dispatcher from '../dispatcher/Dispatcher.js';
 
-let tracks = [];
+let tracks = {};
 
 class Tracks extends BaseStore {
   getTracks(){
@@ -11,11 +11,14 @@ class Tracks extends BaseStore {
 
 const instance = new Tracks();
 instance.dispatchToken = Dispatcher.register(action => {
-  console.log(action);
   switch (action.type) {
     case 'add_track':
-      console.log(action.track);
-
+      tracks[action.track.url] = action.track;
+      break;
+    case 'track_uploaded':
+      tracks[action.track.url] = action.track;
+      console.log(tracks);
+      break;
   }
 });
 

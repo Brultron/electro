@@ -1,11 +1,20 @@
 import Dispatcher from '../dispatcher/Dispatcher.js';
+import yt from '../utils/yt.js';
 
 class Tracks {
 
 	addTrack(track) {
+		yt.download(track);
 		Dispatcher.dispatch({
 			type: 'add_track',
-			track: track 
+			track: track
+		});
+	}
+
+	trackUploaded(track){
+		Dispatcher.dispatch({
+			type: 'track_uploaded',
+			track: track
 		});
 	}
 }
