@@ -5,7 +5,8 @@ require('electron-debug')();
 let app = require('app');
 let remote = require('electron').remote;
 let BrowserWindow = require('browser-window');
-let win = null;
+let windowType = 'crate';
+let trackToLoad;
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
@@ -14,6 +15,21 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	win = new BrowserWindow({width: 400, height: 800});
+	var win = new BrowserWindow({width: 400, height: 800, title: 'crate'});
 	win.loadUrl('file://' + __dirname + '/index.html');
 });
+
+exports.launchNewDeck = function(track){
+	windowType = 'deck';
+	trackToLoad = track;
+	var win = new BrowserWindow({width: 400, height: 400, title: 'deck'});
+	win.loadUrl('file://' + __dirname + '/index.html');
+}
+
+exports.getWindowType = function(){
+	return windowType;
+}
+
+exports.loadTrack = function(){
+	return trackToLoad;
+}

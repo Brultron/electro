@@ -5,7 +5,7 @@ let tracks = {};
 
 class Tracks extends BaseStore {
   getTracks(){
-    return this.tracks;
+    return tracks;
   }
 }
 
@@ -14,10 +14,11 @@ instance.dispatchToken = Dispatcher.register(action => {
   switch (action.type) {
     case 'add_track':
       tracks[action.track.url] = action.track;
+      instance.emitChange();
       break;
     case 'track_uploaded':
       tracks[action.track.url] = action.track;
-      console.log(tracks);
+      instance.emitChange();
       break;
   }
 });

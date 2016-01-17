@@ -33,6 +33,13 @@ gulp.task('jquery', function() {
 		.pipe(gulp.dest('build/vendor'));
 });
 
+gulp.task('fonts', function() {
+	gulp.src('node_modules/font-awesome/css/font-awesome.min.css')
+		.pipe(gulp.dest('build/vendor'));
+	gulp.src('node_modules/font-awesome/fonts/*.*')
+		.pipe(gulp.dest('build/fonts'));
+});
+
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -47,7 +54,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});

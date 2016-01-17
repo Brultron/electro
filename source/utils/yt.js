@@ -14,6 +14,7 @@ class Yt {
 
 		stream.on('end', function() {
 			track.buffer = master;
+			track.ready = true;
 			TrackActions.trackUploaded(track);
 		})
 	}
