@@ -18,14 +18,6 @@ class Tracks {
 		});
 	}
 
-
-	setActiveTrack(track){
-		Dispatcher.dispatch({
-			type: 'set_active_track',
-			track: track
-		});
-	}
-
 }
 
 const instance = new Tracks();
