@@ -6,7 +6,6 @@ import ReactSlider from 'react-slider';
 
 let context;
 let source;
-let pitch = 1;
 let position = 0;
 let time;
 let bpm;
@@ -15,9 +14,14 @@ class Deck extends React.Component {
 
   constructor(props){
     super(props)
+
+    this.pitch = 1;
     this.playTrack = this.playTrack.bind(this);
     this.pauseTrack = this.pauseTrack.bind(this);
     this.setPitch = this.setPitch.bind(this);
+    this.pushUp = this.pushUp.bind(this);
+    this.pushDown = this.pushDown.bind(this);
+    this.resetPitch = this.resetPitch.bind(this);
     this.setBPM = this.setBPM.bind(this);
     this.state = {bpm: 0};
     this.surferRendered = false;
@@ -33,7 +37,7 @@ class Deck extends React.Component {
 
     		source.buffer = buffer;
     		source.connect(context.destination);
-    		source.playbackRate.value = pitch;
+    		source.playbackRate.value = this.pitch;
 
         this.wavesurfer = Object.create(WaveSurfer);
 
@@ -60,16 +64,22 @@ class Deck extends React.Component {
   }
 
   setPitch(value) {
-    pitch = 1 + (value / 100);
-    this.wavesurfer.setPlaybackRate(pitch);
+    this.pitch = 1 + (value / 100);
+    this.wavesurfer.setPlaybackRate(this.pitch);
   }
 
   pushDown(){
-    console.log('push down');
+    this.oldPitch = this.pitch;
+    this.wavesurfer.setPlaybackRate(this.pitch * 0.95);
   }
 
   pushUp(){
-    console.log('push up');
+    this.oldPitch = this.pitch;
+    this.wavesurfer.setPlaybackRate(this.pitch * 1.05);
+  }
+
+  resetPitch(){
+    this.wavesurfer.setPlaybackRate(this.oldPitch);
   }
 
   setBPM(e){
@@ -96,8 +106,8 @@ class Deck extends React.Component {
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
             </div>
             <div className='small-8 columns pitch-container'>
-              <a className='button'>
-                <i className="fa fa-chevron-left"></i>
+              <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
+                <i className="fa fa-minus"></i>
               </a>
               <ReactSlider
                 handleClassName={'pitch-handle'}
@@ -105,8 +115,8 @@ class Deck extends React.Component {
                 max={15}
                 min={-15}
                 onChange={this.setPitch}/>
-              <a  className='button'>
-                <i className="fa fa-chevron-right"></i>
+              <a  className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
+                <i className="fa fa-plus"></i>
               </a>
             </div>
           </div>
