@@ -9,19 +9,25 @@ class Electro extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {activeTrack1: {}, activeTrack2: {}}
+    this.state = {tracks: TrackStore.getTracks()};
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount(){
-    TrackStore.listen(() => {
-      this.setActiveTracks();
-    })
+    TrackStore.listen(() => {this.onChange()});
   }
 
-  setActiveTracks(){
-    var active1 = TrackStore.getActiveTrack1();
-    var active2 = TrackStore.getActiveTrack2();
-    this.setState({activeTrack1: active1, activeTrack2: active2});
+  onChange(){
+    this.setState({tracks: TrackStore.getTracks()})
+  }
+
+  getDecks(){
+    var decks = [];
+    for(let key in this.state.tracks){
+      decks.push(<Deck key={this.state.tracks[key].url} track={this.state.tracks[key]}/>);
+    }
+
+    return decks;
   }
 
   render(){
@@ -34,7 +40,7 @@ class Electro extends React.Component {
           </div>
           <div className={'row'}>
             <div className={'small-12 columns'}>
-              <Deck track={this.state.activeTrack1}/>
+              {this.getDecks()}
             </div>
           </div>
         </div>

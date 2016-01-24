@@ -35,14 +35,6 @@ class Crate extends React.Component {
     this.setState({tracks: TrackStore.getTracks()});
   }
 
-  getTrackItems(){
-    let trackItems = [];
-    for(var track in this.state.tracks){
-      trackItems.push(<Item  track={this.state.tracks[track]}></Item>)
-    }
-    return trackItems;
-  }
-
   render(){
     return (
       <div>
@@ -53,7 +45,6 @@ class Crate extends React.Component {
             </label>
           </div>
         </div>
-        {this.getTrackItems()}
       </div>
     );
   }

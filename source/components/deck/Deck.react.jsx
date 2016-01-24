@@ -5,7 +5,6 @@ import ReactSlider from 'react-slider';
 
 
 let context;
-let analyizer;
 let source;
 let pitch = 1;
 let position = 0;
@@ -21,11 +20,12 @@ class Deck extends React.Component {
     this.setPitch = this.setPitch.bind(this);
     this.setBPM = this.setBPM.bind(this);
     this.state = {bpm: 0};
+    this.surferRendered = false;
   }
 
   componentDidUpdate(){
 
-    if(this.props.track.buffer){
+    if(this.props.track.buffer && !this.surferRendered){
     	window.AudioContext = window.AudioContext || window.webkitAudioContext;
     	context = new AudioContext();
     	source = context.createBufferSource();
@@ -46,7 +46,7 @@ class Deck extends React.Component {
         });
 
         this.wavesurfer.loadDecodedBuffer(source.buffer);
-
+        this.surferRendered = true;
     	});
     }
   }
@@ -73,30 +73,40 @@ class Deck extends React.Component {
     this.setState({bpm: bpm})
   }
 
-  render(){
-    return (
-      <div>
-        <div className='row' >
-          <h4>{this.props.track.url}</h4>
-        </div>
-        <div  className='row' >
-          <div ref='deck' className='small-12 columns'></div>
-        </div>
-        <div className='row' >
-          <div className='small-12 columns'>
-            <a onClick={this.playTrack} className='button'>play</a>
-            <a onClick={this.pauseTrack} className='button'>stop</a>
-            <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
-            <ReactSlider
-              handleClassName={'pitch-handle'}
-              className={'pitch-bar'}
-              max={15}
-              min={-15}
-              onChange={this.setPitch}/>
+  setControls(){
+    var element;
+    if(this.props.track.ready){
+        return (
+        <div>
+          <div  className='row' >
+            <div ref='deck' className='small-12 columns'></div>
+          </div>
+          <div className='row' >
+            <div className='small-4 columns'>
+              <a onClick={this.playTrack} className='button'>play</a>
+              <a onClick={this.pauseTrack} className='button'>stop</a>
+              <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
+            </div>
+            <div className='small-8 columns'>
+              <ReactSlider
+                handleClassName={'pitch-handle'}
+                className={'pitch-bar'}
+                max={15}
+                min={-15}
+                onChange={this.setPitch}/>
+            </div>
           </div>
         </div>
-      </div>
-    );
+        );
+    }else{
+      return (<i className={'fa fa-circle-o-notch fa-5x fa-spin'}></i>);
+    }
+
+    return element
+  }
+
+  render(){
+    return this.setControls();
   }
 }
 
