@@ -28,6 +28,7 @@ class Crate extends React.Component {
     if('Enter' === e.key){
       var track = {url: e.target.value, ready: false};
       TrackAction.addTrack(track);
+      e.target.value = '';
     }
   }
 
@@ -41,7 +42,7 @@ class Crate extends React.Component {
         <div className={'row'} >
           <div className={'medium-12 columns'}>
             <label>URL
-              <input type={'text'} onKeyUp={this.enter} />
+              <input ref='url' type={'text'} onKeyUp={this.enter} />
             </label>
           </div>
         </div>

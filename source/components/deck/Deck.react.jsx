@@ -64,6 +64,14 @@ class Deck extends React.Component {
     this.wavesurfer.setPlaybackRate(pitch);
   }
 
+  pushDown(){
+    console.log('push down');
+  }
+
+  pushUp(){
+    console.log('push up');
+  }
+
   setBPM(e){
     var incoming = new Date().getTime()
     if(time){
@@ -83,23 +91,32 @@ class Deck extends React.Component {
           </div>
           <div className='row' >
             <div className='small-4 columns'>
-              <a onClick={this.playTrack} className='button'>play</a>
-              <a onClick={this.pauseTrack} className='button'>stop</a>
+              <a onClick={this.playTrack} className='button'><i className="fa fa-play"></i></a>
+              <a onClick={this.pauseTrack} className='button'><i className="fa fa-pause"></i></a>
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
             </div>
-            <div className='small-8 columns'>
+            <div className='small-8 columns pitch-container'>
+              <a className='button'>
+                <i className="fa fa-chevron-left"></i>
+              </a>
               <ReactSlider
                 handleClassName={'pitch-handle'}
                 className={'pitch-bar'}
                 max={15}
                 min={-15}
                 onChange={this.setPitch}/>
+              <a  className='button'>
+                <i className="fa fa-chevron-right"></i>
+              </a>
             </div>
           </div>
         </div>
         );
     }else{
-      return (<i className={'fa fa-circle-o-notch fa-5x fa-spin'}></i>);
+      return (<div>
+                <i className={'fa fa-circle-o-notch fa-5x fa-spin'}></i>
+                <h4> Loading</h4>
+              </div>);
     }
 
     return element
