@@ -36,6 +36,7 @@
     "foundation-sites": "^6.1.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "wavesurfer.js": "^1.0.51",
     "youtube-audio-stream": "0.0.16"
   },
   "devDependencies": {

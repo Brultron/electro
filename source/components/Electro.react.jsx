@@ -26,27 +26,18 @@ class Electro extends React.Component {
 
   render(){
     return (
-      <div className={'row'}>
-        <div className={'small-3 columns'}>
+        <div>
           <div className={'row'}>
-            <Crate/>
+            <div className={'small-12 columns'}>
+              <Crate/>
+            </div>
           </div>
           <div className={'row'}>
-            <Deck track={this.state.activeTrack1}/>
-          </div>
-        </div>
-        <div className={'small-6 columns'}>
-
-        </div>
-        <div className={'small-3 columns'}>
-          <div className={'row'}>
-            <Crate/>
-          </div>
-          <div className={'row'}>
-            <Deck track={this.state.activeTrack2}/>
+            <div className={'small-12 columns'}>
+              <Deck track={this.state.activeTrack1}/>
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 }

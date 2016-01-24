@@ -40,6 +40,11 @@ gulp.task('fonts', function() {
 		.pipe(gulp.dest('build/fonts'));
 });
 
+gulp.task('wavesurfer', function() {
+	return gulp.src('node_modules/wavesurfer.js/dist/wavesurfer.cjs.js')
+		.pipe(gulp.dest('build/vendor'));
+});
+
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -54,7 +59,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
