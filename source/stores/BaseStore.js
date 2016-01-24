@@ -3,6 +3,7 @@ import EventEmitter from 'events';
 const CHANGE_EVENT = 'change';
 
 class BaseStore extends EventEmitter {
+
 	constructor() {
 		super();
 	}

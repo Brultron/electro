@@ -5,18 +5,19 @@ import TrackActions from '../actions/Tracks.js';
 class Yt {
 
 	download(track) {
-		var stream = yt('https://www.youtube.com/watch?v=UR1wUdee7h0');
+
+		var stream = yt(track.url);
 		var master = new ArrayBuffer();
 
 		stream.on('data', function(data) {
-			master = concat(master, data);
+		  master = concat(master, data);
 		});
 
-		stream.on('end', function() {
-			track.buffer = master;
-			track.ready = true;
-			TrackActions.trackUploaded(track);
-		})
+		stream.on('end', function(data) {
+				track.ready = true;
+				track.buffer = master;
+				TrackActions.trackUploaded(track);
+		});
 	}
 
 }

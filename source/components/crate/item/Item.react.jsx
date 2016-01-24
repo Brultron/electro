@@ -1,25 +1,25 @@
 'use strict';
 
 import React from 'react';
-import Remote from 'remote';
+import TrackActions  from '../../../actions/Tracks.js';
 
 class Item extends React.Component {
 
   constructor(props) {
     super(props);
-    this.launchDeck = this.launchDeck.bind(this);
+    this.loadDeck = this.loadDeck.bind(this);
   }
 
-  launchDeck(){
-    Remote.require('./index').launchNewDeck(this.props.track);
+  loadDeck(){
+    TrackActions.setActiveTrack(this.props.track);
   }
 
   getElement(){
     var li;
     if(this.props.track.ready){
-      li = <li><a onClick={this.launchDeck}>{this.props.track.url} <i className="fa fa-check-square"></i></a></li>
+      li = <div className={'row'}><a onClick={this.loadDeck}>{this.props.track.url} <i className="fa fa-check-square"></i></a></div>;
     }else{
-      li =  <li>{this.props.track.url} <i className={'fa fa-circle-o-notch fa-spin'}></i></li>
+      li =  <div className={'row'}>{this.props.track.url} <i className={'fa fa-circle-o-notch fa-spin'}></i></div>
     }
     return li;
   }

@@ -8,6 +8,7 @@ let BrowserWindow = require('browser-window');
 let windowType = 'crate';
 let trackToLoad;
 
+
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
@@ -15,21 +16,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	var win = new BrowserWindow({width: 400, height: 800, title: 'crate'});
+	var win = new BrowserWindow({width: 2000, height: 1000});
 	win.loadUrl('file://' + __dirname + '/index.html');
 });
-
-exports.launchNewDeck = function(track){
-	windowType = 'deck';
-	trackToLoad = track;
-	var win = new BrowserWindow({width: 400, height: 400, title: 'deck'});
-	win.loadUrl('file://' + __dirname + '/index.html');
-}
-
-exports.getWindowType = function(){
-	return windowType;
-}
-
-exports.loadTrack = function(){
-	return trackToLoad;
-}

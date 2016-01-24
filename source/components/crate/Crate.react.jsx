@@ -1,9 +1,8 @@
 'use strict';
 
 import React from 'react';
-import Remote from 'remote';
-const TrackAction  = Remote.require('./actions/Tracks.js');
-const TrackStore   = Remote.require('./stores/Tracks.js');
+import TrackAction from '../../actions/Tracks.js';
+import TrackStore  from '../../stores/Tracks.js';
 import Item from './item/Item.react.js';
 
 class Crate extends React.Component {
@@ -54,11 +53,7 @@ class Crate extends React.Component {
             </label>
           </div>
         </div>
-        <div className={'row'}>
-          <ul>
-            {this.getTrackItems()}
-          </ul>
-        </div>
+        {this.getTrackItems()}
       </div>
     );
   }
