@@ -3,6 +3,7 @@
 import React from 'react';
 import Crate from './crate/Crate.react.js';
 import Deck from './deck/Deck.react.js';
+import Mixer from './mixer/Mixer.react.js'
 import TrackStore from '../stores/Tracks.js';
 
 class Electro extends React.Component {
@@ -41,6 +42,11 @@ class Electro extends React.Component {
           <div className={'row'}>
             <div className={'small-12 columns'}>
               {this.getDecks()}
+            </div>
+          </div>
+          <div className={'row'}>
+            <div className={'small-12 columns'}>
+              <Mixer/>
             </div>
           </div>
         </div>

@@ -45,6 +45,13 @@ gulp.task('wavesurfer', function() {
 		.pipe(gulp.dest('build/vendor'));
 });
 
+gulp.task('knob', function() {
+	gulp.src('node_modules/knob/index.js')
+		.pipe(gulp.dest('build/vendor'));
+	gulp.src('node_modules/knob/handle_change.js')
+		.pipe(gulp.dest('build/vendor'));
+});
+
 gulp.task('sass', function() {
 	gulp.src('source/**/*.scss')
 		.pipe(sass())
@@ -59,7 +66,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
