@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactSlider from 'react-slider';
-
+import AC from '../../utils/ac.js'
 
 let context;
 let source;
@@ -25,31 +25,23 @@ class Deck extends React.Component {
     this.setBPM = this.setBPM.bind(this);
     this.state = {bpm: 0};
     this.surferRendered = false;
+
   }
 
   componentDidUpdate(){
-
     if(this.props.track.buffer && !this.surferRendered){
-    	window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    	context = new AudioContext();
-    	source = context.createBufferSource();
-    	context.decodeAudioData(this.props.track.buffer, (buffer) => {
-
-    		source.buffer = buffer;
-    		source.connect(context.destination);
-    		source.playbackRate.value = this.pitch;
+      AC.createSource(this.props.track.buffer, (buffer) => {
 
         this.wavesurfer = Object.create(WaveSurfer);
-
         this.wavesurfer.init({
+          audioContext: AC.getContext(),
           container: this.refs.deck,
           waveColor: '#f942b5',
           cursorColor: '#c6ff00',
           progressColor: '#bc00ff',
           scrollParent: true
         });
-
-        this.wavesurfer.loadDecodedBuffer(source.buffer);
+        this.wavesurfer.loadDecodedBuffer(buffer);
         this.surferRendered = true;
     	});
     }
