@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import ReactSlider from 'react-slider';
+import Eq from './eq/Eq.react.js';
 
 class Mixer extends React.Component {
 
@@ -9,9 +10,14 @@ class Mixer extends React.Component {
   }
 
   componentDidMount(){
-    $(function() {
-      $(".dial").knob();
-    });
+    var opts = {
+      rotation: 'counter-clockwise',
+      height: 75,
+      width:75
+    }
+    $(this.refs.low).knob(opts);
+    $(this.refs.mid).knob(opts);
+    $(this.refs.high).knob(opts);
   }
 
   render(){
@@ -19,10 +25,10 @@ class Mixer extends React.Component {
       <div>
         <div className='row'>
           <div className='small-6 columns'>
-            <input type="text" value="75" class="dial"/>
+            <Eq/>
           </div>
           <div className='small-6 columns'>
-
+            <Eq/>
           </div>
         </div>
         <div className='row'>

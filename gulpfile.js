@@ -46,9 +46,7 @@ gulp.task('wavesurfer', function() {
 });
 
 gulp.task('knob', function() {
-	gulp.src('node_modules/knob/index.js')
-		.pipe(gulp.dest('build/vendor'));
-	gulp.src('node_modules/knob/handle_change.js')
+	gulp.src('node_modules/jquery-knob/dist/jquery.knob.min.js')
 		.pipe(gulp.dest('build/vendor'));
 });
 
