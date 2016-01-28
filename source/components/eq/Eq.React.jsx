@@ -8,14 +8,19 @@ class Eq extends React.Component {
   }
 
   componentDidMount(){
+    console.log(this.props.channel);
     var opts = {
       rotation: 'counter-clockwise',
-      height: 50,
-      width: 50
+      height: 40,
+      width: 40
     }
     $(this.refs.low).knob(opts);
     $(this.refs.mid).knob(opts);
     $(this.refs.high).knob(opts);
+  }
+
+  componentDidUpdate(){
+    console.log(this.props.channel);
   }
 
   render(){

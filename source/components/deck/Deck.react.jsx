@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import AC from '../../utils/ac.js'
+import Eq from '../eq/Eq.react.js';
 
 let context;
 let source;
@@ -30,8 +31,8 @@ class Deck extends React.Component {
 
   componentDidUpdate(){
     if(this.props.track.buffer && !this.surferRendered){
-      AC.createSource(this.props.track.buffer, (buffer) => {
-
+      AC.createSource(this.props.track.buffer, (buffer, dest, channel) => {
+        this.channel = channel;
         this.wavesurfer = Object.create(WaveSurfer);
         this.wavesurfer.init({
           audioContext: AC.getContext(),
@@ -39,7 +40,8 @@ class Deck extends React.Component {
           waveColor: '#f942b5',
           cursorColor: '#c6ff00',
           progressColor: '#bc00ff',
-          scrollParent: true
+          scrollParent: true,
+          destination : dest
         });
         this.wavesurfer.loadDecodedBuffer(buffer);
         this.surferRendered = true;
@@ -92,10 +94,13 @@ class Deck extends React.Component {
             <div ref='deck' className='small-12 columns'></div>
           </div>
           <div className='row' >
-            <div className='small-4 columns'>
+            <div className='small-2 columns'>
               <a onClick={this.playTrack} className='button'><i className="fa fa-play"></i></a>
               <a onClick={this.pauseTrack} className='button'><i className="fa fa-pause"></i></a>
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
+            </div>
+            <div className='small-2 columns'>
+              <Eq channel={this.channel}/>
             </div>
             <div className='small-8 columns pitch-container'>
               <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>

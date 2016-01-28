@@ -41,7 +41,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('wavesurfer', function() {
-	return gulp.src('node_modules/wavesurfer.js/dist/wavesurfer.cjs.js')
+	return gulp.src('wavesurfer.js/dist/wavesurfer.cjs.js')
 		.pipe(gulp.dest('build/vendor'));
 });
 

@@ -10,27 +10,11 @@ class Mixer extends React.Component {
   }
 
   componentDidMount(){
-    var opts = {
-      rotation: 'counter-clockwise',
-      height: 75,
-      width:75
-    }
-    $(this.refs.low).knob(opts);
-    $(this.refs.mid).knob(opts);
-    $(this.refs.high).knob(opts);
   }
 
   render(){
     return (
       <div>
-        <div className='row'>
-          <div className='small-6 columns'>
-            <Eq/>
-          </div>
-          <div className='small-6 columns'>
-            <Eq/>
-          </div>
-        </div>
         <div className='row'>
           <ReactSlider
             handleClassName={'pitch-handle'}
