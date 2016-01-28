@@ -18,6 +18,7 @@ const EQ = [{
 let buildChannel = function() {
 
 	var gain = context.createGain();
+	channel.gain = gain;
   var eqChain = EQ.map((band) => {
     var filter = context.createBiquadFilter();
     filter.type = band.type;

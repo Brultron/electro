@@ -3,7 +3,6 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import AC from '../../utils/ac.js'
-import Eq from '../eq/Eq.react.js';
 
 let context;
 let source;
@@ -45,8 +44,23 @@ class Deck extends React.Component {
         });
         this.wavesurfer.loadDecodedBuffer(buffer);
         this.surferRendered = true;
+        this.setUpEQ();
     	});
     }
+  }
+
+  setUpEQ(){
+    var opts = {
+      height: 40,
+      width: 40,
+      min: 0,
+      value: 1,
+      max: 1
+    }
+    $(this.refs.low).knob(opts);
+    $(this.refs.mid).knob(opts);
+    $(this.refs.high).knob(opts);
+
   }
 
   playTrack(){
@@ -100,7 +114,11 @@ class Deck extends React.Component {
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
             </div>
             <div className='small-2 columns'>
-              <Eq channel={this.channel}/>
+              <div className='eq'>
+                <div type='text' ref='low'></div>
+                <div type='text' ref='mid'></div>
+                <div type='text' ref='high'></div>
+              </div>
             </div>
             <div className='small-8 columns pitch-container'>
               <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>

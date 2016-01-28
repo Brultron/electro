@@ -8,7 +8,6 @@ class Eq extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props.channel);
     var opts = {
       rotation: 'counter-clockwise',
       height: 40,
@@ -20,7 +19,7 @@ class Eq extends React.Component {
   }
 
   componentDidUpdate(){
-    console.log(this.props.channel);
+    console.log('componentDidUpdate', this.props.channel);
   }
 
   render(){
