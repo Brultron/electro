@@ -19,7 +19,7 @@ instance.dispatchToken = Dispatcher.register(action => {
       tracks[action.track.url] = action.track;
       instance.emitChange();
       break;
-    case 'track_uploaded':
+    case 'track_ready':
       tracks[action.track.url] = action.track;
       instance.emitChange();
       break;

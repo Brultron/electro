@@ -1,4 +1,5 @@
 import yt from 'youtube-audio-stream';
+import ac from './ac';
 import concat from 'array-buffer-concat';
 import TrackActions from '../actions/Tracks.js';
 
@@ -14,9 +15,10 @@ class Yt {
 		});
 
 		stream.on('end', function(data) {
-				track.ready = true;
-				track.buffer = master;
-				TrackActions.trackUploaded(track);
+				ac.createSource(master, track, (track) => {
+					track.ready = true;
+					TrackActions.trackReady(track);
+				});
 		});
 	}
 

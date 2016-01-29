@@ -30,36 +30,36 @@ class Deck extends React.Component {
 
   componentDidUpdate(){
     if(this.props.track.buffer && !this.surferRendered){
-      AC.createSource(this.props.track.buffer, (buffer, dest, channel) => {
-        this.channel = channel;
-        this.wavesurfer = Object.create(WaveSurfer);
-        this.wavesurfer.init({
-          audioContext: AC.getContext(),
-          container: this.refs.deck,
-          waveColor: '#f942b5',
-          cursorColor: '#c6ff00',
-          progressColor: '#bc00ff',
-          scrollParent: true,
-          destination : dest
-        });
-        this.wavesurfer.loadDecodedBuffer(buffer);
-        this.surferRendered = true;
-        this.setUpEQ();
-    	});
+      console.log(this.refs);
+      this.wavesurfer = Object.create(WaveSurfer);
+      this.wavesurfer.init({
+        audioContext: AC.getContext(),
+        container: this.refs.deck,
+        waveColor: '#f942b5',
+        cursorColor: '#c6ff00',
+        progressColor: '#bc00ff',
+        scrollParent: true,
+        destination : this.props.track.root
+      });
+      this.wavesurfer.loadDecodedBuffer(buffer);
+      this.surferRendered = true;
+      this.setUpEQ();
     }
   }
 
   setUpEQ(){
-    var opts = {
-      height: 40,
-      width: 40,
-      min: 0,
-      value: 1,
-      max: 1
-    }
-    $(this.refs.low).knob(opts);
-    $(this.refs.mid).knob(opts);
-    $(this.refs.high).knob(opts);
+    //TODO there's a better way to set this up.
+    $(this.refs.low).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.low.gain.value = v;
+    }});
+
+    $(this.refs.mid).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.mid.gain.value = v;
+    }});
+
+    $(this.refs.high).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.high.gain.value = v;
+    }});
 
   }
 

@@ -11,9 +11,9 @@ class Tracks {
 		});
 	}
 
-	trackUploaded(track){
+	trackReady(track){
 		Dispatcher.dispatch({
-			type: 'track_uploaded',
+			type: 'track_ready',
 			track: track
 		});
 	}
