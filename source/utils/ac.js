@@ -2,13 +2,19 @@ let context;
 
 let buildChannel = function() {
   var channel = {};
+
+  var gain = context.createGain();
+  channel.gain = gain;
+  gain.connect(context.destination);
+
+
 	var high = context.createBiquadFilter();
 	high.type = 'highshelf';
 	high.gain.value = 0;
 	high.Q.value = 0;
 	high.frequency.value = 3200;
 	channel.high = high;
-	high.connect(context.destination);
+	high.connect(gain);
 
 
 	var mid = context.createBiquadFilter();
