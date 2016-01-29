@@ -9,6 +9,8 @@ let context;
 let source;
 let position = 0;
 let time;
+
+let movingBpm = [];
 let bpm;
 
 class Deck extends React.Component {
@@ -55,7 +57,7 @@ class Deck extends React.Component {
   }
 
   setPitch(value) {
-    this.pitch = 1 + (value / 100);
+    this.pitch = 1 + (value / 1000);
     this.wavesurfer.setPlaybackRate(this.pitch);
   }
 
@@ -76,7 +78,9 @@ class Deck extends React.Component {
   setBPM(e){
     var incoming = new Date().getTime()
     if(time){
-      var bpm = (1000 * 60) / (incoming - time) ;
+      movingBpm.push((1000 * 60) / (incoming - time));
+      bpm = movingBpm.reduce((a,b) => a + b) / movingBpm.length;
+      if(movingBpm.length > 5 ) movingBpm.pop();
     }
     time = incoming;
     this.setState({bpm: bpm})
@@ -106,8 +110,8 @@ class Deck extends React.Component {
               <ReactSlider
                 handleClassName={'pitch-handle'}
                 className={'pitch-bar'}
-                max={15}
-                min={-15}
+                max={150}
+                min={-150}
                 onChange={this.setPitch}/>
               <a  className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
                 <i className="fa fa-plus"></i>

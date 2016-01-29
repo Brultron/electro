@@ -34,8 +34,8 @@ class Mixer extends React.Component {
 
 
   crossfade(v){
-    this.left.channel.gain.gain.value = Math.abs(100 - v) / 100;
-    this.right.channel.gain.gain.value = v / 100;
+    if(this.right) this.right.channel.gain.gain.value = Math.abs(100 - v) / 100;
+    if(this.left) this.left.channel.gain.gain.value = v / 100;
   }
 
   //TODO will get better names at some point
