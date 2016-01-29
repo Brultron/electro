@@ -64,7 +64,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'knob',  'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});

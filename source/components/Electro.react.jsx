@@ -46,7 +46,7 @@ class Electro extends React.Component {
           </div>
           <div className={'row'}>
             <div className={'small-12 columns'}>
-              <Mixer/>
+              <Mixer tracks={this.state.tracks}/>
             </div>
           </div>
         </div>
