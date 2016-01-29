@@ -45,7 +45,7 @@ class AC {
 			var x = buildChannel();
 			track.channel = x.channel;
 			track.root = x.root;
-			cb(audiobuffer,track);
+			cb(track);
 		});
 	}
 

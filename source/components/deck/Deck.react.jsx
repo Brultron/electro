@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import AC from '../../utils/ac.js'
+import EQ from '../eq/Eq.react.js'
 
 let context;
 let source;
@@ -30,7 +31,6 @@ class Deck extends React.Component {
 
   componentDidUpdate(){
     if(this.props.track.buffer && !this.surferRendered){
-      console.log(this.refs);
       this.wavesurfer = Object.create(WaveSurfer);
       this.wavesurfer.init({
         audioContext: AC.getContext(),
@@ -41,26 +41,9 @@ class Deck extends React.Component {
         scrollParent: true,
         destination : this.props.track.root
       });
-      this.wavesurfer.loadDecodedBuffer(buffer);
+      this.wavesurfer.loadDecodedBuffer(this.props.track.buffer);
       this.surferRendered = true;
-      this.setUpEQ();
     }
-  }
-
-  setUpEQ(){
-    //TODO there's a better way to set this up.
-    $(this.refs.low).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
-      this.props.track.channel.low.gain.value = v;
-    }});
-
-    $(this.refs.mid).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
-      this.props.track.channel.mid.gain.value = v;
-    }});
-
-    $(this.refs.high).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
-      this.props.track.channel.high.gain.value = v;
-    }});
-
   }
 
   playTrack(){
@@ -114,11 +97,7 @@ class Deck extends React.Component {
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
             </div>
             <div className='small-2 columns'>
-              <div className='eq'>
-                <div type='text' ref='low'></div>
-                <div type='text' ref='mid'></div>
-                <div type='text' ref='high'></div>
-              </div>
+              <EQ track={this.props.track}/>
             </div>
             <div className='small-8 columns pitch-container'>
               <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>

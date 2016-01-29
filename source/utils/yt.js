@@ -1,5 +1,5 @@
 import yt from 'youtube-audio-stream';
-import ac from './ac';
+import ac from './ac.js';
 import concat from 'array-buffer-concat';
 import TrackActions from '../actions/Tracks.js';
 
@@ -10,11 +10,11 @@ class Yt {
 		var stream = yt(track.url);
 		var master = new ArrayBuffer();
 
-		stream.on('data', function(data) {
+		stream.on('data', (data) => {
 		  master = concat(master, data);
 		});
 
-		stream.on('end', function(data) {
+		stream.on('end', (data) => {
 				ac.createSource(master, track, (track) => {
 					track.ready = true;
 					TrackActions.trackReady(track);
@@ -26,30 +26,3 @@ class Yt {
 
 let instance = new Yt();
 export default instance;
-// var concat = require('array-buffer-concat');
-//
-// (function() {
-//
-// 	window.AudioContext = window.AudioContext || window.webkitAudioContext;
-// 	var context = new AudioContext();
-// 	var source = context.createBufferSource();
-// var stream = youtubeStream('https://www.youtube.com/watch?v=UR1wUdee7h0');
-// var master = new ArrayBuffer();
-//
-// stream.on('data', function(data) {
-//   master = concat(master, data);
-// });
-//
-// stream.on('end', function(data) {
-// 	context.decodeAudioData(master, function(buffer) {
-// 		source.buffer = buffer;
-// 		source.connect(context.destination);
-// 		source.playbackRate.value = 1;
-// 		source.start(context.currentTime);
-// 	});
-// })
-//
-//
-//
-//
-// })()

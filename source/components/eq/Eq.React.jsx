@@ -8,14 +8,18 @@ class Eq extends React.Component {
   }
 
   componentDidMount(){
-    var opts = {
-      rotation: 'counter-clockwise',
-      height: 40,
-      width: 40
-    }
-    $(this.refs.low).knob(opts);
-    $(this.refs.mid).knob(opts);
-    $(this.refs.high).knob(opts);
+  //TODO there's a better way to set this up.
+    $(this.refs.low).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.low.gain.value = v;
+    }});
+
+    $(this.refs.mid).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.mid.gain.value = v;
+    }});
+
+    $(this.refs.high).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+      this.props.track.channel.high.gain.value = v;
+    }});
   }
 
   componentDidUpdate(){
