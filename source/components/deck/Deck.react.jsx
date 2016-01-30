@@ -33,6 +33,7 @@ class Deck extends React.Component {
 
   componentDidUpdate(){
     if(this.props.track.buffer && !this.surferRendered){
+
       this.wavesurfer = Object.create(WaveSurfer);
       this.wavesurfer.init({
         audioContext: AC.getContext(),
@@ -45,6 +46,9 @@ class Deck extends React.Component {
       });
       this.wavesurfer.loadDecodedBuffer(this.props.track.buffer);
       this.surferRendered = true;
+      $(this.refs.level).knob({ height: 40, width: 40, min: 0, value: 100, max: 40 , change: (v) => {
+        this.wavesurfer.setVolume(v/100);
+      }});
     }
   }
 
@@ -80,7 +84,8 @@ class Deck extends React.Component {
     if(time){
       movingBpm.push((1000 * 60) / (incoming - time));
       bpm = movingBpm.reduce((a,b) => a + b) / movingBpm.length;
-      if(movingBpm.length > 5 ) movingBpm.pop();
+      if(movingBpm.length > 5 ) movingBpm = movingBpm.slice(1);
+      console.log(movingBpm);
     }
     time = incoming;
     this.setState({bpm: bpm})
@@ -100,10 +105,13 @@ class Deck extends React.Component {
               <a onClick={this.pauseTrack} className='button'><i className="fa fa-pause"></i></a>
               <a onClick={this.setBPM} className='button'>{Math.round(this.state.bpm)}</a>
             </div>
+            <div className='small-1 columns'>
+              <div ref='level'></div>
+            </div>
             <div className='small-2 columns'>
               <EQ track={this.props.track}/>
             </div>
-            <div className='small-8 columns pitch-container'>
+            <div className='small-7 columns pitch-container'>
               <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
                 <i className="fa fa-minus"></i>
               </a>

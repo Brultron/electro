@@ -9,21 +9,23 @@ class Eq extends React.Component {
 
   componentDidMount(){
   //TODO there's a better way to set this up.
-    $(this.refs.low).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+    $(this.refs.low).knob({ height: 40, width: 40, min: -40, value: 0,min: -40, max: 40, thickness: 0.5, change: (v) => {
       this.props.track.channel.low.gain.value = v;
+      console.log(v);
     }});
 
-    $(this.refs.mid).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+    $(this.refs.mid).knob({ height: 40, width: 40, min: -40, value: 0,min: -40, max: 40, thickness: 0.5, change: (v) => {
       this.props.track.channel.mid.gain.value = v;
+      console.log(v);
     }});
 
-    $(this.refs.high).knob({ height: 40, width: 40, min: -40, value: 0, max: 40 , change: (v) => {
+    $(this.refs.high).knob({ height: 40, width: 40, min: -40, value: 0,min: -40, max: 40, thickness: 0.5, change: (v) => {
       this.props.track.channel.high.gain.value = v;
+      console.log(v);
     }});
   }
 
   componentDidUpdate(){
-    console.log('componentDidUpdate', this.props.channel);
   }
 
   render(){

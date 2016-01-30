@@ -4,6 +4,7 @@ import ReactSlider from 'react-slider';
 import Eq from './eq/Eq.react.js';
 import Autocomplete from 'react-autocomplete';
 
+let crossfadeValue = 50;
 class Mixer extends React.Component {
 
   constructor(props){
@@ -26,16 +27,19 @@ class Mixer extends React.Component {
 
   selectRight(k){
     this.right = this.props.tracks[k];
+    this.right.channel.gain.gain.value =  Math.abs(100 - crossfadeValue) / 100;
   }
 
   selectLeft(k){
     this.left = this.props.tracks[k];
+    this.left.gain.gain.value = crossfadeValue / 100;
   }
 
 
   crossfade(v){
-    if(this.right) this.right.channel.gain.gain.value = Math.abs(100 - v) / 100;
-    if(this.left) this.left.channel.gain.gain.value = v / 100;
+    crossfadeValue = v;
+    if(this.right) this.right.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
+    if(this.left) this.left.channel.gain.gain.value = crossfadeValue / 100;
   }
 
   //TODO will get better names at some point
