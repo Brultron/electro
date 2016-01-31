@@ -1,3 +1,18 @@
+.deck{
+  position: relative;
+}
+
+.controls-inner{
+  z-index: 3;
+  position: absolute;
+  top: 65%;
+}
+
+
+.close-track {
+  z-index: 3;
+}
+
 .pitch-handle {
   width: 3%;
   height: 40px;
