@@ -6,17 +6,26 @@ class Tracks {
 	addTrack(track) {
 		yt.download(track);
 		Dispatcher.dispatch({
-			type: 'add_track',
+			type: 'update_track',
 			track: track
 		});
 	}
 
-	trackReady(track){
+	updateTrack(track){
 		Dispatcher.dispatch({
-			type: 'track_ready',
+			type: 'update_track',
 			track: track
 		});
 	}
+
+	removeTrack(track){
+		Dispatcher.dispatch({
+			type: 'remove_track',
+			track: track
+		});
+	}
+
+
 
 }
 

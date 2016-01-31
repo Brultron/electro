@@ -9,18 +9,23 @@ class Tracks extends BaseStore {
     return tracks;
   }
 
+  getTrack(url){
+    return tracks[url];
+  }
+
 }
 
 const instance = new Tracks();
 
 instance.dispatchToken = Dispatcher.register(action => {
   switch (action.type) {
-    case 'add_track':
+    case 'update_track':
       tracks[action.track.url] = action.track;
       instance.emitChange();
       break;
-    case 'track_ready':
-      tracks[action.track.url] = action.track;
+    case 'remove_track':
+      // NOTE soft delete here... so we can reuse if needed
+      tracks[action.track.url].removed = true;
       instance.emitChange();
       break;
     }

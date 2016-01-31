@@ -25,9 +25,11 @@ class Electro extends React.Component {
   getDecks(){
     var decks = [];
     for(let key in this.state.tracks){
-      decks.push(<Deck key={this.state.tracks[key].url} track={this.state.tracks[key]}/>);
+      var track = this.state.tracks[key];
+      if(!track.removed){
+        decks.push(<Deck key={track.url} track={track}/>);
+      }
     }
-
     return decks;
   }
 
