@@ -9,7 +9,6 @@ let getEqVal = function(v){
   }else{
     ret  = v + 40;
   }
-  console.log(ret);
   return ret;
 };
 

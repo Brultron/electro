@@ -100,6 +100,7 @@ class Deck extends React.Component {
 
 
   removeTrack(){
+    this.pauseTrack();
     TrackActions.removeTrack(this.props.track);
   }
 
@@ -113,9 +114,6 @@ class Deck extends React.Component {
           </button>
           <div  className='row' >
             <div className='small-12 columns controls-inner'>
-              <button className="close-button" aria-label="Close alert" type="button" onClick={this.removeTrack}>
-                <span >&times;</span>
-              </button>
               <div className='row'>
                 <div className='small-2 columns'>
                   <a onClick={this.playTrack} className='button'><i className="fa fa-play"></i></a>
