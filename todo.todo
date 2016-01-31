@@ -1,0 +1,40 @@
+v1.0.1:
+  ☐ level meters
+  ☐ better loading bar
+  ☐ es6-ify
+  ☐ keybindings
+  ☐ slider should adjust surfer speed
+  ☐ slider should change bpm
+  ☐ fix mixer to bottom
+  ☐ fix eq
+  ☐ build search function
+  ☐ improve autocomplete style
+  ☐ match between track
+  ☐ remove a track
+  ☐ fix levels
+  ☐ overlay track controls on waveform
+  ☐ add zoom
+
+RELEASE:
+  ☐ add to github
+  ☐ versioning
+  ☐ create build
+
+
+v1.0.2:
+  ☐ cue points
+  ☐ record functionality
+  ☐ move buffer loads to main process
+  ☐ itunes integration
+  ☐ file system integration
+  ☐ soundcloud integration
+  ☐ vertical layout
+  ☐ looping
+
+
+
+short videos:
+  ☐ https://www.youtube.com/watch?v=NCFg7G63KgI
+
+classic dance:
+  ☐ https://www.youtube.com/watch?v=Ma24wmAjRGo

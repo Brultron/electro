@@ -42,11 +42,13 @@ class Deck extends React.Component {
         cursorColor: '#c6ff00',
         progressColor: '#bc00ff',
         scrollParent: true,
+        normalize: true,
+        minPxPerSec: 77.5,
         destination : this.props.track.root
       });
       this.wavesurfer.loadDecodedBuffer(this.props.track.buffer);
       this.surferRendered = true;
-      $(this.refs.level).knob({ height: 40, width: 40, min: 0, value: 100, max: 40 , change: (v) => {
+      $(this.refs.level).knob({ height: 40, width: 40, min: 0, value: 100, max: 100, cursor: 35, thickness: 0.5, change: (v) => {
         this.wavesurfer.setVolume(v/100);
       }});
     }
