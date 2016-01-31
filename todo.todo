@@ -5,7 +5,7 @@ v1.0.1:
   ☐ keybindings
   ☐ slider should adjust surfer speed -- might not do
   ✔ slider should change bpm @done(2016-01-31 08:32) @project(v1.0.1)
-  ☐ fix mixer to bottom
+  ✔ fix mixer to bottom @done(2016-01-31 17:35) @project(v1.0.1)
   ☐ fix eq.... almost done
   ☐ build search function
   ☐ improve autocomplete style
@@ -43,6 +43,8 @@ classic dance:
   ☐ https://www.youtube.com/watch?v=Ma24wmAjRGo
 
 funk:
+  ☐ https://www.youtube.com/watch?v=d93oGsPjQ_A
+  ☐ https://www.youtube.com/watch?v=C-HJTdhZAC0
   ☐ https://www.youtube.com/watch?v=6QIw1BQIvT4
   ☐ https://www.youtube.com/watch?v=3WOZwwRH6XU
   ☐ https://www.youtube.com/watch?v=yVjFwcdQlN0
@@ -50,4 +52,7 @@ funk:
   ☐ https://www.youtube.com/watch?v=k9I-1XTztJQ
 
 rap:
+  ☐ https://www.youtube.com/watch?v=LGluf3syFL0
+  ☐ https://www.youtube.com/watch?v=pudIZbCRq_c&list=RDpudIZbCRq_c
+  ☐ https://www.youtube.com/watch?v=wQlHYvy0xdU
   ☐ https://www.youtube.com/watch?v=CyisfcvnJv8

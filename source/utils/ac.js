@@ -5,7 +5,7 @@ let buildChannel = function() {
 
   var gain = context.createGain();
   // level always starts at 0... mixer will change when loading
-  gain.gain.value = 0;
+  gain.gain.value = 1;
   channel.gain = gain;
   gain.connect(context.destination);
 
@@ -13,7 +13,7 @@ let buildChannel = function() {
 	var high = context.createBiquadFilter();
 	high.type = 'highshelf';
 	high.gain.value = 0;
-	high.Q.value = 0;
+	high.Q.value = 0.0;
 	high.frequency.value = 3200;
 	channel.high = high;
 	high.connect(gain);
@@ -22,8 +22,8 @@ let buildChannel = function() {
 	var mid = context.createBiquadFilter();
 	mid.type = 'peaking';
 	mid.gain.value = 0;
-	mid.Q.value = 0;
-	mid.frequency.value = 1440;
+	mid.Q.value = 0.5;
+	mid.frequency.value = 1000;
 	channel.mid = mid;
 	mid.connect(high);
 

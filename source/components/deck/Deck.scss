@@ -1,5 +1,8 @@
 .deck{
   position: relative;
+  * ::-webkit-scrollbar { 
+    display: none;
+  }
 }
 
 .controls-inner{

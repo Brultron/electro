@@ -1,17 +1,6 @@
 'use strict';
 import React from 'react';
 
-
-let getEqVal = function(v){
-  var ret
-  if(v > 0){
-    ret = v - 40;
-  }else{
-    ret  = v + 40;
-  }
-  return ret;
-};
-
 class Eq extends React.Component {
 
   constructor(props){
@@ -26,15 +15,15 @@ class Eq extends React.Component {
        height: 40,
        width: 40,
        value: 0,
-       min: -40,
-       max: 40,
+       min: -32,
+       max: 12,
        thickness: 0.5,
        angleOffset: 180,
        displayInput: false,
        cursor: 15,
        change: (v) => {
-        console.log(v)
-        this.props.track.channel.low.gain.value = v;
+         this.offsetGain();
+         this.props.track.channel.low.gain.value = v;
       }
     });
 
@@ -43,14 +32,14 @@ class Eq extends React.Component {
         bgColor: '#2199e8',
         height: 40,
         width: 40,
-        min: -40,
-        max: 40,
+        min: -32,
+        max: 12,
         thickness: 0.5,
         angleOffset: 180,
         displayInput: false,
         cursor: 15,
         change: (v) => {
-          console.log(v);
+          this.offsetGain();
           this.props.track.channel.mid.gain.value = v;
         }
     });
@@ -60,14 +49,14 @@ class Eq extends React.Component {
         bgColor: '#2199e8',
         height: 40,
         width: 40,
-        min: -40,
-        max: 40,
+        min: -32,
+        max: 12,
         thickness: 0.5,
         angleOffset: 180,
         displayInput: false,
         cursor: 15,
         change: (v) => {
-          console.log(v);
+          this.offsetGain();
           this.props.track.channel.high.gain.value = v;
         }
     });
@@ -97,10 +86,10 @@ class Eq extends React.Component {
   render(){
     return (
       <div className='eq'>
-        <input type='text' ref='low' value='0'>L</input>
-        <input type='text' ref='mid' value='0'>M</input>
-        <input type='text' ref='high' value='0'>H</input>
-        <input type='text' ref='gain' value='100'>GAIN</input>
+        <input type='text' ref='low' defaultValue='0'></input>
+        <input type='text' ref='mid' defaultValue='0'></input>
+        <input type='text' ref='high' defaultValue='0'></input>
+        <input type='text' ref='gain' defaultValue='100'></input>
       </div>
     );
   }
