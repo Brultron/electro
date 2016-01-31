@@ -49,7 +49,7 @@ class Mixer extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='mixer'>
         <div className='row'>
           <div className='small-2 colums'>
             <Autocomplete

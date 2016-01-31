@@ -13,7 +13,8 @@ v1.0.1:
   ✔ remove a track @done(2016-01-31 09:41) @project(v1.0.1)
   ☐ fix levels
   ✔ overlay track controls on waveform @done(2016-01-31 09:41) @project(v1.0.1)
-  ✔ add zoom @done(2016-01-31 06:55) @project(v1.0.1)
+  ☐ add zoom
+    --min px is dependent on window width
 
 RELEASE:
   ☐ create documentation
@@ -42,7 +43,7 @@ classic dance:
   ☐ https://www.youtube.com/watch?v=Ma24wmAjRGo
 
 funk:
-  ☐ https://www.youtube.com/watch?v=6QIw1BQIvT4 
+  ☐ https://www.youtube.com/watch?v=6QIw1BQIvT4
   ☐ https://www.youtube.com/watch?v=3WOZwwRH6XU
   ☐ https://www.youtube.com/watch?v=yVjFwcdQlN0
   ☐ https://www.youtube.com/watch?v=MjtOzLfebgY

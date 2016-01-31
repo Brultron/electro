@@ -5,12 +5,14 @@
 .controls-inner{
   z-index: 3;
   position: absolute;
-  top: 65%;
+  top: 67%;
 }
-
 
 .close-track {
   z-index: 3;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .pitch-handle {
@@ -20,7 +22,9 @@
 }
 
 .pitch-container{
-  display: inline-flex
+  display: inline-flex;
+  position: absolute;
+  right: 0
 }
 
 .pitch-bar {
@@ -28,4 +32,5 @@
   background-color: #002a42;
   width: 100%;
   margin: 0px !important;
+  opacity: 0.75;
 }

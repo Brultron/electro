@@ -25,22 +25,9 @@ class Bpm extends React.Component {
     time = incoming;
   }
 
-
-  bumpBpm(amt){
-    if(this.props.track.bpm){
-      if(amt){
-        tempBpm = this.props.track.bpm;
-        this.props.track.bpm = this.props.track.bpm * amt;
-      }else{
-        this.props.track.bpm = tempBpm;
-      }
-      TrackActions.updateTrack(this.props.track);
-    }
-  }
-
   render(){
     return (
-        <a onClick={this.setBPM} className='button bpm'>{Math.round(this.props.track.bpm)}</a>
+        <a onClick={this.setBPM} className='button bpm'>{Math.round(this.props.track.bpm ? this.props.track.bpm : '')}</a>
     );
   }
 }
