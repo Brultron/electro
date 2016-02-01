@@ -1,6 +1,6 @@
 .deck{
   position: relative;
-  * ::-webkit-scrollbar { 
+  * ::-webkit-scrollbar {
     display: none;
   }
 }
@@ -9,6 +9,12 @@
   z-index: 3;
   position: absolute;
   top: 67%;
+  opacity: 0;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.controls-inner:hover{
+  opacity: 1;
 }
 
 .close-track {

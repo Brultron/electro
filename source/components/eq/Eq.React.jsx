@@ -70,7 +70,6 @@ class Eq extends React.Component {
         min: 0,
         max: 100,
         thickness: 0.5,
-        lineCap: 'round',
         displayInput: false,
         change: (v) => {
           console.log(v/100);
