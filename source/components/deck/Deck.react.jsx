@@ -99,6 +99,9 @@ class Deck extends React.Component {
     TrackActions.removeTrack(this.props.track);
   }
 
+  toggleVisibility(e){
+    console.log('toggleVisibility',e);
+  }
 
   setControls(){
     var element;
@@ -108,26 +111,27 @@ class Deck extends React.Component {
           <button className='close-track close-button' aria-label='Close alert' type='button' onClick={this.removeTrack}>
             <span>&times;</span>
           </button>
-          <div  className='row' >
+          <img src={this.props.track.thumbnail} className='deck-thumbnail'></img>
+          <div className='row'>
             <div className='small-12 columns controls-inner'>
               <div className='row'>
                 <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
                 <BPM track={this.props.track}/>
-                <EQ track={this.props.track}/>
-                <div className='small-7 columns pitch-container'>
-                  <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
-                    <i className='fa fa-minus'></i>
-                  </a>
-                  <ReactSlider
-                    handleClassName={'pitch-handle'}
-                    className={'pitch-bar'}
-                    max={150}
-                    min={-150}
-                    onChange={this.setPitch}/>
-                  <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
-                    <i className='fa fa-plus'></i>
-                  </a>
-                </div>
+                  <EQ track={this.props.track}/>
+                  <div className='small-7 columns pitch-container  control-toggler'>
+                    <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
+                      <i className='fa fa-minus'></i>
+                    </a>
+                    <ReactSlider
+                      handleClassName={'pitch-handle'}
+                      className={'pitch-bar'}
+                      max={150}
+                      min={-150}
+                      onChange={this.setPitch}/>
+                    <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
+                      <i className='fa fa-plus'></i>
+                    </a>
+                  </div>
               </div>
             </div>
             <div ref='deck' className='small-12 columns'></div>

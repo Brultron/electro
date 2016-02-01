@@ -5,6 +5,9 @@ import Eq from './eq/Eq.react.js';
 import Autocomplete from 'react-autocomplete';
 
 let crossfadeValue = 50;
+
+const autoCompleteStyle = {backgroundColor: '#002a42'};
+
 class Mixer extends React.Component {
 
   constructor(props){
@@ -51,8 +54,10 @@ class Mixer extends React.Component {
     return (
       <div className='mixer'>
         <div className='row'>
-          <div className='small-2 colums'>
+          <div className='small-2 columns auto-style'>
             <Autocomplete
+              className='autoStyle'
+              menuStyle={{height: '40px'}}
               onSelect={this.selectRight}
               items={this.getTracks()}
               getItemValue={(item) => item.url}
@@ -69,14 +74,15 @@ class Mixer extends React.Component {
             handleClassName={'pitch-handle'}
             className={'pitch-bar'}/>
           </div>
-          <div className='small-2 colums'>
+          <div className='small-2 columns auto-style'>
               <Autocomplete
-              onSelect={this.selectLeft}
-              items={this.getTracks()}
-              getItemValue={(item) => item.url}
-              renderItem={(item, highlighted) => (
-                  <div>{this.getToken(item.url)}</div>
-              )}/>
+                menuStyle={{height: '40px'}}
+                onSelect={this.selectLeft}
+                items={this.getTracks()}
+                getItemValue={(item) => item.url}
+                renderItem={(item, highlighted) => (
+                    <div>{this.getToken(item.url)}</div>
+                )}/>
           </div>
         </div>
       </div>

@@ -5,6 +5,8 @@ class Tracks {
 
 	addTrack(track) {
 		yt.download(track);
+		//TODO temp until search
+		track.thumbnail = 'http://lorempixel.com/300/300/';
 		Dispatcher.dispatch({
 			type: 'update_track',
 			track: track
