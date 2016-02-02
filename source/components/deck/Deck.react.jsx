@@ -114,10 +114,12 @@ class Deck extends React.Component {
           </button>
           <img src={this.props.track.thumbnail} className='deck-thumbnail'></img>
             <div className='controls-inner'>
-              <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
-              <BPM track={this.props.track}/>
-              <EQ track={this.props.track}/>
-              <UVMeter track={this.props.track} />
+              <div className='controls-right'>
+                <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
+                <BPM track={this.props.track}/>
+                <EQ track={this.props.track}/>
+                <UVMeter track={this.props.track} />
+              </div>
               <div className='pitch-container  control-toggler'>
                 <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
                   <i className='fa fa-minus'></i>

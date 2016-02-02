@@ -20,7 +20,6 @@
   bottom:0;
   height: 40px;
   width: 100%;
-  display: inline-flex;
   a.button {
     margin-bottom: 0px;
   }
@@ -51,6 +50,11 @@
   width: 3%;
   height: 40px;
   background-color: #11b0ff;
+}
+
+.controls-right{
+  width: 50%;
+  display: inline-flex;
 }
 
 .pitch-container{
