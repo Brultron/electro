@@ -17,8 +17,13 @@
 .controls-inner{
   z-index: 3;
   position: absolute;
-  top: 69%;
-  right: 0;
+  bottom:0;
+  height: 40px;
+  width: 100%;
+  display: inline-flex;
+  a.button {
+    margin-bottom: 0px;
+  }
 }
 
 .control-toggler{
@@ -51,12 +56,11 @@
 .pitch-container{
   padding-right: 0px;
   display: inline-flex;
-  position: absolute;
-  right: 0
+  width: 50%;
+  right: 0;
 }
 
 .pitch-bar {
-  height: 40px;
   background-color: #002a42;
   width: 100%;
   margin: 0px !important;

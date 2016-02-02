@@ -1,12 +1,28 @@
+//TODO should recfactor have add remove node methods and have the
+// the react components add their own so they store their own refs.
+
 let context;
 
 let buildChannel = function() {
   var channel = {};
 
+
+  var uvmeter = context.createScriptProcessor(2048, 1, 1);
+  channel.uvmeter = uvmeter;
+  uvmeter.connect(context.destination);
+
+  var analyser = context.createAnalyser();
+  channel.analyser = analyser;
+  analyser.smoothingTimeConstant = 0.3;
+  analyser.fftSize = 512;
+  analyser.connect(uvmeter);
+
+
   var gain = context.createGain();
   // level always starts at 0... mixer will change when loading
   gain.gain.value = 1;
   channel.gain = gain;
+  gain.connect(analyser);
   gain.connect(context.destination);
 
 

@@ -9,9 +9,11 @@ v1.0.1:
   ☐ fix eq.... almost done
   ☐ build search function
   ☐ improve autocomplete style
+    --started
   ☐ match between track
   ✔ remove a track @done(2016-01-31 09:41) @project(v1.0.1)
   ☐ fix levels
+    -- temp fix in seems to work, but could be better
   ✔ overlay track controls on waveform @done(2016-01-31 09:41) @project(v1.0.1)
   ☐ add zoom
     --min px is dependent on window width
@@ -57,3 +59,7 @@ rap:
   ☐ https://www.youtube.com/watch?v=pudIZbCRq_c&list=RDpudIZbCRq_c
   ☐ https://www.youtube.com/watch?v=wQlHYvy0xdU
   ☐ https://www.youtube.com/watch?v=CyisfcvnJv8
+
+techno:
+  ☐ https://www.youtube.com/watch?v=2Nngd4uVsNI
+  ☐ https://www.youtube.com/watch?v=K2b6MOfLONU

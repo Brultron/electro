@@ -6,6 +6,7 @@ import TrackActions from '../../actions/Tracks.js';
 import AC from '../../utils/ac.js'
 import EQ from '../eq/Eq.react.js'
 import BPM from './bpm/Bpm.react.js'
+import UVMeter from '../meters/UVMeter.react.js'
 
 let context;
 let source;
@@ -112,30 +113,27 @@ class Deck extends React.Component {
             <span>&times;</span>
           </button>
           <img src={this.props.track.thumbnail} className='deck-thumbnail'></img>
-          <div className='row'>
-            <div className='small-12 columns controls-inner'>
-              <div className='row'>
-                <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
-                <BPM track={this.props.track}/>
-                  <EQ track={this.props.track}/>
-                  <div className='small-7 columns pitch-container  control-toggler'>
-                    <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
-                      <i className='fa fa-minus'></i>
-                    </a>
-                    <ReactSlider
-                      handleClassName={'pitch-handle'}
-                      className={'pitch-bar'}
-                      max={150}
-                      min={-150}
-                      onChange={this.setPitch}/>
-                    <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
-                      <i className='fa fa-plus'></i>
-                    </a>
-                  </div>
+            <div className='controls-inner'>
+              <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
+              <BPM track={this.props.track}/>
+              <EQ track={this.props.track}/>
+              <UVMeter track={this.props.track} />
+              <div className='pitch-container  control-toggler'>
+                <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
+                  <i className='fa fa-minus'></i>
+                </a>
+                <ReactSlider
+                  handleClassName={'pitch-handle'}
+                  className={'pitch-bar'}
+                  max={150}
+                  min={-150}
+                  onChange={this.setPitch}/>
+                <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
+                  <i className='fa fa-plus'></i>
+                </a>
               </div>
             </div>
-            <div ref='deck' className='small-12 columns'></div>
-          </div>
+            <div ref='deck'></div>
         </div>
         );
     }else{
