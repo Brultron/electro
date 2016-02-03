@@ -21,9 +21,9 @@ class UVMeter extends React.Component {
         var array =  new Uint8Array(this.props.track.channel.analyser.frequencyBinCount);
         this.props.track.channel.analyser.getByteFrequencyData(array);
         canvas.clearRect(0, 0, 1000, 325);
-        canvas.fillStyle=gradient;
+        canvas.fillStyle='#ffffff';
         for ( var i = 0; i < (array.length); i++ ){
-          var value = array[i];
+          var value = array[i] * 1.25;
           canvas.fillRect(i*5,325-value,3,325);
         }
     };
