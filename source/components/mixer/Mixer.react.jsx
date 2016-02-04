@@ -79,6 +79,7 @@ class Mixer extends React.Component {
                 menuStyle={{height: '40px'}}
                 onSelect={this.selectLeft}
                 items={this.getTracks()}
+                shouldItemRender={(item) => item.removed}
                 getItemValue={(item) => item.url}
                 renderItem={(item, highlighted) => (
                     <div>{this.getToken(item.url)}</div>

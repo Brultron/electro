@@ -109,33 +109,36 @@ class Deck extends React.Component {
     if(this.props.track.ready){
         return (
         <div className='deck'>
-          <button className='close-track close-button' aria-label='Close alert' type='button' onClick={this.removeTrack}>
+          <button className='close-track' aria-label='Close alert' type='button' onClick={this.removeTrack}>
             <span>&times;</span>
           </button>
-          <img src={this.props.track.thumbnail} className='deck-thumbnail'></img>
-            <div className='controls-inner'>
-              <div className='controls-right'>
-                <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
-                <BPM track={this.props.track}/>
-                <EQ track={this.props.track}/>
-                <UVMeter track={this.props.track} />
-              </div>
-              <div className='pitch-container  control-toggler'>
-                <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
-                  <i className='fa fa-minus'></i>
-                </a>
-                <ReactSlider
-                  handleClassName={'pitch-handle'}
-                  className={'pitch-bar'}
-                  max={150}
-                  min={-150}
-                  onChange={this.setPitch}/>
-                <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
-                  <i className='fa fa-plus'></i>
-                </a>
-              </div>
+          <div className='deck-thumbnail'>
+            <img src={this.props.track.thumbnail}></img>
+            <div className='mask'></div>
+          </div>
+          <div className='controls-inner'>
+            <div className='controls-right'>
+              <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
+              <BPM track={this.props.track}/>
+              <EQ track={this.props.track}/>
+              <UVMeter track={this.props.track} />
             </div>
-            <div ref='deck'></div>
+            <div className='pitch-container  control-toggler'>
+              <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
+                <i className='fa fa-minus'></i>
+              </a>
+              <ReactSlider
+                handleClassName={'pitch-handle'}
+                className={'pitch-bar'}
+                max={150}
+                min={-150}
+                onChange={this.setPitch}/>
+              <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
+                <i className='fa fa-plus'></i>
+              </a>
+            </div>
+          </div>
+          <div ref='deck'></div>
         </div>
         );
     }else{

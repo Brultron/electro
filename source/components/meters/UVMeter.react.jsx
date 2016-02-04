@@ -16,7 +16,6 @@ class UVMeter extends React.Component {
     gradient.addColorStop(0.25,'#ffff00');
     gradient.addColorStop(0,'#ffffff');
 
-    console.log(this.props.track.channel.uvmeter);
     this.props.track.channel.uvmeter.onaudioprocess = () => {
         var array =  new Uint8Array(this.props.track.channel.analyser.frequencyBinCount);
         this.props.track.channel.analyser.getByteFrequencyData(array);

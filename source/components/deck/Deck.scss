@@ -5,13 +5,26 @@
   }
 }
 
+//TODO why isn't this inheriting
 .deck-thumbnail {
   position: absolute;
-  height: 150px;
-  width: 150px;
+  height: 100%;
+  width: 128px;
   right: 0;
   top: 0;
   z-index: 2;
+  .mask{
+    position: absolute;
+    height: 128px;
+    width: 50%;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    background-color: #1d1d1d;
+  }
+  img{
+    border-radius: 150px;
+  }
 }
 
 .controls-inner{
