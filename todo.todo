@@ -1,5 +1,5 @@
 v1.0.1:
-  ☐ level meters
+  ✔ level meters @done(2016-02-04 17:07) @project(v1.0.1)
   ☐ better loading bar
   ☐ es6-ify
   ☐ keybindings
@@ -63,3 +63,8 @@ rap:
 techno:
   ☐ https://www.youtube.com/watch?v=2Nngd4uVsNI
   ☐ https://www.youtube.com/watch?v=K2b6MOfLONU
+
+
+
+youtube-api-key:
+  ☐ AIzaSyBeCNyNTk9jpgXcPoColnQt-ZdqC802zcY
