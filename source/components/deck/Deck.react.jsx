@@ -105,11 +105,10 @@ class Deck extends React.Component {
   }
 
   setControls(){
-    var element;
-    if(this.props.track.ready){
+      if(this.props.track.ready){
         return (
         <div className='deck'>
-          <button className='close-track' aria-label='Close alert' type='button' onClick={this.removeTrack}>
+          <button className='close-track' type='button' onClick={this.removeTrack}>
             <span>&times;</span>
           </button>
           <div className='deck-thumbnail'>
@@ -141,11 +140,9 @@ class Deck extends React.Component {
           <div ref='deck'></div>
         </div>
         );
-    }else{
-      return (<div><i className={'fa fa-circle-o-notch fa-5x fa-spin'}></i><h4> Loading</h4></div>);
-    }
-
-    return element
+      }else{
+        return (<div>LOADING</div>);
+      }
   }
 
   render(){

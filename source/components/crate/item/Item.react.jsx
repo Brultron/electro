@@ -7,27 +7,29 @@ class Item extends React.Component {
 
   constructor(props) {
     super(props);
-    this.loadDeck = this.loadDeck.bind(this);
+    this.loadTrack = this.loadTrack.bind(this);
   }
 
-  loadDeck(){
-    TrackActions.setActiveTrack(this.props.track);
-  }
 
-  getElement(){
-    var li;
-    if(this.props.track.ready){
-      li = <div className={'row'}><a onClick={this.loadDeck}>{this.props.track.url} <i className="fa fa-check-square"></i></a></div>;
-    }else{
-      li =  <div className={'row'}>{this.props.track.url} <i className={'fa fa-circle-o-notch fa-spin'}></i></div>
-    }
-    return li;
+  loadTrack(){
+    this.props.track.search = false;
+    TrackActions.addTrack(this.props.track);
   }
-
 
   render(){
     return (
-      this.getElement()
+      <div className='row crate-item'>
+        <div className='small-2 columns'>
+          <img src={this.props.track.thumbnail}></img>
+        </div>
+        <div className='small-9 columns'>
+          <h5>{this.props.track.title}</h5>
+          <p>{this.props.track.description}</p>
+        </div>
+        <div className='small-1 columns'>
+          <a onClick={this.loadTrack}>Load</a>
+        </div>
+      </div>
     );
   }
 }

@@ -26,8 +26,8 @@ class Electro extends React.Component {
     var decks = [];
     for(let key in this.state.tracks){
       var track = this.state.tracks[key];
-      if(!track.removed){
-        decks.push(<Deck key={track.url} track={track}/>);
+      if(!track.removed && !track.search){
+        decks.push(<Deck key={track.id} track={track}/>);
       }
     }
     return decks;
@@ -38,7 +38,7 @@ class Electro extends React.Component {
         <div>
           <div className='row'>
             <div className='small-12 columns'>
-              <Crate/>
+              <Crate tracks={this.state.tracks}/>
             </div>
           </div>
           <div className='row channels'>

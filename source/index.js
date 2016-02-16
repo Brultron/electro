@@ -18,7 +18,4 @@ app.on('window-all-closed', () => {
 app.on('ready', () => {
 	var win = new BrowserWindow({width: 2000, height: 1000});
 	win.loadUrl('file://' + __dirname + '/index.html');
-
-	var search = new BrowserWindow({width: 2000, height: 1000});
-	search.loadUrl('file://' + __dirname + '/search.html');
 });

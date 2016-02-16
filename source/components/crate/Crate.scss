@@ -1,3 +1,16 @@
+.crate {
+  position: relative;
+  width: 100%;
+  z-index: 4;
+  overflow-y: scroll;
+  .crate-inner{
+    position: fixed;
+    background-color: rgba(29, 29, 29, 0.57);
+  }
+}
+
+
+
 body {
   background-color: rgb(29, 29, 29);
   color: rgb(195, 195, 195);
