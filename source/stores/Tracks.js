@@ -25,7 +25,7 @@ instance.dispatchToken = Dispatcher.register(action => {
       break;
     case 'remove_track':
       // NOTE soft delete here... so we can reuse if needed
-      tracks[action.track.url].removed = true;
+      tracks[action.track.id].removed = true;
       instance.emitChange();
       break;
     case 'clear_search':

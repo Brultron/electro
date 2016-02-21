@@ -3,83 +3,83 @@
   * ::-webkit-scrollbar {
     display: none;
   }
-}
-
-//TODO why isn't this inheriting
-.deck-thumbnail {
-  position: absolute;
-  height: 100%;
-  width: 128px;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  .mask{
+  .deck-thumbnail {
     position: absolute;
-    height: 128px;
-    width: 50%;
     right: 0;
     top: 0;
-    z-index: -1;
-    background-color: #1d1d1d;
+    z-index: 2;
+
+    .mask{
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+      z-index: -1;
+      background-color: #1d1d1d;
+    }
+
+    img{
+      max-height: 128px;
+      padding: 17px;
+    }
+
   }
-  img{
-    border-radius: 150px;
+  .controls-inner{
+    z-index: 3;
+    position: absolute;
+    bottom:0;
+    height: 40px;
+    width: 100%;
+
+    a.button {
+      margin-bottom: 0px;
+    }
+
   }
-}
 
-.controls-inner{
-  z-index: 3;
-  position: absolute;
-  bottom:0;
-  height: 40px;
-  width: 100%;
-  a.button {
-    margin-bottom: 0px;
+  .control-toggler{
+    opacity: 0;
+    -webkit-transition: opacity .25s ease-in-out;
   }
-}
 
-.control-toggler{
-  opacity: 0;
-  -webkit-transition: opacity .25s ease-in-out;
-}
-
-.control-toggler:hover{
-  opacity: 1;
-}
+  .control-toggler:hover{
+    opacity: 1;
+  }
 
 
-.controls-inner:focus{
-  opacity: 1;
-}
+  .controls-inner:focus{
+    opacity: 1;
+  }
 
-.close-track {
-  z-index: 3;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
+  .close-track {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 
-.pitch-handle {
-  width: 3%;
-  height: 40px;
-  background-color: #11b0ff;
-}
+  .pitch-handle {
+    width: 3%;
+    height: 40px;
+    background-color: #11b0ff;
+  }
 
-.controls-right{
-  width: 50%;
-  display: inline-flex;
-}
+  .controls-right{
+    width: 50%;
+    display: inline-flex;
+  }
 
-.pitch-container{
-  padding-right: 0px;
-  display: inline-flex;
-  width: 50%;
-  right: 0;
-}
+  .pitch-container{
+    padding-right: 0px;
+    display: inline-flex;
+    width: 50%;
+    right: 0;
+  }
 
-.pitch-bar {
-  background-color: #002a42;
-  width: 100%;
-  margin: 0px !important;
-  opacity: 0.75;
+  .pitch-bar {
+    background-color: #002a42;
+    width: 100%;
+    margin: 0px !important;
+    opacity: 0.75;
+  }
 }
