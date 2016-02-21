@@ -109,11 +109,11 @@ class Deck extends React.Component {
         return (
         <div className='deck'>
           <button className='close-track' type='button' onClick={this.removeTrack}>
-            <span>&times;</span>
+            <i className="fa fa-times-circle fa-lg"></i>
           </button>
+          <h5 className='deck-title'>{this.props.track.title}</h5>
           <div className='deck-thumbnail'>
             <img src={this.props.track.thumbnail}></img>
-            <div className='mask'></div>
           </div>
           <div className='controls-inner'>
             <div className='controls-right'>
@@ -141,7 +141,17 @@ class Deck extends React.Component {
         </div>
         );
       }else{
-        return (<div>LOADING</div>);
+        return (
+          <div className='deck' style={{height: '128px'}}>
+            <h5 className='deck-title'>{this.props.track.title}</h5>
+            <div className='deck-loading animate'>
+              <span style={{width: '100%'}}><span></span></span>
+            </div>
+            <div className='deck-thumbnail'>
+              <img src={this.props.track.thumbnail}></img>
+            </div>
+          </div>
+        );
       }
   }
 

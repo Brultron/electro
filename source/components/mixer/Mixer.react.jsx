@@ -45,36 +45,24 @@ class Mixer extends React.Component {
     if(this.left) this.left.channel.gain.gain.value = crossfadeValue / 100;
   }
 
-  //TODO will get better names at some point
-  getToken(url){
-    return url.split('?')[1]
-  }
-
   render(){
     return (
       <div className='mixer'>
         <div className='row'>
-          <div className='small-2 columns auto-style'>
+          <div className='small-6 columns auto-style'>
             <Autocomplete
               className='autoStyle'
               menuStyle={{height: '40px'}}
               onSelect={this.selectRight}
               items={this.getTracks()}
-              getItemValue={(item) => item.url}
+              getItemValue={(item) => item.title}
               renderItem={(item, highlighted) => (
-                  <div>{this.getToken(item.url)}</div>
+                  <div>
+                    <p>{item.title}</p>
+                  </div>
               )}/>
           </div>
-          <div className='small-8 colums'>
-          <ReactSlider
-            min={0}
-            max={100}
-            value={50}
-            onChange={this.crossfade}
-            handleClassName={'pitch-handle'}
-            className={'pitch-bar'}/>
-          </div>
-          <div className='small-2 columns auto-style'>
+          <div className='small-6 columns auto-style'>
               <Autocomplete
                 menuStyle={{height: '40px'}}
                 onSelect={this.selectLeft}
@@ -85,6 +73,18 @@ class Mixer extends React.Component {
                     <div>{this.getToken(item.url)}</div>
                 )}/>
           </div>
+        </div>
+        <div className='row'>
+          <div className='small-12 colums'>
+            <ReactSlider
+              min={0}
+              max={100}
+              value={50}
+              onChange={this.crossfade}
+              handleClassName='pitch-handle'
+              className='pitch-bar'/>
+          </div>
+
         </div>
       </div>
     );
