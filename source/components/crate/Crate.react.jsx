@@ -11,7 +11,6 @@ class Crate extends React.Component {
     super(props);
 
     var tracks = TrackStore.getTracks();
-
     this.state = {
       visible: {display: 'none'},
       chevron: 'fa fa-chevron-left'
@@ -56,13 +55,13 @@ class Crate extends React.Component {
     return (
       <div className='crate'>
         <div className='row'>
-          <div className={'medium-10 columns'}>
-            <label>
-              <input ref='url' type={'text'} onKeyUp={this.enter} placeholder='SEARCH'/>
-            </label>
-          </div>
-          <div className={'medium-2 columns'}>
-            <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
+          <div className={'small-12 columns'}>
+            <div className='input-group'>
+              <input className='input-group-field' ref='url' type='text' onKeyUp={this.enter} placeholder='SEARCH'/>
+              <div className='input-group-button'>
+                <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
+              </div>
+            </div>
           </div>
         </div>
         <div className='crate-inner' style={this.state.visible}>

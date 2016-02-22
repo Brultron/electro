@@ -32,6 +32,20 @@ class Tracks {
 		yt.search(q);
 	}
 
+	setRightTrack(track){
+		Dispatcher.dispatch({
+			type: 'set_right_track',
+			track: track
+		});
+	}
+
+	setLeftTrack(track){
+		Dispatcher.dispatch({
+			type: 'set_left_track',
+			track: track,
+		});
+	}
+
 }
 
 const instance = new Tracks();

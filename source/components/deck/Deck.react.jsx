@@ -113,7 +113,7 @@ class Deck extends React.Component {
           </button>
           <h5 className='deck-title'>{this.props.track.title}</h5>
           <div className='deck-thumbnail'>
-            <img src={this.props.track.thumbnail}></img>
+            <img className='thumbnail' src={this.props.track.thumbnail}></img>
           </div>
           <div className='controls-inner'>
             <div className='controls-right'>
@@ -148,7 +148,7 @@ class Deck extends React.Component {
               <span style={{width: '100%'}}><span></span></span>
             </div>
             <div className='deck-thumbnail'>
-              <img src={this.props.track.thumbnail}></img>
+              <img className='thumbnail' src={this.props.track.thumbnail}></img>
             </div>
           </div>
         );

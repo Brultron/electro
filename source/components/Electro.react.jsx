@@ -19,7 +19,13 @@ class Electro extends React.Component {
   }
 
   onChange(){
-    this.setState({tracks: TrackStore.getTracks()})
+    this.setState(
+      {
+        tracks: TrackStore.getTracks(),
+        rightTrack: TrackStore.getRightTrack(),
+        leftTrack: TrackStore.getLeftTrack()
+      }
+    );
   }
 
   getDecks(){
@@ -27,7 +33,9 @@ class Electro extends React.Component {
     for(let key in this.state.tracks){
       var track = this.state.tracks[key];
       if(!track.removed && !track.search){
-        decks.push(<Deck key={track.id} track={track}/>);
+        decks.push(
+          <Deck key={track.id} track={track}/>
+        );
       }
     }
     return decks;
@@ -35,19 +43,22 @@ class Electro extends React.Component {
 
   render(){
     return (
-        <div>
-          <div className='row'>
-            <div className='small-12 columns'>
-              <Crate tracks={this.state.tracks}/>
-            </div>
+      <div>
+        <div className='row'>
+          <div className='small-12 columns'>
+            <Crate tracks={this.state.tracks}/>
           </div>
-          <div className='row channels'>
-            <div className='small-12 columns'>
-              {this.getDecks()}
-            </div>
-          </div>
-          <Mixer tracks={this.state.tracks}/>
         </div>
+        <div className='row channels'>
+          <div className='small-12 columns'>
+            {this.getDecks()}
+          </div>
+        </div>
+        <Mixer
+          tracks={this.state.tracks}
+          leftTrack={this.state.leftTrack}
+          rightTrack={this.state.rightTrack}/>
+      </div>
     );
   }
 }
