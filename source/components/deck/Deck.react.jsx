@@ -96,7 +96,7 @@ class Deck extends React.Component {
   }
 
   removeTrack(){
-    if(this.wavesurfer.isPlaying()) this.pauseTrack();
+    if(this.wavesurfer.isPlaying()) this.wavesurfer.playPause();
     TrackActions.removeTrack(this.props.track);
   }
 

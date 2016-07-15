@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import Selector from './selector/Selector.react.js';
-import TrackActions from '../../actions/Tracks.js';
+import TrackStore from '../../stores/Tracks.js';
 
 let crossfadeValue = 50;
 
@@ -18,6 +18,11 @@ class Mixer extends React.Component {
     this.selectLeft = this.selectLeft.bind(this);
     this.crossfade = this.crossfade.bind(this);
     this.toggleSelector = this.toggleSelector.bind(this);
+  }
+
+
+  componentDidUpdate(){
+    this.crossfade();
   }
 
   selectTrack(){
@@ -85,19 +90,16 @@ class Mixer extends React.Component {
   selectRight(k){
     this.toggleSelector()
     this.setState({currentSelector: 'right'});
-    //this.right.channel.gain.gain.value =  Math.abs(100 - crossfadeValue) / 100;
   }
 
   selectLeft(k){
     this.toggleSelector()
     this.setState({currentSelector: 'left'});
-    //this.right.channel.gain.gain.value =  Math.abs(100 - crossfadeValue) / 100;
-    //this.left.gain.gain.value = crossfadeValue / 100;
   }
 
 
   crossfade(v){
-    crossfadeValue = v;
+    crossfadeValue = v ? v : crossfadeValue;
     if(this.props.rightTrack) this.props.rightTrack.channel.gain.gain.value = crossfadeValue / 100;
     if(this.props.leftTrack) this.props.leftTrack.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
   }
@@ -118,7 +120,7 @@ class Mixer extends React.Component {
               <ReactSlider
                 min={0}
                 max={100}
-                value={50}
+                value={crossfadeValue}
                 onChange={this.crossfade}
                 handleClassName='pitch-handle'
                 className='pitch-bar'/>

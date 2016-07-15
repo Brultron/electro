@@ -16,6 +16,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	var win = new BrowserWindow({width: 2000, height: 1000});
+	var win = new BrowserWindow({width: 978, height: 1180});
 	win.loadUrl('file://' + __dirname + '/index.html');
 });
