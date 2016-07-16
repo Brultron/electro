@@ -33,11 +33,13 @@
     "electron": "^0.4.1",
     "electron-debug": "^0.3.0",
     "flux": "^2.1.1",
+    "font-awesome": "^4.6.3",
     "foundation-sites": "^6.1.1",
     "jquery-knob": "^1.2.11",
     "knob": "^0.3.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-slider": "^0.6.1",
     "wavesurfer.js": "^1.0.51",
     "youtube-audio-stream": "0.0.16"
   },
