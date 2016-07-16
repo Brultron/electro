@@ -1,29 +1,12 @@
-# electro
-
-> My fantastic app
-
+# Electro
+![](http://cdn3.teen.com/wp-content/uploads/2014/04/ridiculous-college-classes-turntable.gif)
+Mix music live from the internets
 
 ## Dev
-
-```
-$ npm install
-```
-
-### Run
-
-```
-$ npm start
+```bash
+npm install
 ```
 
-### Build
-
+```bash
+gulp run
 ```
-$ npm run build
-```
-
-Builds the app for OS X, Linux, and Windows, using [electron-packager](https://github.com/maxogden/electron-packager).
-
-
-## License
-
-MIT © [Joseph Spear](http://jspear29.github.io)
