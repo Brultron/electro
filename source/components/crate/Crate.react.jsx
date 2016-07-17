@@ -37,7 +37,7 @@ class Crate extends React.Component {
     let items = []
     for(let key in this.props.tracks){
       if(this.props.tracks[key].search){
-        items.push(<Item key={key} track={this.props.tracks[key]}/>);
+        items.push(<Item key={key} track={this.props.tracks[key]} onToggle={this.toggleVisible}/>);
       }
     }
     return items;

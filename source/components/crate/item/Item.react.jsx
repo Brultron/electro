@@ -14,6 +14,7 @@ class Item extends React.Component {
   loadTrack(){
     this.props.track.search = false;
     TrackActions.addTrack(this.props.track);
+    this.props.onToggle();
   }
 
   render(){
@@ -27,7 +28,9 @@ class Item extends React.Component {
           <p>{this.props.track.description}</p>
         </div>
         <div className='small-1 columns'>
-          <a onClick={this.loadTrack}>Load</a>
+          <a onClick={this.loadTrack} className='button'>
+            <i className="fa fa-cloud-download fa-3x" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     );
