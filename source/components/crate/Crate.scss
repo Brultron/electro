@@ -1,6 +1,7 @@
 .crate {
   width: 100%;
   overflow-y: scroll;
+
   .crate-inner{
     z-index: 4;
     position: absolute;
@@ -9,6 +10,14 @@
 
   .button{
     background-color: rgb(29, 29, 29);
+  }
+
+  .search-row {
+    padding-right: 0px;
+  }
+
+  .search-toggle {
+    padding-left: 0px;
   }
 
 }

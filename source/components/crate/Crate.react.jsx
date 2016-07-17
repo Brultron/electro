@@ -55,13 +55,13 @@ class Crate extends React.Component {
     return (
       <div className='crate'>
         <div className='row'>
-          <div className={'small-12 columns'}>
+          <div className={'small-11 columns search-row'}>
             <div className='input-group'>
               <input className='input-group-field' ref='url' type='text' onKeyUp={this.enter} placeholder='SEARCH'/>
-              <div className='input-group-button'>
-                <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
-              </div>
             </div>
+          </div>
+          <div className={'small-1 columns search-toggle'}>
+            <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
           </div>
         </div>
         <div className='crate-inner' style={this.state.visible}>

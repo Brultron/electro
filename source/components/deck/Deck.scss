@@ -52,8 +52,9 @@
     opacity: 1;
   }
 
+  //TODO should able to load move close to the thumbnail           
   .close-track {
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     top: 0;
     right: 0;
