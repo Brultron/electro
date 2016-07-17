@@ -37,6 +37,7 @@
     "foundation-sites": "^6.1.1",
     "jquery-knob": "^1.2.11",
     "knob": "^0.3.0",
+    "material-icons": "^0.1.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-slider": "^0.6.1",

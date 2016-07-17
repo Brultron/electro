@@ -20,7 +20,6 @@
     z-index: 3;
 
     img{
-      border: 4px solid #C3C3C3;
       max-height: 128px;
     }
 
@@ -52,7 +51,7 @@
     opacity: 1;
   }
 
-  //TODO should able to load move close to the thumbnail           
+  //TODO should able to load move close to the thumbnail
   .close-track {
     z-index: 4;
     position: absolute;

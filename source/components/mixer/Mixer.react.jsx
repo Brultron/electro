@@ -33,15 +33,15 @@ class Mixer extends React.Component {
     if(this.props.leftTrack){
       return (
         <img
-          className='thumbnail'
+          className='thumbnail track-thumb track-thumb-left'
           src={this.props.leftTrack.thumbnail}>
         </img>
       );
     }else{
       return (
         <img
-          className='thumbnail'
-          src='http://lorempixel.com/400/400/'>
+          className='thumbnail track-thumb track-thumb-left'
+          src='images/vinyl.png'>
         </img>
       );
     }
@@ -52,7 +52,7 @@ class Mixer extends React.Component {
       return (
         <a onClick={this.toggleSelector}>
           <img
-            className='thumbnail'
+            className='thumbnail track-thumb track-thumb-right'
             src={this.props.rightTrack.thumbnail}>
           </img>
         </a>
@@ -60,8 +60,8 @@ class Mixer extends React.Component {
     }else{
       return (
         <img
-          className='thumbnail'
-          src='http://lorempixel.com/400/400/'>
+          className='thumbnail track-thumb track-thumb-right'
+          src='images/vinyl.png'>
         </img>
       );
     }

@@ -13,9 +13,9 @@ gulp.task('app', function() {
 	gulp.src('source/index.js')
 		.pipe(gulp.dest('build/'));
 	gulp.src('source/search.html')
-			.pipe(gulp.dest('build/'));
-		gulp.src('source/search.js')
-			.pipe(gulp.dest('build/'));
+		.pipe(gulp.dest('build/'));
+	gulp.src('source/search.js')
+		.pipe(gulp.dest('build/'));
 });
 
 gulp.task('babel', function() {
@@ -32,6 +32,11 @@ gulp.task('foundation', function() {
 		.pipe(gulp.dest('build/vendor'));
 });
 
+gulp.task('material-icons', function() {
+	return gulp.src('node_modules/material-icons/css/material-icons.min.css')
+		.pipe(gulp.dest('build/vendor'));
+});
+
 gulp.task('jquery', function() {
 	return gulp.src('node_modules/jquery/dist/jquery.min.js')
 		.pipe(gulp.dest('build/vendor'));
@@ -43,6 +48,14 @@ gulp.task('fonts', function() {
 	gulp.src('node_modules/font-awesome/fonts/*.*')
 		.pipe(gulp.dest('build/fonts'));
 });
+
+
+gulp.task('assets', function() {
+	gulp.src('source/assets/**/*.*')
+		.pipe(gulp.dest('build/'));
+});
+
+
 
 gulp.task('wavesurfer', function() {
 	return gulp.src('wavesurfer.cjs.js')
@@ -68,7 +81,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'foundation', 'jquery', 'fonts', 'wavesurfer', 'knob',  'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'assets', 'foundation', 'jquery', 'fonts', 'material-icons', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});

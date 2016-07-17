@@ -35,4 +35,20 @@
 
   }
 
+  .track-thumb {
+    object-fit: cover;
+    width: 121px;
+    height: 121px;
+    border-radius: 150px;
+  }
+
+  .track-thumb-right {
+    float: left;
+  }
+
+
+  .track-thumb-left {
+    float: right;
+  }
+
 }
