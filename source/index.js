@@ -1,12 +1,8 @@
 'use strict';
-require('crash-reporter').start();
-require('electron-debug')();
 
-let app = require('app');
-let remote = require('electron').remote;
-let BrowserWindow = require('browser-window');
-let windowType = 'crate';
-let trackToLoad;
+let electron = require('electron');
+let app = electron.app;
+let BrowserWindow = electron.BrowserWindow;
 
 
 app.on('window-all-closed', () => {
@@ -17,5 +13,5 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
 	var win = new BrowserWindow({width: 978, height: 1180});
-	win.loadUrl('file://' + __dirname + '/index.html');
+	win.loadURL('file://' + __dirname + '/index.html');
 });
