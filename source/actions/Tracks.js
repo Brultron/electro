@@ -32,6 +32,10 @@ class Tracks {
 		yt.search(q);
 	}
 
+	getNextTracks(){
+		yt.getNext();
+	}
+
 	setRightTrack(track){
 		Dispatcher.dispatch({
 			type: 'set_right_track',

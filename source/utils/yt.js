@@ -34,6 +34,7 @@ class Yt {
 		$.get(SEARCH_URL, params).then((resp) => {
 			//TODO keep in here to check that we're not out of api calls
 			console.log(resp);
+			params.pageToken = resp.nextPageToken;
 			for(let t of resp.items){
 				let track = {
 					id: t.id.videoId,
@@ -46,6 +47,25 @@ class Yt {
 				TrackActions.updateTrack(track)
 			}
 		});
+	}
+
+	getNext(){
+		$.get(SEARCH_URL, params).then((resp) => {
+			params.pageToken = resp.nextPageToken;
+			for(let t of resp.items){
+				let track = {
+					id: t.id.videoId,
+					url: DOWNLOAD_URL + t.id.videoId,
+					title: t.snippet.title,
+					description: t.snippet.description,
+					thumbnail: t.snippet.thumbnails.high.url,
+					search: true
+				};
+				TrackActions.updateTrack(track)
+			}
+			$('.track-thumb').removeClass('loading-spin');
+		});
+
 	}
 
 }

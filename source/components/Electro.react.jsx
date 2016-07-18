@@ -4,6 +4,7 @@ import React from 'react';
 import Crate from './crate/Crate.react.js';
 import Deck from './deck/Deck.react.js';
 import Mixer from './mixer/Mixer.react.js'
+import TrackActions from '../actions/Tracks.js';
 import TrackStore from '../stores/Tracks.js';
 
 class Electro extends React.Component {
@@ -12,6 +13,13 @@ class Electro extends React.Component {
     super(props);
     this.state = {tracks: TrackStore.getTracks()};
     this.onChange = this.onChange.bind(this);
+    $(window).scroll(function() {
+       if($(window).scrollTop() + window.innerHeight >= $(document).height()) {
+           console.log("bottom!");
+           $('.track-thumb').addClass('loading-spin');
+           TrackActions.getNextTracks();
+       }
+    });
   }
 
   componentDidMount(){

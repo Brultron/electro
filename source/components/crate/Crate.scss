@@ -1,11 +1,12 @@
 .crate {
   width: 100%;
-  overflow-y: scroll;
+  //overflow-y: scroll;
 
   .crate-inner{
     z-index: 4;
     position: absolute;
     background-color: rgba(29, 29, 29, 0.80);
+    padding-bottom: 200px;
   }
 
   .button{

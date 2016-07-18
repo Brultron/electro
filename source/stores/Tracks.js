@@ -32,7 +32,7 @@ instance.dispatchToken = Dispatcher.register(action => {
     case 'update_track':
       tracks[action.track.id] = action.track;
       instance.emitChange();
-      break;ele
+      break;
     case 'remove_track':
       // NOTE soft delete here... so we can reuse if needed
       tracks[action.track.id].removed = true;
