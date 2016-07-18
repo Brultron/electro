@@ -17,6 +17,7 @@ class Crate extends React.Component {
     }
 
     this.toggleVisible = this.toggleVisible.bind(this);
+    this.loadSearch = this.loadSearch.bind(this);
     this.enter = this.enter.bind(this);
 
   }
@@ -51,6 +52,13 @@ class Crate extends React.Component {
     }
   }
 
+  loadSearch(e){
+    if($('.crate-inner').scrollTop() > this.refs.crateInner.scrollHeight - 757) {
+      console.log('load more!')
+      TrackAction.getNextTracks();
+    }
+  }
+
   render(){
     return (
       <div className='crate'>
@@ -64,7 +72,7 @@ class Crate extends React.Component {
             <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
           </div>
         </div>
-        <div className='crate-inner' style={this.state.visible}>
+        <div ref='crateInner' className='crate-inner' style={this.state.visible} onScroll={this.loadSearch}>
           {this.getItems()}
           <div className='item-mask'></div>
         </div>
