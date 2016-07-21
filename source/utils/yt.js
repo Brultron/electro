@@ -31,9 +31,9 @@ class Yt {
 
 	search(q){
 		params.q = q;
+		params.pageToken = undefined;
+		console.log(params);
 		$.get(SEARCH_URL, params).then((resp) => {
-			//TODO keep in here to check that we're not out of api calls
-			console.log(resp);
 			params.pageToken = resp.nextPageToken;
 			for(let t of resp.items){
 				let track = {
@@ -50,6 +50,7 @@ class Yt {
 	}
 
 	getNext(){
+console.log(params.q);
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
 			for(let t of resp.items){
