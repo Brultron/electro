@@ -32,10 +32,10 @@ class Tracks extends BaseStore {
 
 function setCrossfadeValue() {
 	if (rightTrack) {
-		rightTrack.channel.gain.gain.value = crossfadeValue / 100;
+		rightTrack.channel.crossfade.gain.value = crossfadeValue / 100;
 	}
 	if (leftTrack) {
-		leftTrack.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
+		leftTrack.channel.crossfade.gain.value = Math.abs(100 - crossfadeValue) / 100;
 	}
 }
 

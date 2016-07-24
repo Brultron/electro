@@ -17,12 +17,17 @@ let buildChannel = function() {
   analyser.fftSize = 512;
   analyser.connect(uvmeter);
 
+  var crossfade = context.createGain();
+  crossfade.gain.value = 0;
+  channel.crossfade = crossfade;
+  crossfade.connect(analyser);
+  crossfade.connect(context.destination);
 
   var gain = context.createGain();
-  gain.gain.value = 0;
+  gain.gain.value = 1;
   channel.gain = gain;
   gain.connect(analyser);
-  gain.connect(context.destination);
+  gain.connect(crossfade);
 
 
 	var high = context.createBiquadFilter();
