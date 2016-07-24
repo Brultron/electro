@@ -72,7 +72,6 @@ class Eq extends React.Component {
         thickness: 0.5,
         displayInput: false,
         change: (v) => {
-          console.log(v/100);
           this.props.track.channel.gain.gain.value = v/100;
         }
     });

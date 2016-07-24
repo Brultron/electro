@@ -8,7 +8,12 @@ import TrackStore from '../stores/Tracks.js';
 const API_KEY = 'AIzaSyBeCNyNTk9jpgXcPoColnQt-ZdqC802zcY';
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 const DOWNLOAD_URL = 'https://www.youtube.com/watch?v=';
-let params = {part: 'snippet', kind:'youtube#video', key: API_KEY, maxResults: 10}
+let params = {
+	part: 'snippet',
+	kind: 'youtube#video',
+	key: API_KEY,
+	maxResults: 10
+}
 
 class Yt {
 
@@ -17,25 +22,23 @@ class Yt {
 		var master = new ArrayBuffer();
 
 		stream.on('data', (data) => {
-		  master = concat(master, data);
+			master = concat(master, data);
 		});
 
 		stream.on('end', (data) => {
-				ac.createSource(master, track, (track) => {
-					console.log('should be loaded');
-					track.ready = true;
-					TrackActions.updateTrack(track);
-				});
+			ac.createSource(master, track, (track) => {
+				track.ready = true;
+				TrackActions.updateTrack(track);
+			});
 		});
 	}
 
-	search(q){
+	search(q) {
 		params.q = q;
 		params.pageToken = undefined;
-		console.log(params);
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
-			for(let t of resp.items){
+			for (let t of resp.items) {
 				let track = {
 					id: t.id.videoId,
 					url: DOWNLOAD_URL + t.id.videoId,
@@ -49,11 +52,11 @@ class Yt {
 		});
 	}
 
-	getNext(){
-console.log(params.q);
+	getNext() {
+		console.log(params.q);
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
-			for(let t of resp.items){
+			for (let t of resp.items) {
 				let track = {
 					id: t.id.videoId,
 					url: DOWNLOAD_URL + t.id.videoId,

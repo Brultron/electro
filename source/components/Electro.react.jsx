@@ -13,13 +13,7 @@ class Electro extends React.Component {
     super(props);
     this.state = {tracks: TrackStore.getTracks()};
     this.onChange = this.onChange.bind(this);
-    // $(window).scroll(function() {
-    //    if($(window).scrollTop() + window.innerHeight >= $(document).height()) {
-    //        console.log("bottom!");
-    //        $('.track-thumb').addClass('loading-spin');
-    //        TrackActions.getNextTracks();
-    //    }
-    // });
+
   }
 
   componentDidMount(){
@@ -31,7 +25,8 @@ class Electro extends React.Component {
       {
         tracks: TrackStore.getTracks(),
         rightTrack: TrackStore.getRightTrack(),
-        leftTrack: TrackStore.getLeftTrack()
+        leftTrack: TrackStore.getLeftTrack(),
+        crossfadeValue: TrackStore.getCrossfadeValue()
       }
     );
   }
@@ -65,7 +60,8 @@ class Electro extends React.Component {
         <Mixer
           tracks={this.state.tracks}
           leftTrack={this.state.leftTrack}
-          rightTrack={this.state.rightTrack}/>
+          rightTrack={this.state.rightTrack}
+          crossfadeValue={this.state.crossfadeValue}/>
       </div>
     );
   }

@@ -3,10 +3,7 @@ import React from 'react';
 import ReactSlider from 'react-slider';
 import Selector from './selector/Selector.react.js';
 import TrackStore from '../../stores/Tracks.js';
-
-let crossfadeValue = 50;
-
-const autoCompleteStyle = {backgroundColor: '#002a42'};
+import TrackActions from '../../actions/Tracks.js';
 
 class Mixer extends React.Component {
 
@@ -20,12 +17,7 @@ class Mixer extends React.Component {
     this.toggleSelector = this.toggleSelector.bind(this);
   }
 
-
-  componentDidUpdate(){
-    this.crossfade();
-  }
-
-  selectTrack(){
+  selectTrack(track){
     this.toggleSelector();
   }
 
@@ -90,18 +82,18 @@ class Mixer extends React.Component {
   selectRight(k){
     this.toggleSelector()
     this.setState({currentSelector: 'right'});
+    this.setState({toggleStyle: {float: 'right'}});
   }
 
   selectLeft(k){
     this.toggleSelector()
     this.setState({currentSelector: 'left'});
+    this.setState({toggleStyle: {float: 'left'}});
   }
 
 
   crossfade(v){
-    crossfadeValue = v ? v : crossfadeValue;
-    if(this.props.rightTrack) this.props.rightTrack.channel.gain.gain.value = crossfadeValue / 100;
-    if(this.props.leftTrack) this.props.leftTrack.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
+    TrackActions.setCrossfadeValue(v);
   }
 
   render(){
@@ -120,7 +112,7 @@ class Mixer extends React.Component {
               <ReactSlider
                 min={0}
                 max={100}
-                value={crossfadeValue}
+                value={this.props.crossfadeValue}
                 onChange={this.crossfade}
                 handleClassName='pitch-handle'
                 className='pitch-bar'/>

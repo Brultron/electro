@@ -19,8 +19,7 @@ let buildChannel = function() {
 
 
   var gain = context.createGain();
-  // level always starts at 0... mixer will change when loading
-  gain.gain.value = 1;
+  gain.gain.value = 0;
   channel.gain = gain;
   gain.connect(analyser);
   gain.connect(context.destination);
