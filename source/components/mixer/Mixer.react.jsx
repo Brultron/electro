@@ -6,8 +6,6 @@ import TrackStore from '../../stores/Tracks.js';
 
 let crossfadeValue = 50;
 
-const autoCompleteStyle = {backgroundColor: '#002a42'};
-
 class Mixer extends React.Component {
 
   constructor(props){
@@ -20,12 +18,7 @@ class Mixer extends React.Component {
     this.toggleSelector = this.toggleSelector.bind(this);
   }
 
-
-  componentDidUpdate(){
-    this.crossfade();
-  }
-
-  selectTrack(){
+  selectTrack(track){
     this.toggleSelector();
   }
 
@@ -90,18 +83,24 @@ class Mixer extends React.Component {
   selectRight(k){
     this.toggleSelector()
     this.setState({currentSelector: 'right'});
+    this.setState({toggleStyle: {float: 'right'}});
   }
 
   selectLeft(k){
     this.toggleSelector()
     this.setState({currentSelector: 'left'});
+    this.setState({toggleStyle: {float: 'left'}});
   }
 
 
   crossfade(v){
-    crossfadeValue = v ? v : crossfadeValue;
-    if(this.props.rightTrack) this.props.rightTrack.channel.gain.gain.value = crossfadeValue / 100;
-    if(this.props.leftTrack) this.props.leftTrack.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
+    crossfadeValue = v ;
+    if(this.props.rightTrack){
+      this.props.rightTrack.channel.gain.gain.value = crossfadeValue / 100;
+    }
+    if(this.props.leftTrack){
+      this.props.leftTrack.channel.gain.gain.value = Math.abs(100 - crossfadeValue) / 100;
+    }
   }
 
   render(){

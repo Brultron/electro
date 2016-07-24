@@ -22,7 +22,6 @@ class Yt {
 
 		stream.on('end', (data) => {
 				ac.createSource(master, track, (track) => {
-					console.log('should be loaded');
 					track.ready = true;
 					TrackActions.updateTrack(track);
 				});
@@ -31,9 +30,8 @@ class Yt {
 
 	search(q){
 		params.q = q;
+		params.pageToken = undefined;
 		$.get(SEARCH_URL, params).then((resp) => {
-			//TODO keep in here to check that we're not out of api calls
-			console.log(resp);
 			params.pageToken = resp.nextPageToken;
 			for(let t of resp.items){
 				let track = {

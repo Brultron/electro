@@ -4,6 +4,7 @@ import Dispatcher from '../dispatcher/Dispatcher.js';
 let tracks = {};
 let rightTrack;
 let leftTrack;
+let crossfadeValue = 50;
 
 class Tracks extends BaseStore {
 
@@ -21,6 +22,10 @@ class Tracks extends BaseStore {
 
   getLeftTrack(){
     return leftTrack;
+  }
+
+  getCrossfadeValue(){
+    return crossfadeValue;
   }
 
 }
@@ -46,14 +51,22 @@ instance.dispatchToken = Dispatcher.register(action => {
       }
       break;
     case 'set_right_track':
+      if(rightTrack){
+        rightTrack.channel.gain.gain.value = 0;
+      }
       rightTrack = action.track;
       instance.emitChange();
       break;
     case 'set_left_track':
+      if(leftTrack){
+        leftTrack.channel.gain.gain.value = 0;
+      }
       leftTrack = action.track;
       instance.emitChange();
       break;
-
+    case 'set_crossfade_value':
+      instance.emitChange();
+      break;
   }
 });
 

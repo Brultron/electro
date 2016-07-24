@@ -100,10 +100,6 @@ class Deck extends React.Component {
     TrackActions.removeTrack(this.props.track);
   }
 
-  toggleVisibility(e){
-    console.log('toggleVisibility',e);
-  }
-
   setControls(){
       if(this.props.track.ready){
         return (

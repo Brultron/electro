@@ -56,7 +56,6 @@ class Crate extends React.Component {
   // off each time on my 13" screen i think
   loadSearch(e){
     if($('.crate-inner').scrollTop() > this.refs.crateInner.scrollHeight - 757) {
-      console.log('load more!')
       TrackAction.getNextTracks();
     }
   }

@@ -15,7 +15,7 @@ class Selector extends React.Component {
     }else{
       TrackActions.setLeftTrack(this.props.track);
     }
-    this.props.onSelect();
+    this.props.onSelect(this.props.track);
   }
 
   render(){

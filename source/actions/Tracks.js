@@ -50,6 +50,13 @@ class Tracks {
 		});
 	}
 
+	setCrossfadeValue(value){
+		Dispatcher.dispatch({
+			type: 'set_crossfade_value',
+			value: value
+		})
+	}
+
 }
 
 const instance = new Tracks();
