@@ -25,7 +25,8 @@ class Electro extends React.Component {
       {
         tracks: TrackStore.getTracks(),
         rightTrack: TrackStore.getRightTrack(),
-        leftTrack: TrackStore.getLeftTrack()
+        leftTrack: TrackStore.getLeftTrack(),
+        crossfadeValue: TrackStore.getCrossfadeValue()
       }
     );
   }
@@ -59,7 +60,8 @@ class Electro extends React.Component {
         <Mixer
           tracks={this.state.tracks}
           leftTrack={this.state.leftTrack}
-          rightTrack={this.state.rightTrack}/>
+          rightTrack={this.state.rightTrack}
+          crossfadeValue={this.state.crossfadeValue}/>
       </div>
     );
   }

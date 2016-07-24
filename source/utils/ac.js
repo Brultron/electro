@@ -68,7 +68,6 @@ class AC {
 			var x = buildChannel();
 			track.channel = x.channel;
 			track.root = x.root;
-      console.log(this);
 			cb(track);
 		});
 	}
