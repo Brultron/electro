@@ -48,11 +48,11 @@ instance.dispatchToken = Dispatcher.register(action => {
 			instance.emitChange();
 			break;
 		case 'remove_track':
-			// NOTE soft delete here... so we can reuse if needed
-			// TODO should probably just delete the track and
-			// free up the memory since there's not a way to reload the
-			// track at the current moment
-			tracks[action.track.id].removed = true;
+			delete tracks[action.track.id];
+      if(rightTrack && action.track.id === rightTrack.id)
+        rightTrack = undefined;
+      if(leftTrack && action.track.id === leftTrack.id)
+        leftTrack = undefined;
 			instance.emitChange();
 			break;
 		case 'clear_search':
