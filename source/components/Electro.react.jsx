@@ -47,16 +47,8 @@ class Electro extends React.Component {
   render(){
     return (
       <div>
-        <div className='row'>
-          <div className='small-12 columns'>
-            <Crate tracks={this.state.tracks}/>
-          </div>
-        </div>
-        <div className='row channels'>
-          <div className='small-12 columns'>
-            {this.getDecks()}
-          </div>
-        </div>
+        <Crate tracks={this.state.tracks}/>
+        {this.getDecks()}
         <Mixer
           tracks={this.state.tracks}
           leftTrack={this.state.leftTrack}

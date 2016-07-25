@@ -1,27 +1,22 @@
-html,
-body {
-	padding: 0;
-	margin: 0;
-}
+// primary color palette
+$P50: #E1F5FE;
+$P100: #B3E5FC;
+$P200: #81D4FA;
+$P300: #4FC3F7;
+$P400: #29B6F6;
+$P500: #03A9F4;
+$P600: #039BE5;
+$P700: #0288D1;
+$P800: #0277BD;
+$P900: #01579B;
 
-body {
-	font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
-}
+//accent colors
+$A100: #FF80AB;
+$A200: #FF4081;
+$A400: #F50057;
+$A700: #C51162;
 
-header {
-	position: absolute;
-	width: 500px;
-	height: 250px;
-	top: 50%;
-	left: 50%;
-	margin-top: -125px;
-	margin-left: -250px;
-	text-align: center;
-}
-
-header h1 {
-	font-size: 60px;
-	font-weight: 100;
-	margin: 0;
-	padding: 0;
+//shadows
+.lv1_blur {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.24);
 }

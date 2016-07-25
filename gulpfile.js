@@ -26,17 +26,6 @@ gulp.task('babel', function() {
 		.pipe(gulp.dest('build'));
 });
 
-//TODO probably a better way to insert these dependencies
-gulp.task('foundation', function() {
-	return gulp.src('node_modules/foundation-sites/dist/*.min.*')
-		.pipe(gulp.dest('build/vendor'));
-});
-
-gulp.task('material-icons', function() {
-	return gulp.src('node_modules/material-icons/css/material-icons.min.css')
-		.pipe(gulp.dest('build/vendor'));
-});
-
 gulp.task('jquery', function() {
 	return gulp.src('node_modules/jquery/dist/jquery.min.js')
 		.pipe(gulp.dest('build/vendor'));
@@ -81,7 +70,7 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task('electron', ['watch', 'app', 'assets', 'foundation', 'jquery', 'fonts', 'material-icons', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
+gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});

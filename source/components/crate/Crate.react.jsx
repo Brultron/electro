@@ -62,20 +62,23 @@ class Crate extends React.Component {
 
   render(){
     return (
-      <div className='crate'>
-        <div className='row'>
-          <div className={'small-11 columns search-row'}>
-            <div className='input-group'>
-              <input className='input-group-field' ref='url' type='text' onKeyUp={this.enter} placeholder='SEARCH'/>
-            </div>
-          </div>
-          <div className={'small-1 columns search-toggle'}>
-            <a onClick={this.toggleVisible} className='button'><i className={this.state.chevron}></i></a>
-          </div>
-        </div>
-        <div ref='crateInner' className='crate-inner' style={this.state.visible} onScroll={this.loadSearch}>
+      <div className='crate lv1_blur'>
+        <input
+          ref='url'
+          type='text'
+          onKeyUp={this.enter}
+          placeholder='SEARCH'/>
+          <a onClick={this.toggleVisible}>
+            <i className={this.state.chevron}></i>
+          </a>
+        <div
+          ref='crateInner'
+          className='crate-inner'
+          style={this.state.visible}
+          onScroll={this.loadSearch}>
           {this.getItems()}
-          <div className='item-mask'></div>
+          <div className='item-mask'>
+          </div>
         </div>
       </div>
     );
