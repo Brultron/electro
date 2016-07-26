@@ -20,7 +20,6 @@ class Item extends React.Component {
   render(){
 
     var background_image = `
-      -webkit-linear-gradient(left, rgba(255,38,0,1) 0%, rgba(252,40,5,1) 12%, rgba(246,45,15,0) 38%, rgba(233,54,35,1) 90%, rgba(231,56,39,1) 100%)
       url(${this.props.track.thumbnail});
     `;
 
@@ -29,7 +28,7 @@ class Item extends React.Component {
     };
 
     return (
-      <div className='crate-item '>
+      <div className='crate-item lv1_blur'>
         <div className='item-title'>
           {this.props.track.title}
         </div>
