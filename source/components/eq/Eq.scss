@@ -1,5 +1,7 @@
-.eq * {
-  display: inline-block;
-  margin-left: 1px;
-  margin-right: 1px;
+@import '../../index';
+
+.eq {
+  canvas {
+    margin: 5px;
+  }
 }

@@ -4,15 +4,23 @@
   max-height: 100px;
   display: flex;
   color: rgb(250, 235, 215);
+  margin: 5px;
+  border-radius: $b-rad-default;
+
   .item-title {
     margin: 10px;
-    width: 75%;
+    width: 50%;
+  }
+
+
+  .img-div {
+    width: 25%;
+    margin: 10px;
+    border-radius: 3px;
+    background-size: contain;
   }
 
   .track-thumb{
-    width: 25%;
-    background-size: 125%;
-    background-position: center;
     padding: 10px;
     margin: 5px;
     border-radius: 5000px;

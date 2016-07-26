@@ -1,140 +1,75 @@
+@import '../../index';
+
 .deck{
+  height: 150px;
   position: relative;
-  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  border-radius: $b-rad-default;
+  background: $P500;
+  margin: 5px;
+  display: flex;
 
-  * ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .deck-title {
-    color: rgb(255, 255, 255);
-    background-color: rgba(#1d1d1d, 0.62);
-    position: absolute;
+  .img-div {
+    float: left;
+    position: relative;
+    height: 125px;
+    width: 25%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px;
     z-index: 3;
   }
-
-  .deck-thumbnail {
+  .wave-display {
     position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 3;
-
-    img{
-      max-height: 128px;
-    }
-
-  }
-  .controls-inner{
-    z-index: 3;
-    position: absolute;
-    bottom:0;
-    height: 40px;
     width: 100%;
-
-    a.button {
-      margin-bottom: 0px;
+    bottom: 0px;
+    right: 0px;
+    padding:10px;
+  }
+  .controls-panel {
+    position: relative;
+    width:60%;
+    z-index: 3;
+    margin: 5px;
+    > h1 {
+      margin: 5px;
+    }
+    > div {
+      background: $P800;
+      display: flex;
+      position: absolute;
+      border-radius: $b-rad-default;
+      bottom: 0px;
+      right: 0px;
+      width: 100%;
+      > a {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        border-radius: 1000px;
+        background: $P200;
+        text-align: center;
+        > i {
+          padding: 10px;
+        }
+        > p {
+          margin: 0px;
+          padding: 10px;
+        }
+      }
     }
 
   }
-
-  .control-toggler{
-    opacity: 0;
-    -webkit-transition: opacity .25s ease-in-out;
-  }
-
-  .control-toggler:hover{
-    opacity: 1;
-  }
-
-
-  .controls-inner:focus{
-    opacity: 1;
-  }
-
-  //TODO should able to load move close to the thumbnail
-  .close-track {
-    z-index: 4;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  .pitch-handle {
-    width: 3%;
-    height: 40px;
-    background-color: #11b0ff;
-  }
-
-  .controls-right{
-    width: 50%;
-    display: inline-flex;
-  }
-
-  .pitch-container{
-    padding-right: 0px;
-    display: inline-flex;
-    width: 50%;
-    right: 0;
+  .pitch-handel {
+    width: 10%;
+    height: 100%;
+    z-index: 3;
+    background: $A200;
   }
 
   .pitch-bar {
-    background-color: #002a42;
-    width: 100%;
-    margin: 0px !important;
-    opacity: 0.75;
+    width: 25%;
+    background: $P200;
+    margin: 5px;
   }
-
-  .deck-loading{
-    position: absolute;
-    height: 100%;  /* Can be anything */
-    width: 100%;
-
-
-    span {
-      display: block;
-      height: 100%;
-      background-color: rgba(249, 66, 181, 0.59);
-      background-image: linear-gradient(
-        center bottom,
-        rgb(249, 66, 181) 37%,
-        rgb(249, 66, 183) 69%
-      );
-      position: relative;
-      overflow: hidden;
-    }
-
-    span:after, .animate > span {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; bottom: 0; right: 0;
-      background-image: linear-gradient(
-        -45deg,
-        rgba(255, 255, 255, .2) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, .2) 50%,
-        rgba(255, 255, 255, .2) 75%,
-        transparent 75%,
-        transparent
-      );
-      z-index: 1;
-      background-size: 50px 50px;
-      overflow: hidden;
-    }
-
-    .animate > span:after {
-      display: none;
-    }
-
-    @keyframes move {
-      0% { background-position: 0 0;}
-      100% {background-position: 50px 50px;}
-    }
-
-    span:after, .animate > span > span {
-      animation: move 2s linear infinite;
-    }
-
-  }
-
 }

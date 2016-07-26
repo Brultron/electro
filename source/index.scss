@@ -11,10 +11,10 @@ $P800: #0277BD;
 $P900: rgb(1, 87, 156);
 
 //accent colors
-$A100: #FF80AB;
-$A200: #FF4081;
-$A400: #F50057;
-$A700: #C51162;
+$A100: rgb(255, 128, 171);
+$A200: rgb(255, 64, 129);
+$A400: rgb(245, 0, 87);
+$A700: rgb(198, 17, 98);
 
 $b-rad-default: 4px;
 
@@ -27,9 +27,13 @@ $b-rad-default: 4px;
   -webkit-box-shadow: 4px 4px 6px -1px rgba(0,0,0,0.24);
 }
 
+//shadows
+.lv3_blur {
+  -webkit-box-shadow: 6px 6px 7px -1px rgba(0,0,0,0.24);
+}
+
 html {
 	background-color: $P100;
-  overflow-y: hidden;
   * {
   font-family: 'Roboto', sans-serif;
   }

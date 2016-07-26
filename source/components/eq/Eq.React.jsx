@@ -11,7 +11,7 @@ class Eq extends React.Component {
   //TODO there's a better way to set this up.
     $(this.refs.low).knob(
       {fgColor: '#ffffff',
-       bgColor: '#2199e8',
+       bgColor: '#81d4fa',
        height: 40,
        width: 40,
        value: 0,
@@ -29,7 +29,7 @@ class Eq extends React.Component {
 
     $(this.refs.mid).knob({
         fgColor: '#ffffff',
-        bgColor: '#2199e8',
+        bgColor: '#81d4fa',
         height: 40,
         width: 40,
         min: -32,
@@ -46,7 +46,7 @@ class Eq extends React.Component {
 
     $(this.refs.high).knob({
         fgColor: '#ffffff',
-        bgColor: '#2199e8',
+        bgColor: '#81d4fa',
         height: 40,
         width: 40,
         min: -32,
@@ -64,7 +64,7 @@ class Eq extends React.Component {
 
     $(this.refs.gain).knob({
         fgColor: '#ffffff',
-        bgColor: '#2199e8',
+        bgColor: '#81d4fa',
         height: 40,
         width: 40,
         min: 0,

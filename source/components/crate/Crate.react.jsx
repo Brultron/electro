@@ -23,11 +23,13 @@ class Crate extends React.Component {
   }
 
   enter(e){
+
     if('Enter' === e.key){
       TrackAction.searchTracks(e.target.value);
       this.setState({visible: {}, chevron: 'fa fa-chevron-down'});
       e.target.value = '';
     }
+
   }
 
   onChange(){
@@ -75,7 +77,7 @@ class Crate extends React.Component {
         </div>
         <div
           ref='searchResult'
-          className='search-result lv1_blur'
+          className='search-result'
           style={this.state.visible}
           onScroll={this.loadSearch}>
           {this.getItems()}

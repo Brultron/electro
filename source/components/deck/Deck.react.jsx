@@ -38,9 +38,9 @@ class Deck extends React.Component {
       this.wavesurfer.init({
         audioContext: AC.getContext(),
         container: this.refs.deck,
-        waveColor: '#f942b5',
-        cursorColor: '#c6ff00',
-        progressColor: '#bc00ff',
+        waveColor: '#f50057',
+        cursorColor: '#03A9F4',
+        progressColor: '#ff4081',
         scrollParent: true,
         normalize: true,
         destination : this.props.track.root
@@ -102,50 +102,53 @@ class Deck extends React.Component {
 
   setControls(){
       if(this.props.track.ready){
+
+        var background = {
+            background: `url(${this.props.track.thumbnail})`,
+            backgroundSize: '105%',
+            backgroundPosition: 'center'
+        }
+
         return (
-        <div className='deck'>
-          <button className='close-track' type='button' onClick={this.removeTrack}>
-            <i className="fa fa-times-circle fa-lg"></i>
-          </button>
-          <h5 className='deck-title'>{this.props.track.title}</h5>
-          <div className='deck-thumbnail'>
-            <img className='thumbnail' src={this.props.track.thumbnail}></img>
-          </div>
-          <div className='controls-inner'>
-            <div className='controls-right'>
-              <a onClick={this.playPause} className='button'><i className={this.state.playClass}></i></a>
+        <div className='deck lv1_blur'>
+          <div className='controls-panel'>
+            <h1>{this.props.track.title}</h1>
+            <div className='lv2_blur'>
+              <a onClick={this.playPause} className='lv3_blur'>
+                <i className={this.state.playClass}></i>
+              </a>
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
-              <UVMeter track={this.props.track} />
-            </div>
-            <div className='pitch-container  control-toggler'>
-              <a className='button' onMouseDown={this.pushDown} onMouseUp={this.resetPitch}>
+              <a className='lv3_blur'
+                 onMouseDown={this.pushDown}
+                 onMouseUp={this.resetPitch}>
                 <i className='fa fa-minus'></i>
               </a>
               <ReactSlider
-                handleClassName={'pitch-handle'}
-                className={'pitch-bar'}
+                handleClassName={'pitch-handel'}
+                className={'pitch-bar lv3_blur'}
                 max={150}
                 min={-150}
                 onChange={this.setPitch}/>
-              <a className='button' onMouseDown={this.pushUp} onMouseUp={this.resetPitch}>
+              <a className='lv3_blur'
+                onMouseDown={this.pushUp}
+                onMouseUp={this.resetPitch}>
                 <i className='fa fa-plus'></i>
               </a>
             </div>
           </div>
-          <div ref='deck'></div>
+          <div ref='deck' className='wave-display'></div>
+          <a onClick={this.removeTrack}>
+            <i className="fa fa-times-circle fa-lg"></i>
+          </a>
+
         </div>
         );
       }else{
         return (
-          <div className='deck' style={{height: '128px'}}>
-            <h5 className='deck-title'>{this.props.track.title}</h5>
-            <div className='deck-loading animate'>
-              <span style={{width: '100%'}}><span></span></span>
-            </div>
-            <div className='deck-thumbnail'>
-              <img className='thumbnail' src={this.props.track.thumbnail}></img>
-            </div>
+          <div className='deck lv1_blur' style={{height: '128px'}}>
+            <h5>{this.props.track.title}</h5>
+            <img src={this.props.track.thumbnail}></img>
           </div>
         );
       }

@@ -38,6 +38,7 @@ class Yt {
 		params.pageToken = undefined;
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
+			console.log(resp);
 			for (let t of resp.items) {
 				let track = {
 					id: t.id.videoId,

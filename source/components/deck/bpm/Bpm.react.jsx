@@ -27,7 +27,11 @@ class Bpm extends React.Component {
 
   render(){
     return (
-        <a onClick={this.setBPM} className='button bpm'>{Math.round(this.props.track.bpm ? this.props.track.bpm : '')}</a>
+        <a onClick={this.setBPM} className='lv3_blur'>
+          <p>
+            {Math.round(this.props.track.bpm ? this.props.track.bpm : '')}
+          </p>
+        </a>
     );
   }
 }

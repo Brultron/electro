@@ -7,9 +7,6 @@
   background-color: $P500;
   border-radius: $b-rad-default;
 
-  .search-result {
-    overflow-y: scroll;
-  }
 
   input {
     width: 100%;
@@ -37,4 +34,8 @@
     }
   }
 
+}
+
+.search-result {
+  overflow-y: scroll;
 }
