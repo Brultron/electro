@@ -16,7 +16,21 @@ $A200: #FF4081;
 $A400: #F50057;
 $A700: #C51162;
 
+$b-rad-default: 4px;
+
 //shadows
 .lv1_blur {
   -webkit-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.24);
+}
+//shadows
+.lv2_blur {
+  -webkit-box-shadow: 4px 4px 6px -1px rgba(0,0,0,0.24);
+}
+
+html {
+	background-color: $P100;
+  overflow-y: hidden;
+  * {
+  font-family: 'Roboto', sans-serif;
+  }
 }

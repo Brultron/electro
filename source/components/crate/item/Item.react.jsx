@@ -19,19 +19,15 @@ class Item extends React.Component {
 
   render(){
     return (
-      <div className='row crate-item'>
-        <div className='small-2 columns'>
-          <img src={this.props.track.thumbnail}></img>
+      <div className='crate-item'>
+        <img src={this.props.track.thumbnail}>
+        </img>
+        <div className='item-title'>
+          {this.props.track.title}
         </div>
-        <div className='small-9 columns'>
-          <h5>{this.props.track.title}</h5>
-          <p>{this.props.track.description}</p>
-        </div>
-        <div className='small-1 columns'>
-          <a onClick={this.loadTrack} className='button'>
-            <i className="fa fa-cloud-download fa-3x" aria-hidden="true"></i>
-          </a>
-        </div>
+        <a onClick={this.loadTrack}>
+          <i className="fa fa-cloud-download fa-3x lv2_blur"></i>
+        </a>
       </div>
     );
   }

@@ -55,30 +55,30 @@ class Crate extends React.Component {
   //TODO figure out what the importance of this number is... its about 2 pixels
   // off each time on my 13" screen i think
   loadSearch(e){
-    if($('.crate-inner').scrollTop() > this.refs.crateInner.scrollHeight - 757) {
+    if($('.crate-inner').scrollTop() > this.refs.searchResult.scrollHeight - 757) {
       TrackAction.getNextTracks();
     }
   }
 
   render(){
     return (
-      <div className='crate lv1_blur'>
-        <input
-          ref='url'
-          type='text'
-          onKeyUp={this.enter}
-          placeholder='SEARCH'/>
-          <a onClick={this.toggleVisible}>
-            <i className={this.state.chevron}></i>
-          </a>
+      <div>
+        <div className='crate lv1_blur'>
+          <input
+            ref='url'
+            type='text'
+            onKeyUp={this.enter}
+            placeholder='SEARCH'/>
+            <a onClick={this.toggleVisible}>
+              <i className={this.state.chevron}></i>
+            </a>
+        </div>
         <div
-          ref='crateInner'
-          className='crate-inner'
+          ref='searchResult'
+          className='search-result lv1_blur'
           style={this.state.visible}
           onScroll={this.loadSearch}>
           {this.getItems()}
-          <div className='item-mask'>
-          </div>
         </div>
       </div>
     );

@@ -5,7 +5,11 @@
   height: 40px;
   display: flex;
   background-color: $P500;
-  border-radius: 4px;
+  border-radius: $b-rad-default;
+
+  .search-result {
+    overflow-y: scroll;
+  }
 
   input {
     width: 100%;
@@ -14,11 +18,11 @@
     background-color: $P500;
     border: none;
     color: #ffffff;
-
+    font-size: 1.75em;
   }
 
   a {
-    background-color: $P200;
+    background-color: $P800;
     float: right;
     width: 38px;
     margin: 2px;
@@ -26,6 +30,7 @@
     color: #ffffff;
     text-align: center;
     position: relative;
+
     i {
       padding-top: 10px;
       padding-bottom: 10px;
