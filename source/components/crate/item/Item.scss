@@ -3,25 +3,27 @@
   background-color: $P200;
   max-height: 100px;
   display: flex;
-  color: $P900;
+  color: rgb(250, 235, 215);
   .item-title {
     margin: 10px;
-    width: 50%;
+    width: 75%;
   }
-  img {
+
+  .track-thumb{
     width: 25%;
-    max-height: 100px;
-    object-fit: cover;
-  }
-  a {
+    background-size: 125%;
+    background-position: center;
     padding: 10px;
-    width: 25%;
+    margin: 5px;
+    border-radius: 5000px;
     color: $A400;
-    i {
-      float: right;
-      padding: 10px;
-      background-color: #faebd7;
-      border-radius: 200px;
-    }
+      i {
+        padding: 10px;
+        background-color: #faebd7;
+        border-radius: 200px;
+        float: right;
+      }
   }
+
+
 }
