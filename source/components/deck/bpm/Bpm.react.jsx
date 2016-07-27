@@ -27,7 +27,7 @@ class Bpm extends React.Component {
 
   render(){
     return (
-        <a onClick={this.setBPM}>
+        <a onClick={this.setBPM} className='ctrl-btn'>
           <p>
             {Math.round(this.props.track.bpm ? this.props.track.bpm : '')}
           </p>
