@@ -40,10 +40,12 @@ class Deck extends React.Component {
         container: this.refs.deck,
         waveColor: '#f50057',
         cursorColor: '#03A9F4',
-        progressColor: '#ff4081',
+        progressColor: '#0277BD',
         scrollParent: true,
         normalize: true,
-        destination : this.props.track.root
+        destination : this.props.track.root,
+        hideScrollbar: true,
+        cursorWidth: 3
       });
       this.wavesurfer.loadDecodedBuffer(this.props.track.buffer);
       this.surferRendered = true;
@@ -111,37 +113,48 @@ class Deck extends React.Component {
 
         return (
         <div className='deck lv1_blur'>
+          <h1>{this.props.track.title}</h1>
+          <UVMeter track={this.props.track} />
           <div className='controls-panel'>
-            <h1>{this.props.track.title}</h1>
-            <div className='lv2_blur'>
-              <a onClick={this.playPause} className='lv3_blur'>
+              <a onClick={this.playPause}>
                 <i className={this.state.playClass}></i>
               </a>
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
-              <a className='lv3_blur'
+              <a
+                 className='pitch-bump'
+                 style={{
+                    marginRight: '0px',
+                    borderTopLeftRadius: '5px',
+                    borderBottomLeftRadius: '5px'
+                  }}
                  onMouseDown={this.pushDown}
                  onMouseUp={this.resetPitch}>
                 <i className='fa fa-minus'></i>
               </a>
+
               <ReactSlider
                 handleClassName={'pitch-handel'}
-                className={'pitch-bar lv3_blur'}
+                className={'pitch-bar'}
                 max={150}
                 min={-150}
                 onChange={this.setPitch}/>
-              <a className='lv3_blur'
+              <a
+                className='pitch-bump'
+                style={{
+                  marginLeft: '0px' ,
+                  borderTopRightRadius: '5px',
+                  borderBottomRightRadius: '5px'
+                }}
                 onMouseDown={this.pushUp}
                 onMouseUp={this.resetPitch}>
                 <i className='fa fa-plus'></i>
               </a>
-            </div>
           </div>
           <div ref='deck' className='wave-display'></div>
-          <a onClick={this.removeTrack}>
+          <a onClick={this.removeTrack} className='lv1_blur'>
             <i className="fa fa-times-circle fa-lg"></i>
           </a>
-
         </div>
         );
       }else{

@@ -20,56 +20,76 @@
     z-index: 3;
   }
   .wave-display {
-    position: absolute;
     width: 100%;
     bottom: 0px;
     right: 0px;
-    padding:10px;
   }
   .controls-panel {
-    position: relative;
-    width:60%;
+    position: absolute;
+    width:45%;
     z-index: 3;
     margin: 5px;
-    > h1 {
-      margin: 5px;
-    }
-    > div {
-      background: $P800;
-      display: flex;
-      position: absolute;
-      border-radius: $b-rad-default;
-      bottom: 0px;
-      right: 0px;
-      width: 100%;
-      > a {
-        width: 40px;
-        height: 40px;
-        margin: 5px;
-        border-radius: 1000px;
-        background: $P200;
-        text-align: center;
-        > i {
-          padding: 10px;
-        }
-        > p {
-          margin: 0px;
-          padding: 10px;
-        }
-      }
-    }
+    bottom: 0px;
+    right: 0px;
+    background: $P800;
+    display: flex;
+    border-radius: $b-rad-default;
 
+    > a {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      border-radius: 10000px;
+      background: $P200;
+      text-align: center;
+      > i {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      > p {
+        margin: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+    }
+    .pitch-bump {
+      border-radius: 0px;
+    }
   }
+
+  > a {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 5px;
+    z-index: 3;
+    background: #ffffff;
+    border-radius: 1000px;
+    i {
+      color: $P800 ;
+    }
+  }
+
+  > h1 {
+    margin: 5px;
+    position: absolute;
+    z-index: 3;
+  }
+
   .pitch-handel {
     width: 10%;
     height: 100%;
     z-index: 3;
-    background: $A200;
+    background: #ffffff;
   }
 
   .pitch-bar {
     width: 25%;
     background: $P200;
     margin: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 40px;
   }
 }

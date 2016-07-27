@@ -10,11 +10,6 @@ class UVMeter extends React.Component {
   componentDidMount(){
     var uvmeter = this.refs.uvMeter;
     var canvas = $(uvmeter).get()[0].getContext("2d");
-    var gradient = canvas.createLinearGradient(0,0,0,300);
-    gradient.addColorStop(1,'#000000');
-    gradient.addColorStop(0.75,'#ff0000');
-    gradient.addColorStop(0.25,'#ffff00');
-    gradient.addColorStop(0,'#ffffff');
 
     this.props.track.channel.uvmeter.onaudioprocess = () => {
         var array =  new Uint8Array(this.props.track.channel.analyser.frequencyBinCount);
