@@ -115,42 +115,44 @@ class Deck extends React.Component {
         <div className='deck lv1_blur'>
           <h1 className='track-title'>{this.props.track.title}</h1>
           <div className='controls-panel'>
+            <div className='left-cntrls'>
               <a onClick={this.playPause} className='ctrl-btn'>
                 <i className={this.state.playClass}></i>
               </a>
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
-              <div className='pitch-cntrl'>
-                <a
-                   className='pitch-bump ctrl-btn'
-                   style={{
-                      marginRight: '0px',
-                      borderTopLeftRadius: '5px',
-                      borderBottomLeftRadius: '5px'
-                    }}
-                   onMouseDown={this.pushDown}
-                   onMouseUp={this.resetPitch}>
-                  <i className='fa fa-minus'></i>
-                </a>
-
-                <ReactSlider
-                  handleClassName={'pitch-handel'}
-                  className={'pitch-bar'}
-                  max={150}
-                  min={-150}
-                  onChange={this.setPitch}/>
-                <a
-                  className='pitch-bump ctrl-btn'
-                  style={{
-                    marginLeft: '0px' ,
-                    borderTopRightRadius: '5px',
-                    borderBottomRightRadius: '5px'
+            </div>
+            <div className='pitch-cntrl'>
+              <a
+                 className='pitch-bump ctrl-btn'
+                 style={{
+                    marginRight: '0px',
+                    borderTopLeftRadius: '5px',
+                    borderBottomLeftRadius: '5px'
                   }}
-                  onMouseDown={this.pushUp}
-                  onMouseUp={this.resetPitch}>
-                  <i className='fa fa-plus'></i>
-                </a>
-              </div>
+                 onMouseDown={this.pushDown}
+                 onMouseUp={this.resetPitch}>
+                <i className='fa fa-minus'></i>
+              </a>
+
+              <ReactSlider
+                handleClassName={'pitch-handel'}
+                className={'pitch-bar'}
+                max={150}
+                min={-150}
+                onChange={this.setPitch}/>
+              <a
+                className='pitch-bump ctrl-btn'
+                style={{
+                  marginLeft: '0px' ,
+                  borderTopRightRadius: '5px',
+                  borderBottomRightRadius: '5px'
+                }}
+                onMouseDown={this.pushUp}
+                onMouseUp={this.resetPitch}>
+                <i className='fa fa-plus'></i>
+              </a>
+            </div>
           </div>
           <div ref='deck' className='wave-display'></div>
           <a onClick={this.removeTrack} className='track-exit'>

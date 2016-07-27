@@ -16,7 +16,7 @@
   }
   .controls-panel {
     position: absolute;
-    width:45%;
+    width: 100%;
     z-index: 3;
     margin: 5px;
     bottom: 0px;
@@ -44,8 +44,13 @@
 
     }
 
+    .left-cntrls {
+      display: flex;
+      width: 50%;
+    }
+
     .pitch-cntrl {
-      width: 45%;
+      width: 50%;
       display: flex;
       .pitch-bump {
         border-radius: 0px;
@@ -75,14 +80,14 @@
   }
 
   .pitch-handel {
-    width: 10%;
+    width: 15px;
     height: 100%;
     z-index: 3;
     background: #ffffff;
   }
 
   .pitch-bar {
-    width: 25%;
+    width: 100%;
     background: $P200;
     margin: 5px;
     margin-left: 0px;
