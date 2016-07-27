@@ -122,6 +122,7 @@ class Deck extends React.Component {
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
             </div>
+             <UVMeter track={this.props.track} />
             <div className='pitch-cntrl'>
               <a
                  className='pitch-bump ctrl-btn'

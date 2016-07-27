@@ -14,13 +14,25 @@ class UVMeter extends React.Component {
     this.props.track.channel.uvmeter.onaudioprocess = () => {
         var array =  new Uint8Array(this.props.track.channel.analyser.frequencyBinCount);
         this.props.track.channel.analyser.getByteFrequencyData(array);
-        canvas.clearRect(0, 0, 1000, 325);
-        canvas.fillStyle='#ffffff';
-        for ( var i = 0; i < (array.length); i++ ){
-          var value = array[i] * 1.25;
-          canvas.fillRect(i*5,325-value,3,325);
-        }
+        canvas.clearRect(0, 0, 1000, 599);
+        canvas.fillStyle = '#ffffff';
+        var average = this.getAvg(array);
+        canvas.fillRect(0,0,average * 2,100);
     };
+  }
+
+  getAvg(array){
+    var values = 0;
+    var average;
+    var length = array.length;
+
+    for (var i = 0; i < length; i++) {
+        values += array[i];
+    }
+
+    average = values / length;
+    return average;
+
   }
 
   render(){
