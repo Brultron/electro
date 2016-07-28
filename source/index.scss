@@ -34,7 +34,9 @@ $b-rad-default: 4px;
 
 html {
 	background-color: $P100;
+  overflow-y: hidden;
   * {
   font-family: 'Roboto', sans-serif;
   }
+
 }

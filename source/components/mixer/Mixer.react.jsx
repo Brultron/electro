@@ -29,13 +29,6 @@ class Mixer extends React.Component {
           src={this.props.leftTrack.thumbnail}>
         </img>
       );
-    }else{
-      return (
-        <img
-          className='thumbnail track-thumb track-thumb-left'
-          src='images/vinyl.png'>
-        </img>
-      );
     }
   }
 
@@ -48,13 +41,6 @@ class Mixer extends React.Component {
             src={this.props.rightTrack.thumbnail}>
           </img>
         </a>
-      );
-    }else{
-      return (
-        <img
-          className='thumbnail track-thumb track-thumb-right'
-          src='images/vinyl.png'>
-        </img>
       );
     }
   }
@@ -99,35 +85,30 @@ class Mixer extends React.Component {
   render(){
     return (
       <div className='mixer'>
-        <div className='row'>
-          <div className='small-2 columns'>
-            <div className='selector'>
-              <a onClick={this.selectLeft}>
-                {this.getLeftTrackImg()}
-              </a>
-            </div>
-          </div>
-          <div className='small-8 columns'>
-            <div className='row'>
-              <ReactSlider
-                min={0}
-                max={100}
-                value={this.props.crossfadeValue}
-                onChange={this.crossfade}
-                handleClassName='pitch-handle'
-                className='pitch-bar'/>
-            </div>
-            <div className='row selections' style={this.state.toggleStyle}>
-              {this.buildList()}
-            </div>
-          </div>
-          <div className='small-2 columns'>
-            <div className='selector'>
-              <a onClick={this.selectRight}>
-                {this.getRightTrackImg()}
-              </a>
-            </div>
-          </div>
+        <div className='mixer-ctrl'>
+          <a onClick={this.selectLeft}
+            style={{
+              marginLeft: '0px' ,
+              borderTopRightRadius: '5px',
+              borderBottomRightRadius: '5px'
+            }}>
+            {this.getLeftTrackImg()}
+          </a>
+          <ReactSlider
+            min={0}
+            max={100}
+            value={this.props.crossfadeValue}
+            onChange={this.crossfade}
+            handleClassName='pitch-handle'
+            className='pitch-bar'/>
+          <a onClick={this.selectRight}
+            style={{
+               marginRight: '0px',
+               borderTopLeftRadius: '5px',
+               borderBottomLeftRadius: '5px'
+             }}>
+            {this.getRightTrackImg()}
+          </a>
         </div>
       </div>
     );

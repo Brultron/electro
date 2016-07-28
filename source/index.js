@@ -12,6 +12,6 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	var win = new BrowserWindow({transparent: true, frame: false});
+	var win = new BrowserWindow();
 	win.loadURL('file://' + __dirname + '/index.html');
 });

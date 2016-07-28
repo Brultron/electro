@@ -1,11 +1,13 @@
 @import '../../index';
 
 .crate {
+
   width: 100%;
   height: 40px;
   display: flex;
   background-color: $P500;
   border-radius: $b-rad-default;
+  overflow-y: scroll;
 
 
   input {
