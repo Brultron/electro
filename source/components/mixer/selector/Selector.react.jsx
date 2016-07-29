@@ -20,10 +20,10 @@ class Selector extends React.Component {
 
   render(){
     return (
-      <a onClick={this.selectTrack}>
+      <a onClick={this.selectTrack} className='selector'>
         <img
           key={this.props.track.id}
-          className='thumbnail'
+          className=''
           src={this.props.track.thumbnail}>
         </img>
       </a>

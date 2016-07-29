@@ -72,8 +72,7 @@ class Mixer extends React.Component {
   }
 
   toggleSelector(){
-    console.log('toggleSelector');
-    if(!this.state.toggleStyle){
+    if(this.state.toggleStyle){
       this.setState({toggleStyle: undefined})
     }else{
       this.setState({toggleStyle: {display: 'none'}});
@@ -83,13 +82,11 @@ class Mixer extends React.Component {
   selectRight(k){
     this.toggleSelector()
     this.setState({currentSelector: 'right'});
-    this.setState({toggleStyle: {float: 'right'}});
   }
 
   selectLeft(k){
     this.toggleSelector()
     this.setState({currentSelector: 'left'});
-    this.setState({toggleStyle: {float: 'left'}});
   }
 
 
@@ -103,7 +100,7 @@ class Mixer extends React.Component {
         <div
           style={this.state.toggleStyle}
           className='mixer-select'>
-          <h1>selector</h1>
+          {this.buildList()}
         </div>
         <div className='mixer-ctrl'>
           <a onClick={this.selectLeft}
