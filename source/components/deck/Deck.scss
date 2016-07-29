@@ -18,12 +18,13 @@
     position: absolute;
     width: 100%;
     z-index: 3;
-    margin: 5px;
     bottom: 0px;
     right: 0px;
     background: $P800;
     display: flex;
     border-radius: $b-rad-default;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 
     .ctrl-btn {
       width: 40px;

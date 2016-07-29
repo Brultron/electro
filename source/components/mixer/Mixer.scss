@@ -5,24 +5,34 @@
 .mixer {
   position: absolute;
   bottom: 0px;
-  width: 97%;
-  height: 100px;
-  margin: 10px;
+  left: 0px;
+  width: 100%;
+  height: 150px;
   z-index: 3;
   background: $P500;
-  border-radius: $b-rad-default;
+  .mixer-select {
+    height: 50px;
+    > h1 {
+      margin: 0px;
+    }
+  }
 
   .mixer-ctrl {
     position: relative;
     bottom: 0px;
     width: inherit;
-    height: inherit;
+    height: 100px;
     display: flex;
+
+    .mixer-img {
+      height: inherit;
+      border-radius: 10000px;
+    }
 
     .pitch-bar {
       background-color: #ffffff;
       width: inherit;
-      height: inherit; 
+      height: inherit;
     }
 
     .pitch-handle {

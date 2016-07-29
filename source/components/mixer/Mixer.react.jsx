@@ -25,9 +25,16 @@ class Mixer extends React.Component {
     if(this.props.leftTrack){
       return (
         <img
-          className='thumbnail track-thumb track-thumb-left'
+          className='mixer-img'
           src={this.props.leftTrack.thumbnail}>
         </img>
+      );
+    }else{
+      return (
+          <img
+            className='mixer-img'
+            src='http://placekitten.com/300/300'>
+          </img>
       );
     }
   }
@@ -35,12 +42,19 @@ class Mixer extends React.Component {
   getRightTrackImg(){
     if(this.props.rightTrack){
       return (
-        <a onClick={this.toggleSelector}>
+        <img
+          className='mixer-img'
+          style={{float: 'right'}}
+          src={this.props.rightTrack.thumbnail}>
+        </img>
+      );
+    }else{
+    return (
           <img
-            className='thumbnail track-thumb track-thumb-right'
-            src={this.props.rightTrack.thumbnail}>
+            className='mixer-img'
+            style={{float: 'right'}}
+            src='http://placekitten.com/300/300'>
           </img>
-        </a>
       );
     }
   }
@@ -58,7 +72,8 @@ class Mixer extends React.Component {
   }
 
   toggleSelector(){
-    if(this.state.toggleStyle){
+    console.log('toggleSelector');
+    if(!this.state.toggleStyle){
       this.setState({toggleStyle: undefined})
     }else{
       this.setState({toggleStyle: {display: 'none'}});
@@ -85,6 +100,11 @@ class Mixer extends React.Component {
   render(){
     return (
       <div className='mixer'>
+        <div
+          style={this.state.toggleStyle}
+          className='mixer-select'>
+          <h1>selector</h1>
+        </div>
         <div className='mixer-ctrl'>
           <a onClick={this.selectLeft}
             style={{
