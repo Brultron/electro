@@ -9,7 +9,7 @@ class Mixer extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {toggleStyle: {display: 'none'}};
+    this.state = {toggleStyle: {display: 'none', float:'right'}};
     this.selectTrack = this.selectTrack.bind(this);
     this.selectRight = this.selectRight.bind(this);
     this.selectLeft = this.selectLeft.bind(this);
@@ -71,21 +71,21 @@ class Mixer extends React.Component {
     return arr;
   }
 
-  toggleSelector(){
-    if(this.state.toggleStyle){
-      this.setState({toggleStyle: undefined})
+  toggleSelector(float){
+    if(this.state.toggleStyle.display){
+      this.setState({toggleStyle : {display: undefined, float: float}});
     }else{
       this.setState({toggleStyle: {display: 'none'}});
     }
   }
 
   selectRight(k){
-    this.toggleSelector()
+    this.toggleSelector('right');
     this.setState({currentSelector: 'right'});
   }
 
   selectLeft(k){
-    this.toggleSelector()
+    this.toggleSelector('left');
     this.setState({currentSelector: 'left'});
   }
 

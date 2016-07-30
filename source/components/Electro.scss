@@ -1,6 +1,25 @@
 @import '../index';
-body {
-	 ::-webkit-input-placeholder {
-					color: #ffffff;
+.electro-container {
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+  bottom: 0px;
+	left: 0px;
+	margin-top: 5px;
+
+	.deck-container {
+		overflow-y: scroll;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		div.deck:last-child {
+			margin-bottom: 150px
+		}
 	}
+
+	::-webkit-input-placeholder {
+		color: #ffffff;
+	}
+
 }

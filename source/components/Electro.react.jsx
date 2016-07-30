@@ -46,9 +46,11 @@ class Electro extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='electro-container'>
         <Crate tracks={this.state.tracks}/>
-        {this.getDecks()}
+        <div className='deck-container'>
+          {this.getDecks()}
+        </div>
         <Mixer
           tracks={this.state.tracks}
           leftTrack={this.state.leftTrack}
