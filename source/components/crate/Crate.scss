@@ -45,4 +45,7 @@
   overflow-y: scroll;
   z-index: 4;
   background: $P100;
+  div.crate-item:last-child {
+    margin-bottom: 50px
+  }
 }
