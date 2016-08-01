@@ -30,9 +30,9 @@ class Item extends React.Component {
         <div
         style={background}
         className='img-div'></div>
-        <div className='item-title'>
+        <h1 className='item-title'>
           {this.props.track.title}
-        </div>
+        </h1>
           <a onClick={this.loadTrack}
             className='track-thumb'>
             <i className="fa fa-cloud-download fa-3x lv2_blur"></i>

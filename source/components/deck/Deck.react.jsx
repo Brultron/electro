@@ -101,7 +101,6 @@ class Deck extends React.Component {
     if(this.wavesurfer.isPlaying()) this.wavesurfer.playPause();
     TrackActions.removeTrack(this.props.track);
   }
-
   setControls(){
       if(this.props.track.ready){
 
@@ -156,6 +155,7 @@ class Deck extends React.Component {
             </div>
           </div>
           <div ref='deck' className='wave-display'></div>
+          <img src={this.props.track.thumbnail}></img>
           <a onClick={this.removeTrack} className='track-exit'>
             <i className="fa fa-times-circle fa-lg"></i>
           </a>
@@ -163,8 +163,13 @@ class Deck extends React.Component {
         );
       }else{
         return (
-          <div className='deck lv1_blur' style={{height: '128px'}}>
-            <h5>{this.props.track.title}</h5>
+          <div className='deck-loading lv1_blur'>
+            <h1>{this.props.track.title}</h1>
+            <div className="load-bar">
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
             <img src={this.props.track.thumbnail}></img>
           </div>
         );
