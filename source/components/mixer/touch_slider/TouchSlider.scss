@@ -4,6 +4,7 @@
   width: 100%;
   height: 100px;
   overflow-x: scroll;
+
   .touch-slider-inner{
     width: 200%;
     .left-bound {
@@ -20,4 +21,7 @@
     }
 
   }
+}
+.touch-slider::-webkit-scrollbar {
+  display: none;
 }
