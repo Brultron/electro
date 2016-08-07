@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import Selector from './selector/Selector.react.js';
+import TouchSlider from './touch_slider/TouchSlider.react.js';
 import TrackStore from '../../stores/Tracks.js';
 import TrackActions from '../../actions/Tracks.js';
 
@@ -103,7 +104,8 @@ class Mixer extends React.Component {
           {this.buildList()}
         </div>
         <div className='mixer-ctrl'>
-          <a onClick={this.selectLeft}
+          <a
+            onClick={this.selectLeft}
             style={{
               marginLeft: '0px' ,
               borderTopRightRadius: '5px',
@@ -111,19 +113,20 @@ class Mixer extends React.Component {
             }}>
             {this.getLeftTrackImg()}
           </a>
-          <ReactSlider
+          <TouchSlider
+            handleClassName='mixer-handle'
             min={0}
             max={100}
             value={this.props.crossfadeValue}
             onChange={this.crossfade}
-            handleClassName='pitch-handle'
-            className='pitch-bar'/>
-          <a onClick={this.selectRight}
+            className='mixer-bar'/>
+          <a
+            onClick={this.selectRight}
             style={{
-               marginRight: '0px',
-               borderTopLeftRadius: '5px',
-               borderBottomLeftRadius: '5px'
-             }}>
+              marginRight: '0px',
+              borderTopLeftRadius: '5px',
+              borderBottomLeftRadius: '5px'
+            }}>
             {this.getRightTrackImg()}
           </a>
         </div>

@@ -31,15 +31,11 @@
       object-fit: cover;
     }
 
-    .pitch-bar {
+    .mixer-bar {
       background-color: #ffffff;
-      width: inherit;
-      height: inherit;
     }
 
-    .pitch-handle {
-      width: 3%;
-      height: 100%;
+    .mixer-handle {
       background-color: $A200;
     }
 
