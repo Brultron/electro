@@ -25,6 +25,7 @@ class Deck extends React.Component {
     this.resetPitch = this.resetPitch.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.playPause = this.playPause.bind(this);
+    this.cueTrack = this.cueTrack.bind(this);
 
     this.state = {bpm: 0, playClass: 'fa fa-pause'};
     this.surferRendered = false;
@@ -44,7 +45,6 @@ class Deck extends React.Component {
         scrollParent: true,
         normalize: true,
         destination : this.props.track.root,
-        hideScrollbar: true,
         cursorWidth: 3
       });
       this.wavesurfer.loadDecodedBuffer(this.props.track.buffer);
@@ -102,6 +102,18 @@ class Deck extends React.Component {
     TrackActions.removeTrack(this.props.track);
   }
 
+  cueTrack(){
+    var sinkId = '037c91a056837cbc3c7e21d6464a82cc6226be76fb53a8682cc9479f4b053f30';
+    var c = AC.getContext();
+    var o = this.props.track.channel.gain;
+    var m = c.createMediaStreamDestination();
+    o.connect(m);
+    var audioElem = new Audio();
+    audioElem.src = URL.createObjectURL(m.stream);
+    audioElem.play();
+ 		audioElem.setSinkId(sinkId);
+  }
+
   setControls(){
       if(this.props.track.ready){
 
@@ -113,6 +125,7 @@ class Deck extends React.Component {
 
         return (
         <div className='deck lv1_blur'>
+          <a onClick={this.cueTrack}>CUE TRACK</a>
           <h1 className='track-title'>{this.props.track.title}</h1>
           <div className='controls-panel'>
             <div className='left-cntrls'>

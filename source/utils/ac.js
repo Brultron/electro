@@ -20,7 +20,6 @@ let buildChannel = function() {
   var crossfade = context.createGain();
   crossfade.gain.value = 0;
   channel.crossfade = crossfade;
-  crossfade.connect(analyser);
   crossfade.connect(context.destination);
 
   var gain = context.createGain();
@@ -80,6 +79,10 @@ class AC {
 	getContext() {
 		return context;
 	}
+
+  getCueDest(){
+    return context.createMediaStreamDestination();
+  }
 
 }
 
