@@ -103,15 +103,11 @@ class Deck extends React.Component {
   }
 
   cueTrack(){
-    var sinkId = '037c91a056837cbc3c7e21d6464a82cc6226be76fb53a8682cc9479f4b053f30';
-    var c = AC.getContext();
-    var o = this.props.track.channel.gain;
-    var m = c.createMediaStreamDestination();
-    o.connect(m);
-    var audioElem = new Audio();
-    audioElem.src = URL.createObjectURL(m.stream);
-    audioElem.play();
- 		audioElem.setSinkId(sinkId);
+    if(this.props.track.channel.cue.paused && this.props.track.channel.cue.duration > 0){
+      this.props.track.channel.cue.play();
+    }else{
+      this.props.track.channel.cue.pause();
+    }
   }
 
   setControls(){

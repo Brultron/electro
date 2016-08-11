@@ -7,6 +7,7 @@ let buildChannel = function() {
   var channel = {};
 
 
+  // METER VIS
   var uvmeter = context.createScriptProcessor(2048, 1, 1);
   channel.uvmeter = uvmeter;
   uvmeter.connect(context.destination);
@@ -17,16 +18,37 @@ let buildChannel = function() {
   analyser.fftSize = 512;
   analyser.connect(uvmeter);
 
+
+
+
+  // MAIN OUTPUT
+  var mainOut = context.createMediaStreamDestination();
+  var main = new Audio();
+  main.src = URL.createObjectURL(mainOut.stream);
+  main.play();
+  //TODO create menu opts to choose output;
+  main.setSinkId('037c91a056837cbc3c7e21d6464a82cc6226be76fb53a8682cc9479f4b053f30');
+  channel.main = main;
+
   var crossfade = context.createGain();
   crossfade.gain.value = 0;
   channel.crossfade = crossfade;
-  crossfade.connect(context.destination);
+  crossfade.connect(analyser);
+  crossfade.connect(mainOut);
+
+  //CUE OUTPUT
+  var cueOut = context.createMediaStreamDestination();
+  var cue = new Audio();
+  cue.src = URL.createObjectURL(cueOut.stream);
+  cue.setSinkId('default');
+  channel.cue = cue;
 
   var gain = context.createGain();
   gain.gain.value = 1;
   channel.gain = gain;
   gain.connect(analyser);
   gain.connect(crossfade);
+  gain.connect(cueOut);
 
 
 	var high = context.createBiquadFilter();
@@ -79,10 +101,6 @@ class AC {
 	getContext() {
 		return context;
 	}
-
-  getCueDest(){
-    return context.createMediaStreamDestination();
-  }
 
 }
 
