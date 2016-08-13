@@ -27,7 +27,7 @@ class Deck extends React.Component {
     this.playPause = this.playPause.bind(this);
     this.cueTrack = this.cueTrack.bind(this);
 
-    this.state = {bpm: 0, playClass: 'fa fa-pause'};
+    this.state = {bpm: 0, playClass: 'fa fa-play'};
     this.surferRendered = false;
 
   }
@@ -91,9 +91,9 @@ class Deck extends React.Component {
   playPause(){
     this.wavesurfer.playPause();
     if(this.wavesurfer.isPlaying()){
-      this.setState({playClass: 'fa fa-play'});
-    }else{
       this.setState({playClass: 'fa fa-pause'});
+    }else{
+      this.setState({playClass: 'fa fa-play'});
     }
   }
 
