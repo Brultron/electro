@@ -4,18 +4,23 @@ import concat from 'array-buffer-concat';
 import TrackActions from '../actions/Tracks.js';
 import TrackStore from '../stores/Tracks.js';
 
-//TODO should reuse buffers if they are there
-const API_KEY = 'AIzaSyBeCNyNTk9jpgXcPoColnQt-ZdqC802zcY';
+let apiKey = TrackStore.getYtApiKey();
 const SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 const DOWNLOAD_URL = 'https://www.youtube.com/watch?v=';
 let params = {
 	part: 'snippet',
 	kind: 'youtube#video',
-	key: API_KEY,
+	key: apiKey,
 	maxResults: 10
 }
 
 class Yt {
+
+	constructor(){
+		TrackStore.listen(() => {
+			apiKey = TrackStore.getYtApiKey()
+		});
+	}
 
 	download(track) {
 		var stream = yt(track.url);

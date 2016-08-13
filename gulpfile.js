@@ -12,9 +12,9 @@ gulp.task('app', function() {
 		.pipe(gulp.dest('build/'));
 	gulp.src('source/index.js')
 		.pipe(gulp.dest('build/'));
-	gulp.src('source/search.html')
+	gulp.src('source/settings.html')
 		.pipe(gulp.dest('build/'));
-	gulp.src('source/search.js')
+	gulp.src('source/settings.js')
 		.pipe(gulp.dest('build/'));
 });
 

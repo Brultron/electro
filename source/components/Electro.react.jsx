@@ -13,7 +13,6 @@ class Electro extends React.Component {
     super(props);
     this.state = {tracks: TrackStore.getTracks()};
     this.onChange = this.onChange.bind(this);
-
   }
 
   componentDidMount(){

@@ -5,6 +5,10 @@ let tracks = {};
 let rightTrack;
 let leftTrack;
 let crossfadeValue = 50;
+let mainOutput;
+let cueOutput;
+let ytApiKey = 'AIzaSyBeCNyNTk9jpgXcPoColnQt-ZdqC802zcY';
+let devices = [];
 
 class Tracks extends BaseStore {
 
@@ -26,6 +30,22 @@ class Tracks extends BaseStore {
 
 	getCrossfadeValue() {
 		return crossfadeValue;
+	}
+
+	getMainOutput(){
+		return mainOutput;
+	}
+
+	getCueOutput(){
+		return cueOutput;
+	}
+
+	getYtApiKey(){
+		return ytApiKey;
+	}
+
+	getDevices(){
+		return devices;
 	}
 
 }
@@ -75,6 +95,22 @@ instance.dispatchToken = Dispatcher.register(action => {
 		case 'set_crossfade_value':
 			crossfadeValue = action.value;
       setCrossfadeValue();
+			instance.emitChange();
+			break;
+		case 'set_main_output':
+			mainOutput = action.deviceId;
+			instance.emitChange();
+			break;
+		case 'set_cue_output':
+			cueOutput = action.deviceId;
+			instance.emitChange();
+			break;
+		case 'set_devices':
+			devices = action.devices;
+			instance.emitChange();
+			break;
+		case 'set_yt_api_key':
+			ytApiKey = action.key;
 			instance.emitChange();
 			break;
 	}

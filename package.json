@@ -36,7 +36,6 @@
     "electron-prebuilt": "^1.2.7",
     "flux": "^2.1.1",
     "font-awesome": "^4.6.3",
-    "foundation-sites": "^6.1.1",
     "jquery-knob": "^1.2.11",
     "knob": "^0.3.0",
     "material-icons": "^0.1.0",
