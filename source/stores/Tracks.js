@@ -1,13 +1,15 @@
+import Config from 'configstore';
 import BaseStore from './BaseStore.js';
 import Dispatcher from '../dispatcher/Dispatcher.js';
 
+let conf = new Config('electro');
 let tracks = {};
 let rightTrack;
 let leftTrack;
 let crossfadeValue = 50;
-let mainOutput;
-let cueOutput;
-let ytApiKey = 'AIzaSyBeCNyNTk9jpgXcPoColnQt-ZdqC802zcY';
+let mainOutput = conf.get('main_output');
+let cueOutput = conf.get('cue_output');
+let ytApiKey = conf.get('yt_api_key');
 let devices = [];
 
 class Tracks extends BaseStore {
@@ -32,19 +34,19 @@ class Tracks extends BaseStore {
 		return crossfadeValue;
 	}
 
-	getMainOutput(){
+	getMainOutput() {
 		return mainOutput;
 	}
 
-	getCueOutput(){
+	getCueOutput() {
 		return cueOutput;
 	}
 
-	getYtApiKey(){
+	getYtApiKey() {
 		return ytApiKey;
 	}
 
-	getDevices(){
+	getDevices() {
 		return devices;
 	}
 
@@ -69,10 +71,10 @@ instance.dispatchToken = Dispatcher.register(action => {
 			break;
 		case 'remove_track':
 			delete tracks[action.track.id];
-      if(rightTrack && action.track.id === rightTrack.id)
-        rightTrack = undefined;
-      if(leftTrack && action.track.id === leftTrack.id)
-        leftTrack = undefined;
+			if (rightTrack && action.track.id === rightTrack.id)
+				rightTrack = undefined;
+			if (leftTrack && action.track.id === leftTrack.id)
+				leftTrack = undefined;
 			instance.emitChange();
 			break;
 		case 'clear_search':
@@ -84,25 +86,27 @@ instance.dispatchToken = Dispatcher.register(action => {
 			break;
 		case 'set_right_track':
 			rightTrack = action.track;
-      setCrossfadeValue();
+			setCrossfadeValue();
 			instance.emitChange();
 			break;
 		case 'set_left_track':
 			leftTrack = action.track;
-      setCrossfadeValue();
+			setCrossfadeValue();
 			instance.emitChange();
 			break;
 		case 'set_crossfade_value':
 			crossfadeValue = action.value;
-      setCrossfadeValue();
+			setCrossfadeValue();
 			instance.emitChange();
 			break;
 		case 'set_main_output':
 			mainOutput = action.deviceId;
+			conf.set('main_output', mainOutput);
 			instance.emitChange();
 			break;
 		case 'set_cue_output':
 			cueOutput = action.deviceId;
+			conf.set('cue_output', mainOutput);
 			instance.emitChange();
 			break;
 		case 'set_devices':
@@ -111,6 +115,7 @@ instance.dispatchToken = Dispatcher.register(action => {
 			break;
 		case 'set_yt_api_key':
 			ytApiKey = action.key;
+			conf.set('yt_api_key', ytApiKey);
 			instance.emitChange();
 			break;
 	}

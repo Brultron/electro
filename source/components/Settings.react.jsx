@@ -13,6 +13,7 @@ class Settings extends React.Component {
 		this.state = {
 			devices: TrackStore.getDevices()
 		};
+
 		loadDevices();
 	}
 
@@ -49,7 +50,7 @@ class Settings extends React.Component {
 					<h1>Settings</h1>
 				</div>
 				<div>
-					<input onKeyUp={this.setYtApiKey} value={this.state.ytApiKey}/>
+					<input  type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
 					<label>YouTube API key</label>
 				</div>
 				<label>Main Output</label>
