@@ -17,6 +17,9 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
 	Menu.setApplicationMenu(menu);
-	var win = new BrowserWindow();
+	var win = new BrowserWindow({
+		'width': 1000,
+		'height': 750
+	});
 	win.loadURL('file://' + __dirname + '/index.html');
 });

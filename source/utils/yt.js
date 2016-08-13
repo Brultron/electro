@@ -16,7 +16,7 @@ let params = {
 
 class Yt {
 
-	constructor(){
+	constructor() {
 		TrackStore.listen(() => {
 			apiKey = TrackStore.getYtApiKey()
 		});

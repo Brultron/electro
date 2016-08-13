@@ -121,7 +121,7 @@ class Deck extends React.Component {
 
         return (
         <div className='deck lv1_blur'>
-          <a onClick={this.cueTrack}>CUE TRACK</a>
+          <a className='cue-track' onClick={this.cueTrack}>CUE TRACK</a>
           <h1 className='track-title'>{this.props.track.title}</h1>
           <div className='controls-panel'>
             <div className='left-cntrls'>
@@ -174,7 +174,8 @@ class Deck extends React.Component {
         return (
           <div className='deck lv1_blur' style={{height: '128px'}}>
             <h5>{this.props.track.title}</h5>
-            <img src={this.props.track.thumbnail}></img>
+            <img className='yt-img' src={this.props.track.thumbnail}></img>
+            <img src='images/balls.svg' />
           </div>
         );
       }
