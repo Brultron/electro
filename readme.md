@@ -4,7 +4,7 @@ Mix music live from the internets
 
 ## Dev
 ```bash
-brew install ffmeg
+brew install ffmpeg
 ```
 
 ```bash
