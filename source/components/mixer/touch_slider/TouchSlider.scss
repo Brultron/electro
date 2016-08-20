@@ -17,21 +17,3 @@
 		}
 	}
 }
-.touch-slider::-webkit-scrollbar {
-	height: 100%;
-}
-.touch-slider::-webkit-scrollbar-track-piece {
-	background-color: white;
-}
-.touch-slider::-webkit-scrollbar-track {
-	background: rgb(0,0,0);
-	border: 4px solid transparent;
-	background-clip: content-box;
-}
-.touch-slider::-webkit-scrollbar-thumb {
-	background-color: #818B99;
-border-right: 100px solid transparent;
-border-left: 100px solid transparent;
-border-radius: 9px;
-background-clip: content-box;
-}

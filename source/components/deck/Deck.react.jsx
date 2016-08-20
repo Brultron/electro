@@ -92,9 +92,10 @@ class Deck extends React.Component {
     this.wavesurfer.playPause();
     if(this.wavesurfer.isPlaying()){
       this.setState({playClass: 'fa fa-pause'});
-      this.track.channel.main.pause();
+      this.props.track.channel.main.play();
     }else{
       this.setState({playClass: 'fa fa-play'});
+      this.props.track.channel.main.pause();
     }
   }
 

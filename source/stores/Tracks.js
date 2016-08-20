@@ -53,11 +53,15 @@ class Tracks extends BaseStore {
 }
 
 function setCrossfadeValue() {
+
+	var c = crossfadeValue / 100;
+	var l = Math.cos(c * 0.5 * Math.PI);
+ 	var r = Math.cos((1.0 - c) * 0.5*Math.PI);
 	if (rightTrack) {
-		rightTrack.channel.crossfade.gain.value = crossfadeValue / 100;
+		rightTrack.channel.crossfade.gain.value = r;
 	}
 	if (leftTrack) {
-		leftTrack.channel.crossfade.gain.value = Math.abs(100 - crossfadeValue) / 100;
+		leftTrack.channel.crossfade.gain.value = l;
 	}
 }
 
@@ -106,7 +110,7 @@ instance.dispatchToken = Dispatcher.register(action => {
 			break;
 		case 'set_cue_output':
 			cueOutput = action.deviceId;
-			conf.set('cue_output', mainOutput);
+			conf.set('cue_output', cueOutput);
 			instance.emitChange();
 			break;
 		case 'set_devices':
