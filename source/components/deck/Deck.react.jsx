@@ -27,7 +27,7 @@ class Deck extends React.Component {
     this.playPause = this.playPause.bind(this);
     this.cueTrack = this.cueTrack.bind(this);
 
-    this.state = {bpm: 0, playClass: 'fa fa-play'};
+    this.state = {bpm: 0, playClass: 'fa fa-play', cueStyle: {color: 'white'}};
     this.surferRendered = false;
 
   }
@@ -107,8 +107,10 @@ class Deck extends React.Component {
   cueTrack(){
     if(this.props.track.channel.cue.paused && this.props.track.channel.cue.duration > 0){
       this.props.track.channel.cue.play();
+      this.setState({cueStyle: {color: '#f50057'}});
     }else{
       this.props.track.channel.cue.pause();
+      this.setState({cueStyle: {color: 'white'}});
     }
   }
 
@@ -123,12 +125,14 @@ class Deck extends React.Component {
 
         return (
         <div className='deck lv1_blur'>
-          <a className='cue-track' onClick={this.cueTrack}>CUE TRACK</a>
           <h1 className='track-title'>{this.props.track.title}</h1>
           <div className='controls-panel'>
             <div className='left-cntrls'>
               <a onClick={this.playPause} className='ctrl-btn'>
                 <i className={this.state.playClass}></i>
+              </a>
+              <a onClick={this.cueTrack} className='ctrl-btn'>
+                <i className='fa fa-headphones' style={this.state.cueStyle}></i>
               </a>
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
