@@ -2,6 +2,9 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
+	sourcemaps = require('gulp-sourcemaps'),
+	rename = require('gulp-rename'),
+	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
 	babel = require('gulp-babel'),
 	electron = require('electron-prebuilt'),
@@ -69,8 +72,23 @@ gulp.task('watch', function() {
 	gulp.watch(['source/index.html'], ['app']);
 });
 
+gulp.task('build-js', function() {
+	return gulp.src('source/**/*.js')
+		.pipe(sourcemaps.init())
+		.pipe(concat('bundle.min.js'))
+	//August TODO: For some reason uglify breaks it..	
+	// 	.pipe(uglify({
+	// 		compress: {
+	// 			negate_iife: false
+	// 		}
+	// 	}))
+	// .pipe(rename('app.min.js'))
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest('build/'));
+});
 
-gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
+
+gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel', 'build-js'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
