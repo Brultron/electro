@@ -24,7 +24,8 @@ gulp.task('app', function() {
 gulp.task('babel', function() {
 	return gulp.src(['source/**/*.js', 'source/**/*.jsx'])
 		.pipe(babel({
-			presets: ['es2015', 'react']
+			presets: ['es2015', 'react'],
+			sourceMaps: "inline" 
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -72,23 +73,7 @@ gulp.task('watch', function() {
 	gulp.watch(['source/index.html'], ['app']);
 });
 
-gulp.task('build-js', function() {
-	return gulp.src('source/**/*.js')
-		.pipe(sourcemaps.init())
-		.pipe(concat('bundle.min.js'))
-	//August TODO: For some reason uglify breaks it..	
-	// 	.pipe(uglify({
-	// 		compress: {
-	// 			negate_iife: false
-	// 		}
-	// 	}))
-	// .pipe(rename('app.min.js'))
-	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest('build/'));
-});
-
-
-gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel', 'build-js'], function() {
+gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel'], function() {
 	childProcess.spawn(electron, ['build/'], {
 		stdio: 'inherit'
 	});
