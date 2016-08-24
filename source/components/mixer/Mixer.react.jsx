@@ -34,7 +34,7 @@ class Mixer extends React.Component {
       return (
           <img
             className='mixer-img'
-            src='http://placekitten.com/300/300'>
+            src='icons/mipmap-xxxhdpi/ic_launcher.png'>
           </img>
       );
     }
@@ -54,7 +54,7 @@ class Mixer extends React.Component {
           <img
             className='mixer-img'
             style={{float: 'right'}}
-            src='http://placekitten.com/300/300'>
+            src='icons/mipmap-xxxhdpi/ic_launcher.png'>
           </img>
       );
     }
