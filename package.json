@@ -17,7 +17,7 @@
   "scripts": {
     "test": "xo",
     "start": "gulp run",
-    "build": "electron-packager . $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
+    "build": "electron-packager build $npm_package_productName --out=dist --ignore='^/dist$' --prune --asar --all --version=$npm_package_electronVersion"
   },
   "files": [
     "index.js",
@@ -31,7 +31,7 @@
     "array-buffer-concat": "^1.0.1",
     "browserify": "^12.0.2",
     "configstore": "^2.0.0",
-    "electron": "*",
+    "electron": "^1.0.0",
     "electron-debug": "^1.0.1",
     "electron-packager": "^7.3.0",
     "electron-prebuilt": "^1.2.7",
