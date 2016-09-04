@@ -52,9 +52,9 @@ class Deck extends React.Component {
     this.wavesurfer.playPause();
     if(this.wavesurfer.isPlaying()){
       this.props.track.channel.main.play();
-      TrackActions.updateTrackNew(this.props.track.id, {playing : true});
+      TrackActions.updateTrack(this.props.track.id, {playing : true});
     }else{
-      TrackActions.updateTrackNew(this.props.track.id, {playing : false});
+      TrackActions.updateTrack(this.props.track.id, {playing : false});
       this.props.track.channel.main.pause();
     }
   }
@@ -67,10 +67,10 @@ class Deck extends React.Component {
   cueTrack(){
     if(this.props.track.channel.cue.paused && this.props.track.channel.cue.duration > 0){
       this.props.track.channel.cue.play();
-      TrackActions.updateTrackNew(this.props.track.id, {cued : true});
+      TrackActions.updateTrack(this.props.track.id, {cued : true});
     }else{
       this.props.track.channel.cue.pause();
-      TrackActions.updateTrackNew(this.props.track.id, {cued : false});
+      TrackActions.updateTrack(this.props.track.id, {cued : false});
     }
   }
 

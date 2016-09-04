@@ -10,8 +10,6 @@ class Pitch extends React.Component {
 
   constructor(props){
     super(props)
-
-    this.pitch = 1;
     this.setPitch = this.setPitch.bind(this);
     this.pushUp = this.pushUp.bind(this);
     this.pushDown = this.pushDown.bind(this);
@@ -20,39 +18,24 @@ class Pitch extends React.Component {
   }
 
   setPitch(value) {
-    this.pitch = 1 + (value / 1000);
-    this.props.setPlaybackRate(this.pitch);
-    this.props.track.bpm = this.props.track.tappedBpm * this.pitch;
-    TrackActions.updateTrack(this.props.track);
+    let pitch = 1 + (value / 1000);
+    this.props.setPlaybackRate(pitch);
+    let bpm = this.props.track.tappedBpm * pitch;
+    TrackActions.updateTrack(this.props.track.id, {bpm, pitch});
   }
-  //TODO push bpm adjustment out
+
   pushDown(){
-    this.oldPitch = this.pitch;
-    this.props.setPlaybackRate(this.pitch * 0.95);
-    this.bumpBpm(0.95);
+    this.oldPitch = this.props.track.pitch;
+    this.props.setPlaybackRate(this.props.track.pitch * 0.95);
   }
 
   pushUp(){
-    this.oldPitch = this.pitch;
-    this.props.setPlaybackRate(this.pitch * 1.05);
-    this.bumpBpm(1.05);
+    this.oldPitch = this.props.track.pitch;
+    this.props.setPlaybackRate(this.props.track.pitch * 1.05);
   }
 
   resetPitch(){
     this.props.setPlaybackRate(this.oldPitch);
-    this.bumpBpm();
-  }
-
-  bumpBpm(amt){
-    if(this.props.track.bpm){
-      if(amt){
-        tempBPM = this.props.track.bpm;
-        this.props.track.bpm = this.props.track.bpm * amt;
-      }else{
-        this.props.track.bpm = tempBPM;
-      }
-      TrackActions.updateTrack(this.props.track);
-    }
   }
 
   render(){

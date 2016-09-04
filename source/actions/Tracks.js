@@ -20,14 +20,14 @@ class Tracks {
 		});
 	}
 
-	updateTrack(track) {
+	createTrack(track) {
 		Dispatcher.dispatch({
-			type: 'update_track',
+			type: 'create_track',
 			track: track
 		});
 	}
 
-	updateTrackNew(id, props) {
+	updateTrack(id, props) {
 		Dispatcher.dispatch({
 			type: 'update_track_new',
 			id,

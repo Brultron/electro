@@ -36,7 +36,9 @@ class Yt {
 				track.playing = false;
 				track.cued = false;
 				track.bpm = 0;
-				TrackActions.updateTrack(track);
+				track.movingBpm = [];
+				track.pitch = 1;
+				TrackActions.createTrack(track);
 			});
 		});
 	}

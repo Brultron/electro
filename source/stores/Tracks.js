@@ -73,7 +73,7 @@ const instance = new Tracks();
 
 instance.dispatchToken = Dispatcher.register(action => {
 	switch (action.type) {
-		case 'update_track':
+		case 'create_track':
 			tracks[action.track.id] = action.track;
 			instance.emitChange();
 			break;

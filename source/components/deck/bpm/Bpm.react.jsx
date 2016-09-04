@@ -3,7 +3,6 @@ import React from 'react';
 import TrackActions from '../../../actions/Tracks.js';
 
 let time;
-let movingBpm = [];
 
 class Bpm extends React.Component {
 
@@ -13,13 +12,14 @@ class Bpm extends React.Component {
   }
 
   setBPM(e){
-    var incoming = new Date().getTime()
+    let incoming = new Date().getTime()
+    let movingBpm = this.props.track.movingBpm;
     if(time){
       movingBpm.push((1000 * 60) / (incoming - time));
-      this.props.track.bpm = movingBpm.reduce((a,b) => a + b) / movingBpm.length;
-      this.props.track.tappedBpm = this.props.track.bpm;
+      let tappedBpm = movingBpm.reduce((a,b) => a + b) / movingBpm.length;
+      let bpm = tappedBpm;
       if(movingBpm.length > 5 ) movingBpm = movingBpm.slice(1);
-      TrackActions.updateTrack(this.props.track);
+      TrackActions.updateTrack(this.props.track.id,{bpm, movingBpm, tappedBpm});
     }
 
     time = incoming;
