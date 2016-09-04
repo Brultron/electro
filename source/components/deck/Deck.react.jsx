@@ -3,14 +3,12 @@
 import React from 'react';
 import ReactSlider from 'react-slider';
 import TrackActions from '../../actions/Tracks.js';
-import AC from '../../utils/ac.js'
-import EQ from '../eq/Eq.react.js'
-import BPM from './bpm/Bpm.react.js'
-import UVMeter from '../meters/UVMeter.react.js'
+import AC from '../../utils/ac.js';
+import EQ from '../eq/Eq.react.js';
+import BPM from './bpm/Bpm.react.js';
+import Pitch from './pitch/Pitch.react.js';
+import UVMeter from '../meters/UVMeter.react.js';
 
-let context;
-let source;
-let position = 0;
 let tempBPM;
 
 class Deck extends React.Component {
@@ -18,11 +16,7 @@ class Deck extends React.Component {
   constructor(props){
     super(props)
 
-    this.pitch = 1;
-    this.setPitch = this.setPitch.bind(this);
-    this.pushUp = this.pushUp.bind(this);
-    this.pushDown = this.pushDown.bind(this);
-    this.resetPitch = this.resetPitch.bind(this);
+    this.setPlaybackRate = this.setPlaybackRate.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.playPause = this.playPause.bind(this);
     this.cueTrack = this.cueTrack.bind(this);
@@ -52,40 +46,8 @@ class Deck extends React.Component {
     }
   }
 
-  setPitch(value) {
-    this.pitch = 1 + (value / 1000);
-    this.wavesurfer.setPlaybackRate(this.pitch);
-    this.props.track.bpm = this.props.track.tappedBpm * this.pitch;
-    TrackActions.updateTrack(this.props.track);
-  }
-  //TODO push bpm adjustment out
-  pushDown(){
-    this.oldPitch = this.pitch;
-    this.wavesurfer.setPlaybackRate(this.pitch * 0.95);
-    this.bumpBpm(0.95);
-  }
-
-  pushUp(){
-    this.oldPitch = this.pitch;
-    this.wavesurfer.setPlaybackRate(this.pitch * 1.05);
-    this.bumpBpm(1.05);
-  }
-
-  resetPitch(){
-    this.wavesurfer.setPlaybackRate(this.oldPitch);
-    this.bumpBpm();
-  }
-
-  bumpBpm(amt){
-    if(this.props.track.bpm){
-      if(amt){
-        tempBPM = this.props.track.bpm;
-        this.props.track.bpm = this.props.track.bpm * amt;
-      }else{
-        this.props.track.bpm = tempBPM;
-      }
-      TrackActions.updateTrack(this.props.track);
-    }
+  setPlaybackRate(pitch){
+    this.wavesurfer.setPlaybackRate(pitch);
   }
 
   playPause(){
@@ -137,38 +99,8 @@ class Deck extends React.Component {
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>
             </div>
-             <UVMeter track={this.props.track} />
-            <div className='pitch-cntrl'>
-              <a
-                 className='pitch-bump ctrl-btn'
-                 style={{
-                    marginRight: '0px',
-                    borderTopLeftRadius: '5px',
-                    borderBottomLeftRadius: '5px'
-                  }}
-                 onMouseDown={this.pushDown}
-                 onMouseUp={this.resetPitch}>
-                <i className='fa fa-minus'></i>
-              </a>
-
-              <ReactSlider
-                handleClassName={'pitch-handel'}
-                className={'pitch-bar'}
-                max={150}
-                min={-150}
-                onChange={this.setPitch}/>
-              <a
-                className='pitch-bump ctrl-btn'
-                style={{
-                  marginLeft: '0px' ,
-                  borderTopRightRadius: '5px',
-                  borderBottomRightRadius: '5px'
-                }}
-                onMouseDown={this.pushUp}
-                onMouseUp={this.resetPitch}>
-                <i className='fa fa-plus'></i>
-              </a>
-            </div>
+            <UVMeter track={this.props.track} />
+            <Pitch track={this.props.track} setPlaybackRate={this.setPlaybackRate} />
           </div>
           <div ref='deck' className='wave-display'></div>
           <a onClick={this.removeTrack} className='track-exit'>
