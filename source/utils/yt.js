@@ -33,6 +33,9 @@ class Yt {
 		stream.on('end', (data) => {
 			ac.createSource(master, track, (track) => {
 				track.ready = true;
+				track.playing = false;
+				track.cued = false;
+				track.bpm = 0;
 				TrackActions.updateTrack(track);
 			});
 		});

@@ -20,8 +20,6 @@ class Deck extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
     this.playPause = this.playPause.bind(this);
     this.cueTrack = this.cueTrack.bind(this);
-
-    this.state = {bpm: 0, playClass: 'fa fa-play', cueStyle: {color: 'white'}};
     this.surferRendered = false;
 
   }
@@ -53,10 +51,10 @@ class Deck extends React.Component {
   playPause(){
     this.wavesurfer.playPause();
     if(this.wavesurfer.isPlaying()){
-      this.setState({playClass: 'fa fa-pause'});
       this.props.track.channel.main.play();
+      TrackActions.updateTrackNew(this.props.track.id, {playing : true});
     }else{
-      this.setState({playClass: 'fa fa-play'});
+      TrackActions.updateTrackNew(this.props.track.id, {playing : false});
       this.props.track.channel.main.pause();
     }
   }
@@ -69,10 +67,10 @@ class Deck extends React.Component {
   cueTrack(){
     if(this.props.track.channel.cue.paused && this.props.track.channel.cue.duration > 0){
       this.props.track.channel.cue.play();
-      this.setState({cueStyle: {color: '#f50057'}});
+      TrackActions.updateTrackNew(this.props.track.id, {cued : true});
     }else{
       this.props.track.channel.cue.pause();
-      this.setState({cueStyle: {color: 'white'}});
+      TrackActions.updateTrackNew(this.props.track.id, {cued : false});
     }
   }
 
@@ -91,10 +89,10 @@ class Deck extends React.Component {
           <div className='controls-panel'>
             <div className='left-cntrls'>
               <a onClick={this.playPause} className='ctrl-btn'>
-                <i className={this.state.playClass}></i>
+                <i className={this.props.track.playing? 'fa fa-pause' : 'fa fa-play'}></i>
               </a>
               <a onClick={this.cueTrack} className='ctrl-btn'>
-                <i className='fa fa-headphones' style={this.state.cueStyle}></i>
+                <i className='fa fa-headphones' style={this.props.track.cued? {color: '#f50057'} : {color: 'white'}}></i>
               </a>
               <BPM track={this.props.track}/>
               <EQ track={this.props.track}/>

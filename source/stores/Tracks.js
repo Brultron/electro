@@ -65,6 +65,10 @@ function setCrossfadeValue() {
 	}
 }
 
+function updateTrack(id, props){
+	Object.assign(tracks[id], props);
+}
+
 const instance = new Tracks();
 
 instance.dispatchToken = Dispatcher.register(action => {
@@ -73,6 +77,12 @@ instance.dispatchToken = Dispatcher.register(action => {
 			tracks[action.track.id] = action.track;
 			instance.emitChange();
 			break;
+
+		case 'update_track_new':
+			updateTrack(action.id, action.props);
+			instance.emitChange();
+			break;
+
 		case 'remove_track':
 			delete tracks[action.track.id];
 			if (rightTrack && action.track.id === rightTrack.id)
@@ -81,6 +91,7 @@ instance.dispatchToken = Dispatcher.register(action => {
 				leftTrack = undefined;
 			instance.emitChange();
 			break;
+
 		case 'clear_search':
 			for (let key in tracks) {
 				if (tracks[key].search && !tracks[key].ready) {
@@ -88,35 +99,42 @@ instance.dispatchToken = Dispatcher.register(action => {
 				}
 			}
 			break;
+
 		case 'set_right_track':
 			rightTrack = action.track;
 			setCrossfadeValue();
 			instance.emitChange();
 			break;
+
 		case 'set_left_track':
 			leftTrack = action.track;
 			setCrossfadeValue();
 			instance.emitChange();
 			break;
+
 		case 'set_crossfade_value':
 			crossfadeValue = action.value;
 			setCrossfadeValue();
 			instance.emitChange();
 			break;
+
 		case 'set_main_output':
 			mainOutput = action.deviceId;
 			conf.set('main_output', mainOutput);
 			instance.emitChange();
 			break;
+
 		case 'set_cue_output':
 			cueOutput = action.deviceId;
 			conf.set('cue_output', cueOutput);
 			instance.emitChange();
 			break;
+
 		case 'set_devices':
 			devices = action.devices;
 			instance.emitChange();
 			break;
+
 		case 'set_yt_api_key':
 			ytApiKey = action.key;
 			conf.set('yt_api_key', ytApiKey);

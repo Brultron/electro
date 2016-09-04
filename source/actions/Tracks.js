@@ -27,6 +27,14 @@ class Tracks {
 		});
 	}
 
+	updateTrackNew(id, props) {
+		Dispatcher.dispatch({
+			type: 'update_track_new',
+			id,
+ 			props,
+		});
+	}
+
 	removeTrack(track) {
 		Dispatcher.dispatch({
 			type: 'remove_track',
