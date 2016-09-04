@@ -42,7 +42,7 @@ class Tracks {
 	}
 
 	getNextTracks() {
-		yt.getNext();
+		yt.search();
 	}
 
 	setRightTrack(track) {

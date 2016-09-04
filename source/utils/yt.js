@@ -39,8 +39,12 @@ class Yt {
 	}
 
 	search(q) {
-		params.q = q;
-		params.pageToken = undefined;
+
+		if (q) {
+			params.q = q;
+			params.pageToken = undefined;
+		}
+
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
 			for (let t of resp.items) {
@@ -56,26 +60,6 @@ class Yt {
 			}
 		});
 	}
-
-	getNext() {
-		$.get(SEARCH_URL, params).then((resp) => {
-			params.pageToken = resp.nextPageToken;
-			for (let t of resp.items) {
-				let track = {
-					id: t.id.videoId,
-					url: DOWNLOAD_URL + t.id.videoId,
-					title: t.snippet.title,
-					description: t.snippet.description,
-					thumbnail: t.snippet.thumbnails.high.url,
-					search: true
-				};
-				TrackActions.updateTrack(track)
-			}
-			$('.track-thumb').removeClass('loading-spin');
-		});
-
-	}
-
 }
 
 let instance = new Yt();

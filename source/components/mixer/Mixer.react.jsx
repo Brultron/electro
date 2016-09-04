@@ -65,7 +65,7 @@ class Mixer extends React.Component {
     for(var k in this.props.tracks){
       if(this.props.tracks[k].ready && !this.props.tracks[k].removed){
         arr.push(
-          <Selector track={this.props.tracks[k]} onSelect={this.selectTrack} currentSelector={this.state.currentSelector} />
+          <Selector key={this.props.tracks[k].id} track={this.props.tracks[k]} onSelect={this.selectTrack} currentSelector={this.state.currentSelector} />
         )
       }
     }
