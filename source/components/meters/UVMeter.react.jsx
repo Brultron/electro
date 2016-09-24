@@ -15,7 +15,7 @@ class UVMeter extends React.Component {
 			var array = new Uint8Array(this.props.track.channel.analyser.frequencyBinCount);
 			this.props.track.channel.analyser.getByteFrequencyData(array);
 			canvas.clearRect(0, 0, 1000, 700);
-			canvas.fillStyle = '#01579c';
+			canvas.fillStyle = '#81d4fa';
 			var average = this.getAvg(array);
 			canvas.fillRect(0, 0, average * 2, 400);
 		};
