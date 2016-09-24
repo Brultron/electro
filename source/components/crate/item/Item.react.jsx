@@ -12,7 +12,6 @@ class Item extends React.Component {
 
 
   loadTrack(){
-    this.props.track.search = false;
     TrackActions.addTrack(this.props.track);
     this.props.onToggle();
   }
