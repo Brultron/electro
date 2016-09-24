@@ -8,6 +8,7 @@ import EQ from '../eq/Eq.react.js';
 import BPM from './bpm/Bpm.react.js';
 import Pitch from './pitch/Pitch.react.js';
 import UVMeter from '../meters/UVMeter.react.js';
+import Loading from './loading/Loading.react.js';
 
 let tempBPM;
 
@@ -108,11 +109,7 @@ class Deck extends React.Component {
         );
       }else{
         return (
-          <div className='deck lv1_blur' style={{height: '128px'}}>
-            <h5>{this.props.track.title}</h5>
-            <img className='yt-img' src={this.props.track.thumbnail}></img>
-            <img src='images/balls.svg' />
-          </div>
+          <Loading track={this.props.track}/>
         );
       }
   }

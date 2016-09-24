@@ -1,0 +1,60 @@
+@import '../../../index';
+.loading {
+	height: 50px;
+  background: $P500;
+  position: relative;
+  margin: 5px;
+
+  h2 {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    z-index: 101;
+    margin-left: 5px;
+  }
+
+	.load-bar {
+		width: 100%;
+		background-color: #fdba2c;
+    border-radius: $b-rad-default;
+	}
+
+	.bar {
+		position: absolute;
+		height: 100%;
+		left: 50%;
+		text-align: center;
+    border-radius: $b-rad-default;
+	}
+
+	.bar:nth-child(1) {
+		background-color: $P900;
+		animation: loading 3s linear infinite;
+    border-radius: $b-rad-default;
+	}
+	.bar:nth-child(2) {
+		background-color: $P800;
+		animation: loading 3s linear 1s infinite;
+    border-radius: $b-rad-default;
+	}
+	.bar:nth-child(3) {
+		background-color: $P700;
+		animation: loading 3s linear 2s infinite;
+    border-radius: $b-rad-default;
+	}
+	@keyframes loading {
+		from {
+			left: 50%;
+			width: 0;
+			z-index: 100;
+		}
+		33.3333% {
+			left: 0;
+			width: 100%;
+			z-index: 10;
+		}
+		to {
+			left: 0;
+			width: 100%;
+		}
+	}
+}

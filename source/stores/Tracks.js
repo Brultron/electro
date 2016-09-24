@@ -56,7 +56,7 @@ function setCrossfadeValue() {
 
 	var c = crossfadeValue / 100;
 	var l = Math.cos(c * 0.5 * Math.PI);
- 	var r = Math.cos((1.0 - c) * 0.5*Math.PI);
+	var r = Math.cos((1.0 - c) * 0.5 * Math.PI);
 	if (rightTrack) {
 		rightTrack.channel.crossfade.gain.value = r;
 	}
@@ -65,20 +65,19 @@ function setCrossfadeValue() {
 	}
 }
 
-function updateTrack(id, props){
-	Object.assign(tracks[id], props);
+function updateTrack(id, props) {
+	if (tracks[id]) {
+		Object.assign(tracks[id], props);
+	} else {
+		tracks[id] = props;
+	}
 }
 
 const instance = new Tracks();
 
 instance.dispatchToken = Dispatcher.register(action => {
 	switch (action.type) {
-		case 'create_track':
-			tracks[action.track.id] = action.track;
-			instance.emitChange();
-			break;
-
-		case 'update_track_new':
+		case 'update_track':
 			updateTrack(action.id, action.props);
 			instance.emitChange();
 			break;
