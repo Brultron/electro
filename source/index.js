@@ -4,10 +4,10 @@ import electron from 'electron';
 import SettingsTemplate from './settings_template.js';
 import DispatchProxy from './dispatch_proxy.js';
 
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
-const menu = Menu.buildFromTemplate(SettingsTemplate);
 
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
@@ -16,10 +16,15 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-	Menu.setApplicationMenu(menu);
-	var win = new BrowserWindow({
+
+	let win = new BrowserWindow({
 		'width': 1000,
 		'height': 750
 	});
+
+	let settings = new SettingsTemplate(win);
+	let menu = Menu.buildFromTemplate(settings.template);
+	Menu.setApplicationMenu(menu);
 	win.loadURL('file://' + __dirname + '/index.html');
+
 });
