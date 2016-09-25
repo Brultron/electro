@@ -1,20 +1,34 @@
 @import '../index';
 .setting-container {
+	border-radius: 4px;
+	background-color: $P500;
 	padding: 10px;
 	color: white;
 	input {
-		width: 100%;
+		width: 95%;
+		font-size: 16px;
 		background-color: $P500;
 		border: none;
 		padding: 5px;
 		color: #ffffff;
 		border-radius: 5px;
-		font-size: 1.75em;
-		::-webkit-input-placeholder {
-			opacity: 0.5;
-		}
+		border-width: 1px;
+		border-style: solid;
+		border-color: $P50;
+	}
+	label {
+		color: $P50;
 	}
 	select {
-		-webkit-appearance: none;
+		color: #ffffff;
+		background: $P500;
+		border-radius: 5px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: $P50;
+		width: 95%;
+		padding: 5px;
+		font-size: 16px;
+		height: 34px;
 	}
 }

@@ -16,7 +16,11 @@ class SettingTemplate {
 				click() {
 					if (!win) {
 						console.log('create window');
-						win = new BrowserWindow({parent: parent});
+						win = new BrowserWindow({
+							parent: parent,
+							width: 420,
+							height: 300 
+						});
 						win.loadURL('file://' + __dirname + '/settings.html');
 						win.on('close', (e) => {
 							e.preventDefault();

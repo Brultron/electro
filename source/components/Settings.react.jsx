@@ -3,7 +3,7 @@
 import React from 'react';
 import TrackActions from '../actions/Tracks.js';
 import TrackStore from '../stores/Tracks.js';
-import Select from 'react-select';
+import Select from './select/Select.react.js';
 
 class Settings extends React.Component {
 
@@ -45,10 +45,20 @@ class Settings extends React.Component {
 
 	render() {
 		return (
-			<div className='setting-container'>
+			<div className='setting-container lv1_blur'>
 				<h1>Settings</h1>
-				<label>YouTube API key</label>
-				<input type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+				<div className='row'>
+					<label>YouTube API key</label>
+					<input type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+				</div>
+				<div className='row'>
+					<label>Main output</label>
+					<Select onSelect={this.setMainOutput} options={this.state.devices} value={'deviceId'} text={'label'}/>
+				</div>
+				<div className='row'>
+					<label>Cue output</label>
+					<Select onSelect={this.setCueOutput} options={this.state.devices} value={'deviceId'} text={'label'}/>
+				</div>
 			</div>
 		);
 	}
