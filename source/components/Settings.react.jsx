@@ -44,9 +44,9 @@ class Settings extends React.Component {
 	}
 
 	test(event) {
-		
-		console.log(event.target);
-		console.log($(event.target).data('reactid'));
+		$(event.currentTarget).addClass('selected').siblings('.selected').removeClass('selected');
+		$('.setting-content').children('.selected').removeClass('selected');
+		$('.setting-content').children('.' + $(event.currentTarget).html()).addClass('selected');
 	}
 
 	render() {
@@ -60,11 +60,11 @@ class Settings extends React.Component {
 						<label onClick={this.test}>Output</label>
 				</div>
 				<div className='setting-content'>
-					<section className='selected'>
+					<section className='selected YouTube'>
 						<label>API key: </label>
 						<input type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
 					</section>
-					<section>
+					<section className='Output'>
 						<label>Main Output</label>
 						<Select
 							options={this.state.devices}
