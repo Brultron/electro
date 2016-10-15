@@ -2,9 +2,6 @@
 
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
-	sourcemaps = require('gulp-sourcemaps'),
-	rename = require('gulp-rename'),
-	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
 	babel = require('gulp-babel'),
 	electron = require('electron-prebuilt'),
@@ -25,7 +22,7 @@ gulp.task('babel', function() {
 	return gulp.src(['source/**/*.js', 'source/**/*.jsx'])
 		.pipe(babel({
 			presets: ['es2015', 'react'],
-			sourceMaps: "inline" 
+			sourceMaps: "inline"
 		}))
 		.pipe(gulp.dest('build'));
 });

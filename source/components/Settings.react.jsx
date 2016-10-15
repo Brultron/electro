@@ -43,30 +43,44 @@ class Settings extends React.Component {
 		}
 	}
 
+	test(event) {
+		
+		console.log(event.target);
+		console.log($(event.target).data('reactid'));
+	}
+
 	render() {
 		return (
 			<div className='setting-container'>
-				<div>
+				<div className='setting-header'>
 					<h1>Settings</h1>
 				</div>
-				<div>
-					<input  type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
-					<label>YouTube API key</label>
+				<div className='setting-nav'>
+						<label className='selected' onClick={this.test} >YouTube</label>
+						<label onClick={this.test}>Output</label>
 				</div>
-				<label>Main Output</label>
-				<Select
-					options={this.state.devices}
-					text='label'
-					value='deviceId'
-					selected={TrackStore.getMainOutput()}
-					onSelect={this.setMainOutput}/>
-				<label>Cue Output</label>
-				<Select
-					options={this.state.devices}
-					text='label'
-					value='deviceId'
-					selected={TrackStore.getCueOutput()}
-					onSelect={this.setCueOutput}/>
+				<div className='setting-content'>
+					<section className='selected'>
+						<label>API key: </label>
+						<input type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+					</section>
+					<section>
+						<label>Main Output</label>
+						<Select
+							options={this.state.devices}
+							text='label'
+							value='deviceId'
+							selected={TrackStore.getMainOutput()}
+							onSelect={this.setMainOutput}/>
+						<label>Cue Output</label>
+						<Select
+							options={this.state.devices}
+							text='label'
+							value='deviceId'
+							selected={TrackStore.getCueOutput()}
+							onSelect={this.setCueOutput}/>
+					</section>
+				</div>
 			</div>
 		);
 	}

@@ -8,7 +8,10 @@ let SettingTemplate = [{
 			label: 'Settings',
 			accelerator: process.platform === 'darwin' ? 'Alt+Command+,' : 'Ctrl+Shift+,',
 			click() {
-				var win = new BrowserWindow();
+				var win = new BrowserWindow({
+					'width': 500,
+					'height': 375
+				});
 				win.loadURL('file://' + __dirname + '/settings.html');
 			}
 	}, {
