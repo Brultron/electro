@@ -15,20 +15,17 @@ class SettingTemplate {
 				accelerator: process.platform === 'darwin' ? 'Alt+Command+,' : 'Ctrl+Shift+,',
 				click() {
 					if (!win) {
-						console.log('create window');
 						win = new BrowserWindow({
 							parent: parent,
 							width: 420,
-							height: 300 
+							height: 300
 						});
 						win.loadURL('file://' + __dirname + '/settings.html');
 						win.on('close', (e) => {
 							e.preventDefault();
-							console.log('window hide');
 							win.hide()
 						});
 					} else {
-						console.log('window show');
 						win.show()
 					}
 				}
