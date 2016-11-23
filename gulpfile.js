@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
 	babel = require('gulp-babel'),
-	electron = require('electron'),
+	electron = require('electron-prebuilt'),
 	childProcess = require('child_process');
 
 gulp.task('app', function() {
@@ -25,7 +25,7 @@ gulp.task('babel', function() {
 	return gulp.src(['source/**/*.js', 'source/**/*.jsx'])
 		.pipe(babel({
 			presets: ['es2015', 'react'],
-			sourceMaps: "inline"
+			sourceMaps: "inline" 
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -47,6 +47,8 @@ gulp.task('assets', function() {
 	gulp.src('source/assets/**/*.*')
 		.pipe(gulp.dest('build/'));
 });
+
+
 
 gulp.task('wavesurfer', function() {
 	return gulp.src('wavesurfer.cjs.js')
