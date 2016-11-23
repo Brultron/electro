@@ -9,6 +9,9 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 
+// TODO this is a hack because electron doesn't have ffmpeg bundled
+process.env.FFMPEG_PATH = '/usr/local/bin/ffmpeg';
+
 app.on('window-all-closed', () => {
 	if (process.platform !== 'darwin') {
 		app.quit();
