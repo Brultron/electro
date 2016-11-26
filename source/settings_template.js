@@ -53,7 +53,8 @@ class SettingTemplate {
 				role: 'cut',
 			}, {
 				label: 'Copy',
-				role: 'copy',
+				accelerator: "CmdOrCtrl+C",
+				role: 'copy:',
 			}, {
 				label: 'Paste',
 				role: 'paste',
@@ -66,7 +67,5 @@ class SettingTemplate {
 		}]
 	};
 }
-
-
 
 export default SettingTemplate;

@@ -3,8 +3,6 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	sourcemaps = require('gulp-sourcemaps'),
-	rename = require('gulp-rename'),
-	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
 	babel = require('gulp-babel'),
 	electron = require('electron'),
@@ -77,4 +75,5 @@ gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer'
 	});
 });
 
+gulp.task('build', ['app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel']);
 gulp.task('run', ['electron']);

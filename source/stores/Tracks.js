@@ -6,10 +6,11 @@ let conf = new Config('electro');
 let tracks = {};
 let rightTrack;
 let leftTrack;
-let crossfadeValue = 50;
+let crossfadeValue = 100;
 let mainOutput = conf.get('main_output');
 let cueOutput = conf.get('cue_output');
 let ytApiKey = conf.get('yt_api_key');
+let ffmpegPath = conf.get('ffmpeg_path');
 let devices = [];
 
 class Tracks extends BaseStore {
@@ -50,6 +51,10 @@ class Tracks extends BaseStore {
 		return devices;
 	}
 
+	getFFMPegPath(){
+		return ffmpegPath;
+	}
+
 }
 
 function setCrossfadeValue() {
@@ -57,6 +62,7 @@ function setCrossfadeValue() {
 	var c = crossfadeValue / 100;
 	var l = Math.cos(c * 0.5 * Math.PI);
 	var r = Math.cos((1.0 - c) * 0.5 * Math.PI);
+
 	if (rightTrack) {
 		rightTrack.channel.crossfade.gain.value = r;
 	}
@@ -139,6 +145,12 @@ instance.dispatchToken = Dispatcher.register(action => {
 			conf.set('yt_api_key', ytApiKey);
 			instance.emitChange();
 			break;
+
+		case 'set_ff_mpeg_path':
+			ffmpegPath = action.path;
+			conf.set('ffmpeg_path', ffmpegPath);
+			process.env.FFMPEG_PATH = ffmpegPath;
+			console.log(process.env.FFMPEG_PATH);
 	}
 });
 

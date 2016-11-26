@@ -18,7 +18,7 @@ class Yt {
 
 	constructor() {
 		TrackStore.listen(() => {
-			apiKey = TrackStore.getYtApiKey()
+			params.key = TrackStore.getYtApiKey()
 		});
 	}
 
@@ -38,6 +38,7 @@ class Yt {
 				track.bpm = 0;
 				track.movingBpm = [];
 				track.pitch = 1;
+				track.level = 0;
 				TrackActions.updateTrack(track.id, track);
 			});
 		});

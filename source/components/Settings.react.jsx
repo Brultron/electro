@@ -38,8 +38,14 @@ class Settings extends React.Component {
 	}
 
 	setYtApiKey(event) {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' || event.type === 'blur') {
 			TrackActions.setYtApiKey(event.target.value);
+		}
+	}
+
+	setFFMPegPath(event){
+		if (event.key === 'Enter' || event.type === 'blur') {
+			TrackActions.setFFMPegPath(event.target.value);
 		}
 	}
 
@@ -49,7 +55,11 @@ class Settings extends React.Component {
 				<h1>Settings</h1>
 				<div className='row'>
 					<label>YouTube API key</label>
-					<input type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+					<input type='text' onKeyUp={this.setYtApiKey} onBlur={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+				</div>
+				<div className='row'>
+					<label>FFMPEG path</label>
+					<input type='text' onKeyUp={this.setFFMPegPath} onBlur={this.setFFMPegPath} defaultValue={TrackStore.getFFMPegPath()}/>
 				</div>
 				<div className='row'>
 					<label>Main output</label>
@@ -67,7 +77,7 @@ class Settings extends React.Component {
 function loadDevices() {
 	navigator.mediaDevices.enumerateDevices().then((devices) => {
 		var audioOutputs = devices.filter(d => {
-			return d.kind === 'audiooutput'
+			return d.kind === 'audiooutput';
 		})
 		TrackActions.setDevices(audioOutputs);
 	});

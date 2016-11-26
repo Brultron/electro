@@ -91,6 +91,15 @@ class Tracks {
 		Dispatcher.dispatch(action);
 	}
 
+	setFFMPegPath(path) {
+		var action = {
+			type: 'set_ff_mpeg_path',
+			path:path
+		}
+		ipc.send('action', action);
+		Dispatcher.dispatch(action);
+	}
+
 	setDevices(devices) {
 		Dispatcher.dispatch({
 			type: 'set_devices',
@@ -102,3 +111,4 @@ class Tracks {
 const instance = new Tracks();
 
 export default instance;
+//7ee88594f8b500246054ec20cd85d918511f6d3d
