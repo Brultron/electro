@@ -1,5 +1,5 @@
 # Electro
-![](screenshot.png)
+![](docs/electro-screenshot.png)
 Mix music live from the internets
 
 ## Dev
