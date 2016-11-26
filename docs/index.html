@@ -14,52 +14,65 @@
 
 	<div class="jumbotron jumbo-background">
 		<div class="container">
+			<img src="web_hi_res_512.png" class="logo-img pull-left" />
 			<h1 class="electro-name pull-left">Electro</h1>
-			<img src="web_hi_res_512.png" class="pull-right logo-img" />
 		</div>
 	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>MIX THE INTERNETS</h2> with Electro download and mix from your favorite content sources. Electro uses the WebAudio API and WebRTC to giving you full control over pitch, eq and gain. Add a secondary output and cue tracks to your headphones before mixing it live.
-				<br> Electro is open source! Open issues! Contribute! Tell us we suck!
-        <h4>Special THANKS:</h4>
-        <ul>
-          <li>Wavesurfer!</li>
-        </ul>
-				<h4>Things we really want to work on:</h4>
-				<ul>
-					<li>Adding support for new sources</li>
-					<li>Keyboard input</li>
-					<li>Setting cue points</li>
-					<li>Looping</li>
-					<li>Output to icecast</li>
-				</ul>
+				<div class="page-header">
+					<h2>MIX THE INTERNETS...</h2>
+				</div>
+				<p class="lead">
+					Electro lets you download and mix songs directly from YouTube. Change pitch, EQ and level. Tap out the beat, match tempo, and crossfade between track. Add additional output devices and cue song to you headphones before mixing it live!
+					<br>
+					<a href="https://github.com/jspear29/electro/releases/">Download the latest release here</a>
+				</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12">
-				<h2>Getting Started</h2>
-				<ul>
-					<li><strong>Download</strong> electro here</li>
-					<li>Enter your YouTube API key</li>
-					<li>Search for a track</li>
-				</ul>
+				<img src="electro-screenshot.png" class="screenshot-img" />
 			</div>
 		</div>
-		<div class="row deets">
+		<div class="row">
 			<div class="col-xs-12">
-				<h2>The Deets</h2>
-				<h3>The Crate</h3>
-				<h3>Decks</h3>
-          <img src="track.png" alt="" />
-				<h3>The Mixer</h3>
-          <img src="mixer.png" alt="" />
+				<div class="page-header">
+					<h2>SETUP</h2>
+				</div>
+					<h3>API KEY</h3>
+					<p>
+						You must provide a YouTube API key to for Electro to work.  It uses that key when using it's search API.
+					To get an API key go <a href="https://developers.google.com/youtube/v3/getting-started">here</a>.  You you have
+					your API key open up the setting menu and copy it in there.
+					</p>
+					<h3>FFMPEG</h3>
+					<p>
+					Electro expects that FFMPEG is avalible.  If you installed it using <code>brew install ffmpeg</code> then its
+					probably linked to <code>/usr/local/bin/ffmpeg</code> in which case you're probably good. If its not there
+					open the settings and provide a path to ffpmeg there.  Future release will probably bundle this in the release.
+					</p>
+					<h3>OUTPUTS</h3>
+					<p>
+					You can configure a cue and main outputs through the settings menu.  Open setting and select your outputs from the lists.
+					changes to the outputs will take effect for all tracks that loaded after changing.  In practice I've found that there
+					can be signifigant delay when using outputs that are connected through bluetooth or airplay. Works fairly well with my
+					FiiO USB DAC.  Milage may vary.
+					</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="page-header">
+					<h2>ABOUT</h2>
+				</div>
+				<p>Electro was build using Electron, React, Flux, ES6, WebAudio, WebRTC,
+					<a href="https://wavesurfer-js.org/">Wavesurfer.js</a>.
+				</p>
 			</div>
 		</div>
 	</div>
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
 	</script>

@@ -3,8 +3,13 @@ h1.electro-name {
   color: white;
 }
 
+.jumbotron, .jumbotron.container {
+  padding-top: 0;
+  margin-bottom: 10px
+}
+
 .jumbo-background {
-  background: url('mixer-image.png');
+  background: url('header.png');
   object-fit: contain;
 }
 
@@ -12,6 +17,10 @@ h1.electro-name {
   height: 100px;
 }
 
-.deets img {
+.screenshot-img {
   width: 100%;
+}
+
+.ctrl-img {
+  border-radius: 200px;
 }
