@@ -3,11 +3,9 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	sourcemaps = require('gulp-sourcemaps'),
-	rename = require('gulp-rename'),
-	uglify = require('gulp-uglify'),
 	sass = require('gulp-sass'),
 	babel = require('gulp-babel'),
-	electron = require('electron-prebuilt'),
+	electron = require('electron'),
 	childProcess = require('child_process');
 
 gulp.task('app', function() {
@@ -25,7 +23,7 @@ gulp.task('babel', function() {
 	return gulp.src(['source/**/*.js', 'source/**/*.jsx'])
 		.pipe(babel({
 			presets: ['es2015', 'react'],
-			sourceMaps: "inline" 
+			sourceMaps: "inline"
 		}))
 		.pipe(gulp.dest('build'));
 });
@@ -47,8 +45,6 @@ gulp.task('assets', function() {
 	gulp.src('source/assets/**/*.*')
 		.pipe(gulp.dest('build/'));
 });
-
-
 
 gulp.task('wavesurfer', function() {
 	return gulp.src('wavesurfer.cjs.js')
@@ -79,4 +75,5 @@ gulp.task('electron', ['watch', 'app', 'assets', 'jquery', 'fonts', 'wavesurfer'
 	});
 });
 
+gulp.task('build', ['app', 'assets', 'jquery', 'fonts', 'wavesurfer', 'knob', 'sass', 'babel']);
 gulp.task('run', ['electron']);

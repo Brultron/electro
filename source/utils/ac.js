@@ -25,7 +25,6 @@ let buildChannel = function() {
 	var mainOut = context.createMediaStreamDestination();
 	var main = new Audio();
 	main.src = URL.createObjectURL(mainOut.stream);
-	console.log(mainOutput);
   main.setSinkId(mainOutput);
 	channel.main = main;
 

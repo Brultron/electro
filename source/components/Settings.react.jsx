@@ -37,36 +37,38 @@ class Settings extends React.Component {
 		TrackActions.setCueOutput(deviceId);
 	}
 
-	setYtApiKey(event){
-		if(event.key === 'Enter'){
+	setYtApiKey(event) {
+		if (event.key === 'Enter' || event.type === 'blur') {
 			TrackActions.setYtApiKey(event.target.value);
+		}
+	}
+
+	setFFMPegPath(event){
+		if (event.key === 'Enter' || event.type === 'blur') {
+			TrackActions.setFFMPegPath(event.target.value);
 		}
 	}
 
 	render() {
 		return (
-			<div className='setting-container'>
-				<div>
-					<h1>Settings</h1>
-				</div>
-				<div>
-					<input  type='text' onKeyUp={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
+			<div className='setting-container lv1_blur'>
+				<h1>Settings</h1>
+				<div className='row'>
 					<label>YouTube API key</label>
+					<input type='text' onKeyUp={this.setYtApiKey} onBlur={this.setYtApiKey} defaultValue={TrackStore.getYtApiKey()}/>
 				</div>
-				<label>Main Output</label>
-				<Select
-					options={this.state.devices}
-					text='label'
-					value='deviceId'
-					selected={TrackStore.getMainOutput()}
-					onSelect={this.setMainOutput}/>
-				<label>Cue Output</label>
-				<Select
-					options={this.state.devices}
-					text='label'
-					value='deviceId'
-					selected={TrackStore.getCueOutput()}
-					onSelect={this.setCueOutput}/>
+				<div className='row'>
+					<label>FFMPEG path</label>
+					<input type='text' onKeyUp={this.setFFMPegPath} onBlur={this.setFFMPegPath} defaultValue={TrackStore.getFFMPegPath()}/>
+				</div>
+				<div className='row'>
+					<label>Main output</label>
+					<Select onSelect={this.setMainOutput} options={this.state.devices} value={'deviceId'} text={'label'}/>
+				</div>
+				<div className='row'>
+					<label>Cue output</label>
+					<Select onSelect={this.setCueOutput} options={this.state.devices} value={'deviceId'} text={'label'}/>
+				</div>
 			</div>
 		);
 	}
@@ -75,7 +77,7 @@ class Settings extends React.Component {
 function loadDevices() {
 	navigator.mediaDevices.enumerateDevices().then((devices) => {
 		var audioOutputs = devices.filter(d => {
-			return d.kind === 'audiooutput'
+			return d.kind === 'audiooutput';
 		})
 		TrackActions.setDevices(audioOutputs);
 	});

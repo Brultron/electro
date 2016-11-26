@@ -18,7 +18,7 @@ class Yt {
 
 	constructor() {
 		TrackStore.listen(() => {
-			apiKey = TrackStore.getYtApiKey()
+			params.key = TrackStore.getYtApiKey()
 		});
 	}
 
@@ -33,14 +33,24 @@ class Yt {
 		stream.on('end', (data) => {
 			ac.createSource(master, track, (track) => {
 				track.ready = true;
-				TrackActions.updateTrack(track);
+				track.playing = false;
+				track.cued = false;
+				track.bpm = 0;
+				track.movingBpm = [];
+				track.pitch = 1;
+				track.level = 0;
+				TrackActions.updateTrack(track.id, track);
 			});
 		});
 	}
 
 	search(q) {
-		params.q = q;
-		params.pageToken = undefined;
+
+		if (q) {
+			params.q = q;
+			params.pageToken = undefined;
+		}
+
 		$.get(SEARCH_URL, params).then((resp) => {
 			params.pageToken = resp.nextPageToken;
 			for (let t of resp.items) {
@@ -52,30 +62,10 @@ class Yt {
 					thumbnail: t.snippet.thumbnails.high.url,
 					search: true
 				};
-				TrackActions.updateTrack(track)
+				TrackActions.updateTrack(t.id.videoId, track);
 			}
 		});
 	}
-
-	getNext() {
-		$.get(SEARCH_URL, params).then((resp) => {
-			params.pageToken = resp.nextPageToken;
-			for (let t of resp.items) {
-				let track = {
-					id: t.id.videoId,
-					url: DOWNLOAD_URL + t.id.videoId,
-					title: t.snippet.title,
-					description: t.snippet.description,
-					thumbnail: t.snippet.thumbnails.high.url,
-					search: true
-				};
-				TrackActions.updateTrack(track)
-			}
-			$('.track-thumb').removeClass('loading-spin');
-		});
-
-	}
-
 }
 
 let instance = new Yt();

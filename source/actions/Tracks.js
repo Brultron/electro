@@ -6,7 +6,7 @@ import {
 
 class Tracks {
 
-	constructor(){
+	constructor() {
 		ipc.on('action', (event, action) => {
 			Dispatcher.dispatch(action);
 		});
@@ -14,16 +14,14 @@ class Tracks {
 
 	addTrack(track) {
 		yt.download(track);
-		Dispatcher.dispatch({
-			type: 'update_track',
-			track: track
-		});
+		this.updateTrack(track.id, {search: false});
 	}
 
-	updateTrack(track) {
+	updateTrack(id, props) {
 		Dispatcher.dispatch({
 			type: 'update_track',
-			track: track
+			id,
+			props,
 		});
 	}
 
@@ -42,7 +40,7 @@ class Tracks {
 	}
 
 	getNextTracks() {
-		yt.getNext();
+		yt.search();
 	}
 
 	setRightTrack(track) {
@@ -93,6 +91,15 @@ class Tracks {
 		Dispatcher.dispatch(action);
 	}
 
+	setFFMPegPath(path) {
+		var action = {
+			type: 'set_ff_mpeg_path',
+			path:path
+		}
+		ipc.send('action', action);
+		Dispatcher.dispatch(action);
+	}
+
 	setDevices(devices) {
 		Dispatcher.dispatch({
 			type: 'set_devices',
@@ -104,3 +111,4 @@ class Tracks {
 const instance = new Tracks();
 
 export default instance;
+//7ee88594f8b500246054ec20cd85d918511f6d3d
