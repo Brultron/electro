@@ -3,13 +3,8 @@
 import React from 'react';
 import {
 	Layout,
-	Grid,
-	Cell,
-	List,
-	ListItem,
-	ListItemContent,
-	ListItemAction,
-	ProgressBar
+	ProgressBar,
+	Content
 } from 'react-mdl';
 
 
@@ -22,7 +17,9 @@ class Search extends React.Component {
 		return (
 			<Layout fixedHeader>
 				<SearchBar/>
-				<SearchResult tracks={this.props.tracks}/>
+				<Content>
+					<SearchResult tracks={this.props.tracks}/>
+				</Content>
 			</Layout>
 		);
 	}

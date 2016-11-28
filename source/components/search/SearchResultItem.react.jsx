@@ -2,10 +2,13 @@
 
 import React from 'react';
 import {
-	ListItem,
-	ListItemContent,
-	ListItemAction,
-	ProgressBar
+	Grid,
+	Cell,
+	Icon,
+	Card,
+	CardText,
+	CardActions,
+	Button
 } from 'react-mdl';
 
 import TrackAction from '../../actions/Tracks.js';
@@ -15,12 +18,11 @@ class SearchResultItem extends React.Component {
 
 	render() {
 		return (
-			<ListItem>
-				<ListItemContent avatar={<img src= {this.props.track.thumbnail}/>}>
-				{this.props.track.title}
-				</ListItemContent>
-				<ListItemAction></ListItemAction>
-			</ListItem>
+			<Cell col={9} phone={9}>
+				<Card>
+					<CardText>{this.props.track.title}</CardText>
+				</Card>
+			</Cell>
 		);
 	}
 }

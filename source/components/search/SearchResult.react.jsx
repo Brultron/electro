@@ -4,11 +4,7 @@ import React from 'react';
 import {
 	Grid,
 	Cell,
-	List,
-	ListItem,
-	ListItemContent,
-	ListItemAction,
-	ProgressBar
+	List
 } from 'react-mdl';
 
 import TrackStore from '../../stores/Tracks.js';
@@ -30,9 +26,7 @@ class SearchResult extends React.Component {
 		return (
 			<Grid>
 				<Cell col={12}>
-					<List>
-						{this.getSearchResultItems()}
-					</List>
+					{this.getSearchResultItems()}
 				</Cell>
 			</Grid>
 		);

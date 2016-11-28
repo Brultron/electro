@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import {Header, Textfield} from 'react-mdl';
+import {Header, HeaderRow, Textfield, Icon} from 'react-mdl';
 
 import TrackActions from '../../actions/Tracks.js';
 import TrackStore from '../../stores/Tracks.js';
@@ -21,8 +21,11 @@ class SearchBar extends React.Component {
 
 	render() {
 		return (
-			<Header>
-				<Textfield onKeyUp={this.search} label="Search" expandable expandableIcon="search"/>
+			<Header hideSpacer={true}>
+				<HeaderRow hideSpacer={true} style={{padding: '0 16px 0 16px'}}>
+					<Icon name="search"/>
+					<Textfield onKeyUp={this.search} label="Search"/>
+				</HeaderRow>
 			</Header>
 		);
 	}
