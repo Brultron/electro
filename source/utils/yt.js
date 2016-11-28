@@ -1,4 +1,5 @@
 import yt from 'youtube-audio-stream';
+import $ from 'jquery';
 import ac from './ac.js';
 import concat from 'array-buffer-concat';
 import TrackActions from '../actions/Tracks.js';

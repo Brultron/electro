@@ -30,14 +30,22 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
 
-	let win = new BrowserWindow({
+	// let main = new BrowserWindow({
+	// 	'width': 1000,
+	// 	'height': 750
+	// });
+	//
+	// let settings = new SettingsTemplate(main);
+	// let menu = Menu.buildFromTemplate(settings.template);
+	// Menu.setApplicationMenu(menu);
+	// main.loadURL('file://' + __dirname + '/index.html');
+
+
+	let search = new BrowserWindow({
 		'width': 1000,
 		'height': 750
 	});
 
-	let settings = new SettingsTemplate(win);
-	let menu = Menu.buildFromTemplate(settings.template);
-	Menu.setApplicationMenu(menu);
-	win.loadURL('file://' + __dirname + '/index.html');
+	search.loadURL('file://' + __dirname + '/search.html');
 
 });
